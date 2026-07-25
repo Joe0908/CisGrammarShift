@@ -1,0 +1,56 @@
+experiment:
+  seeds: [42]
+  deterministic: true
+
+dataset:
+  sequence_length: 192
+  motif_a: POU5F1_M05705_3.00
+  motif_b: NANOG_M05219_3.00
+  train_pairs: 96
+  validation_pairs: 32
+  test_pairs: 48
+  anchor_min: 12
+  anchor_max: 28
+  rule:
+    period: 10
+    allowed_phases: [0, 1, 9]
+  train:
+    gap_min: 0
+    gap_max: 50
+    background_gc: 0.50
+    background_persistence: 0.10
+    allow_reverse: false
+    motif_temperature: 1.0
+  evaluations:
+    iid:
+      gap_min: 0
+      gap_max: 50
+      background_gc: 0.50
+      background_persistence: 0.10
+      allow_reverse: false
+      motif_temperature: 1.0
+    gap_ood:
+      gap_min: 51
+      gap_max: 90
+      background_gc: 0.50
+      background_persistence: 0.10
+      allow_reverse: false
+      motif_temperature: 1.0
+
+models:
+  names: [pwm_presence, local_cnn, dilated_cnn]
+  local_cnn:
+    channels: 24
+    kernel_size: 19
+  dilated_cnn:
+    channels: 24
+    kernel_size: 19
+    dilations: [1, 2, 4, 8, 16]
+
+training:
+  epochs: 2
+  patience: 2
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  attribution_examples: 16
