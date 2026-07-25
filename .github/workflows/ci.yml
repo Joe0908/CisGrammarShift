@@ -29,3 +29,5 @@ jobs:
         run: pytest
       - name: CLI help
         run: cisgrammar --help
+      - name: Quick benchmark
+        run: cisgrammar run --config configs/quick.yaml --output /tmp/cisgrammar-quick --device cpu
