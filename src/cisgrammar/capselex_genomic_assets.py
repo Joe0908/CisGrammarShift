@@ -23,6 +23,19 @@ NARROWPEAK_COLUMNS = (
     "summit_offset",
 )
 
+MAGIX_COLUMNS = (
+    "chr",
+    "start",
+    "stop",
+    "name",
+    "coefficient.br",
+    "coefficient.ar",
+    "full_LL",
+    "reduced_LL",
+    "pvalue",
+    "fdr",
+)
+
 LocusUniverse = Literal["ght-only", "assay-union", "fixed-genome", "legacy-assay-union"]
 LOCUS_UNIVERSES: tuple[LocusUniverse, ...] = (
     "ght-only",
@@ -167,6 +180,61 @@ def read_narrowpeak(path: str | Path) -> pd.DataFrame:
         summit = ((frame["start"] + frame["end"]) // 2).astype(int)
     frame["midpoint"] = summit
     return frame[frame["chrom"].isin(AUTOSOMES)].reset_index(drop=True)
+
+
+def read_magix(
+    path: str | Path,
+    fdr_max: float = 0.05,
+    require_positive: bool = True,
+) -> pd.DataFrame:
+    """Read a MAGIX result table and retain outcome-independent GHT calls.
+
+    ``coefficient.ar`` is the refined coefficient emitted after MAGIX's
+    likelihood-ratio testing step. The default call requires a Benjamini-Hochberg
+    FDR no greater than 0.05 and a positive refined coefficient. Both criteria use
+    only GHT-SELEX data; ChIP is never used to select or center these intervals.
+    """
+    assert_primary_asset_allowed(path)
+    if not 0 <= fdr_max <= 1:
+        raise ValueError("MAGIX FDR threshold must fall between zero and one")
+    frame = pd.read_csv(path, sep="\t")
+    missing = [column for column in MAGIX_COLUMNS if column not in frame.columns]
+    if missing:
+        raise ValueError(f"MAGIX table is missing columns: {', '.join(missing)}")
+    frame = frame.loc[:, MAGIX_COLUMNS].copy()
+    frame = frame.rename(
+        columns={
+            "chr": "chrom",
+            "stop": "end",
+            "coefficient.br": "ght_score_before_refinement",
+            "coefficient.ar": "ght_score",
+        }
+    )
+    numeric = (
+        "start",
+        "end",
+        "ght_score_before_refinement",
+        "ght_score",
+        "full_LL",
+        "reduced_LL",
+        "pvalue",
+        "fdr",
+    )
+    for column in numeric:
+        frame[column] = pd.to_numeric(frame[column], errors="raise")
+    frame[["start", "end"]] = frame[["start", "end"]].astype(int)
+    if frame["start"].lt(0).any() or frame["end"].le(frame["start"]).any():
+        raise ValueError("MAGIX intervals require 0 <= start < end")
+    if frame[["pvalue", "fdr"]].lt(0).any().any() or frame[["pvalue", "fdr"]].gt(1).any().any():
+        raise ValueError("MAGIX p-values and FDR values must fall between zero and one")
+    frame["midpoint"] = ((frame["start"] + frame["end"]) // 2).astype(int)
+    selected = frame["fdr"].le(fdr_max)
+    if require_positive:
+        selected &= frame["ght_score"].gt(0)
+    frame = frame.loc[selected & frame["chrom"].isin(AUTOSOMES)].copy()
+    frame["ght_fdr_threshold"] = float(fdr_max)
+    frame["ght_positive_required"] = bool(require_positive)
+    return frame.reset_index(drop=True)
 
 
 def fixed_loci(points: pd.DataFrame, width_bp: int = 200, source: str = "unknown") -> pd.DataFrame:

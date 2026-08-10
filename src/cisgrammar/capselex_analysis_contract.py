@@ -12,6 +12,10 @@ class AnalysisContract:
     sequence_context_bp: int = 400
     chromosome_folds: int = 5
     primary_locus_universe: str = "ght-only"
+    primary_ght_asset_version: str = "codebook-v2"
+    primary_ght_format: str = "magix"
+    primary_ght_fdr_max: float = 0.05
+    primary_ght_require_positive_refined_coefficient: bool = True
     sensitivity_locus_universes: tuple[str, ...] = (
         "assay-union",
         "fixed-genome",
@@ -32,6 +36,14 @@ class AnalysisContract:
             raise ValueError("at least three chromosome folds are required")
         if self.primary_locus_universe != "ght-only":
             raise ValueError("the primary universe must be selected without ChIP outcome information")
+        if self.primary_ght_asset_version != "codebook-v2":
+            raise ValueError("the primary GHT asset must use the corrected Codebook v2 release")
+        if self.primary_ght_format != "magix":
+            raise ValueError("the primary GHT asset must use MAGIX output")
+        if not 0 <= self.primary_ght_fdr_max <= 1:
+            raise ValueError("the primary GHT FDR threshold must fall between zero and one")
+        if not self.primary_ght_require_positive_refined_coefficient:
+            raise ValueError("the primary GHT call must require a positive refined coefficient")
         if self.screening_grammar_permutations < 1:
             raise ValueError("at least one null permutation is required")
         if self.grammar_permutations < self.screening_grammar_permutations:
@@ -39,7 +51,7 @@ class AnalysisContract:
 
     def write(self, path: str | Path) -> None:
         self.validate()
-        write_json({"schema_version": "analysis_contract_v2", **asdict(self)}, path)
+        write_json({"schema_version": "analysis_contract_v3", **asdict(self)}, path)
 
 
 PRIMARY_FOCAL_TFS = ("FLI1", "GABPA", "GCM1", "PAX7", "RFX5")

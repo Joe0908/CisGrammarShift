@@ -20,8 +20,29 @@ The monolithic Codebook merged-bigWig archive is unnecessary. GEO `GSE280248` pr
 `GPZN` bigWigs per sample, allowing only the required replicates to be downloaded. All focal samples must use
 the same processing pipeline; Toronto and McGill absolute signals are never mixed in one comparison.
 
-The checksum-aware `scripts/download_manifest.py` downloads a whitelisted subset. URLs and expected hashes
-belong in a local manifest under `data/`, which is ignored by Git.
+The checksum-aware `scripts/download_manifest.py` downloads a whitelisted subset. URLs, SHA-256 hashes and
+expected byte sizes are frozen in `configs/codebook_geo_metadata_manifest.json`. Large assay files remain
+under `data/`, which is ignored by Git.
+
+## GHT MAGIX version boundary
+
+The GEO `GSE278858_BED_files.tar.gz` archive is a reproducible pre-v2 snapshot. Its SHA-256 is frozen in
+`configs/codebook_geo_v1_magix_panel.json`, and `scripts/audit_codebook_magix.py` extracts only the six-panel
+files, checks each against the GEO workbook MD5, validates the MAGIX schema, and reports locus counts. It is
+explicitly **smoke-test only** because Codebook v2 changed MAGIX preprocessing from fixed genomic bins to
+peak-first candidate regions and consequently changed locations and scores.
+
+The manuscript primary analysis therefore requires the corrected Codebook v2 MAGIX files. It uses the
+outcome-independent rule:
+
+- Benjamini-Hochberg `fdr <= 0.05`;
+- refined `coefficient.ar > 0`;
+- autosomes only;
+- fixed 200-bp genomic tiles whose centers do not depend on ChIP.
+
+This primary universe estimates the incremental CAP grammar association among loci with supported intrinsic
+GHT binding. The `fixed-genome` sensitivity is required to address GHT-negative/ChIP-positive targeting,
+because a GHT-only universe cannot by construction estimate that class.
 
 ## Primary whitelist
 

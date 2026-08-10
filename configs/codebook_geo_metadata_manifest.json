@@ -1,0 +1,29 @@
+{
+  "schema_version": "public_asset_manifest_v1",
+  "assets": [
+    {
+      "filename": "GSE278858_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE278nnn/GSE278858/soft/GSE278858_family.soft.gz",
+      "size_bytes": 120114,
+      "sha256": "85b041641d8c7f877d7b5aed0d30d0fbe5549120b271ea0471ada898e4102811"
+    },
+    {
+      "filename": "GSE278858_GHT_Alldentifiers.xlsx",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE278nnn/GSE278858/suppl/GSE278858_GHT_Alldentifiers.xlsx",
+      "size_bytes": 374550,
+      "sha256": "8d659320028ef30837fb1c4c7e83d32cc7b346739051141d33befeef38a57803"
+    },
+    {
+      "filename": "GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE278nnn/GSE278858/suppl/GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx",
+      "size_bytes": 935200,
+      "sha256": "53bc3221d6975e431129ba1f42d3d432e6a4f34fc69dcfa31b5f8936993e4d52"
+    },
+    {
+      "filename": "GSE278858_metadata_original.xlsx",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE278nnn/GSE278858/suppl/GSE278858_metadata_original.xlsx",
+      "size_bytes": 1121652,
+      "sha256": "ab37f48958aaa8b4d64b176387c9c8a4e933e51dd4f01e3a20bda41d0fa3760e"
+    }
+  ]
+}

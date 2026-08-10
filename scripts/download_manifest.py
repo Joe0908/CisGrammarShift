@@ -31,6 +31,8 @@ def main() -> None:
         observed = sha256(destination)
         if record.get("sha256") and observed != record["sha256"]:
             raise RuntimeError(f"checksum mismatch for {destination}")
+        if record.get("size_bytes") and destination.stat().st_size != record["size_bytes"]:
+            raise RuntimeError(f"size mismatch for {destination}")
         print(f"{destination}\t{destination.stat().st_size}\t{observed}")
 
 

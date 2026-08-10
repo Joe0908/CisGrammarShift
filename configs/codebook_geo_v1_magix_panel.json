@@ -1,0 +1,53 @@
+{
+  "schema_version": "codebook_magix_panel_v1",
+  "source": {
+    "accession": "GSE278858",
+    "release_label": "geo-archive-2024-10",
+    "codebook_version": "pre-v2",
+    "primary_analysis_eligible": false,
+    "reason": "Codebook v2 revised MAGIX peak generation; this older GEO archive is smoke-test only.",
+    "archive_filename": "GSE278858_BED_files.tar.gz",
+    "archive_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE278nnn/GSE278858/suppl/GSE278858_BED_files.tar.gz",
+    "archive_size_bytes": 1731561033,
+    "archive_sha256": "798668c52a48668414a8ccc5b248808ed3fd943f678d6738e20a7843cf7e795b",
+    "checksum_metadata_filename": "GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx"
+  },
+  "call_rule": {
+    "fdr_max": 0.05,
+    "score_column": "coefficient.ar",
+    "require_positive_score": true,
+    "uses_chip_outcome": false
+  },
+  "panel": [
+    {
+      "tf": "FLI1",
+      "role": "primary_focal",
+      "filename": "FLI1_MAGIX_GHT00085_GHT00086_GHT00087_GHT00088_GHT01486.bed"
+    },
+    {
+      "tf": "GABPA",
+      "role": "primary_focal",
+      "filename": "GABPA_MAGIX_GHT00059_GHT00060.bed"
+    },
+    {
+      "tf": "GCM1",
+      "role": "primary_focal",
+      "filename": "GCM1_MAGIX_GHT00206_GHT00207_GHT00849.bed"
+    },
+    {
+      "tf": "PAX7",
+      "role": "primary_focal",
+      "filename": "PAX7_MAGIX_GHT00160_GHT00161.bed"
+    },
+    {
+      "tf": "RFX5",
+      "role": "primary_focal",
+      "filename": "RFX5_MAGIX_GHT00291.bed"
+    },
+    {
+      "tf": "MAX",
+      "role": "cap_null_control",
+      "filename": "MAX_MAGIX_GHT00107_GHT00108_GHT00109_GHT00110.bed"
+    }
+  ]
+}

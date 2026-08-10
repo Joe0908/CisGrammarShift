@@ -1,4 +1,4 @@
-schema_version: capselex_reanalysis_v2
+schema_version: capselex_reanalysis_v3
 seed: 20260809
 
 contract:
@@ -6,6 +6,10 @@ contract:
   sequence_context_bp: 400
   chromosome_folds: 5
   primary_locus_universe: ght-only
+  primary_ght_asset_version: codebook-v2
+  primary_ght_format: magix
+  primary_ght_fdr_max: 0.05
+  primary_ght_require_positive_refined_coefficient: true
   sensitivity_locus_universes: [assay-union, fixed-genome, legacy-assay-union]
   screening_grammar_permutations: 100
   grammar_permutations: 1000

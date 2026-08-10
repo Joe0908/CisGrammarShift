@@ -13,6 +13,7 @@ from cisgrammar.capselex_genomic_assets import (
     build_legacy_assay_union_loci,
     iter_fixed_genome_loci,
     read_chrom_sizes,
+    read_magix,
 )
 from cisgrammar.capselex_genomic_model import chromosome_nested_continuous, chromosome_shift_null
 from cisgrammar.cli import _run_capselex, build_parser
@@ -37,6 +38,36 @@ def test_narrowpeak_without_summit_uses_interval_midpoint(tmp_path) -> None:
     from cisgrammar.capselex_genomic_assets import read_narrowpeak
 
     assert read_narrowpeak(path).loc[0, "midpoint"] == 140
+
+
+def test_magix_uses_refined_positive_fdr_calls(tmp_path) -> None:
+    path = tmp_path / "GCM1.magix.bed"
+    path.write_text(
+        "chr\tstart\tstop\tname\tcoefficient.br\tcoefficient.ar\tfull_LL\t"
+        "reduced_LL\tpvalue\tfdr\n"
+        "chr1\t100\t300\tpositive\t0.2\t1.4\t-2\t-4\t0.001\t0.01\n"
+        "chr1\t300\t500\tnegative\t0.2\t-1.4\t-2\t-4\t0.001\t0.01\n"
+        "chr1\t500\t700\tnonsignificant\t0.2\t1.4\t-2\t-4\t0.2\t0.2\n"
+        "chrX\t100\t300\tnonautosomal\t0.2\t1.4\t-2\t-4\t0.001\t0.01\n",
+        encoding="utf-8",
+    )
+    frame = read_magix(path)
+    assert frame["name"].tolist() == ["positive"]
+    assert frame["midpoint"].tolist() == [200]
+    assert frame["ght_score"].tolist() == [1.4]
+    assert frame["ght_score_before_refinement"].tolist() == [0.2]
+
+
+def test_magix_rejects_invalid_interval(tmp_path) -> None:
+    path = tmp_path / "invalid.magix.bed"
+    path.write_text(
+        "chr\tstart\tstop\tname\tcoefficient.br\tcoefficient.ar\tfull_LL\t"
+        "reduced_LL\tpvalue\tfdr\n"
+        "chr1\t300\t100\tinvalid\t0.2\t1.4\t-2\t-4\t0.001\t0.01\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="0 <= start < end"):
+        read_magix(path)
 
 
 def test_ght_only_excludes_chip_only_tiles_and_is_outcome_independent() -> None:
@@ -113,6 +144,41 @@ def test_build_loci_cli_writes_auditable_manifest(tmp_path) -> None:
     assert manifest["outcome_used_for_selection"] is False
     assert manifest["outcome_used_for_centering"] is False
     assert manifest["output"]["sha256"]
+
+
+def test_build_loci_cli_records_magix_filter(tmp_path) -> None:
+    ght_path = tmp_path / "GCM1.magix.bed"
+    output = tmp_path / "GCM1.ght_only.tsv.gz"
+    ght_path.write_text(
+        "chr\tstart\tstop\tname\tcoefficient.br\tcoefficient.ar\tfull_LL\t"
+        "reduced_LL\tpvalue\tfdr\n"
+        "chr1\t80\t280\tght\t0.2\t1.4\t-2\t-4\t0.001\t0.01\n",
+        encoding="utf-8",
+    )
+    args = build_parser().parse_args(
+        [
+            "capselex",
+            "build-loci",
+            "--universe",
+            "ght-only",
+            "--ght-magix",
+            str(ght_path),
+            "--focal-tf",
+            "GCM1",
+            "--output",
+            str(output),
+        ]
+    )
+    _run_capselex(args)
+    manifest = json.loads((tmp_path / "GCM1.ght_only.tsv.gz.manifest.json").read_text())
+    assert manifest["counts"]["rows"] == 1
+    assert manifest["ght_processing"] == {
+        "fdr_max": 0.05,
+        "format": "magix",
+        "require_positive_score": True,
+        "score_column": "coefficient.ar",
+        "uses_chip_outcome": False,
+    }
 
 
 def test_replicate_qc() -> None:

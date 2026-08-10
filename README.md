@@ -94,6 +94,19 @@ python -m pip install -e ".[dev,ml]"  # full tests and synthetic training
 # Freeze the non-circular contract
 cisgrammar capselex contract --output results/capselex/analysis_contract.json
 
+# Download and verify the small GEO metadata set
+python scripts/download_manifest.py \
+  --manifest configs/codebook_geo_metadata_manifest.json \
+  --output-directory data/codebook/geo_metadata
+
+# Smoke test only: extract and audit the frozen pre-v2 GEO MAGIX panel
+python scripts/audit_codebook_magix.py \
+  --config configs/codebook_geo_v1_magix_panel.json \
+  --metadata-directory data/codebook/geo_metadata \
+  --archive data/codebook/geo_peaks/GSE278858_BED_files.tar.gz \
+  --extraction-directory data/codebook/geo_peaks/focal_magix \
+  --output reports/codebook_geo_v1_magix_asset_audit.json
+
 # Build the directed CAP pair dataset and run the TF-held-out panel
 cisgrammar capselex dataset \
   --interaction-table data/capselex/interaction_matrix.xlsx \
@@ -109,7 +122,7 @@ cisgrammar capselex tf-panel \
 cisgrammar capselex build-loci \
   --universe ght-only \
   --chip-peaks data/codebook/chip/GCM1.narrowPeak \
-  --ght-peaks data/codebook/ght/GCM1.narrowPeak \
+  --ght-magix data/codebook/ght_v2/GCM1_MAGIX.bed \
   --focal-tf GCM1 \
   --output results/capselex/GCM1.ght_only.loci.tsv.gz
 
@@ -118,7 +131,7 @@ cisgrammar capselex build-loci \
   --universe fixed-genome \
   --chrom-sizes data/reference/hg38.chrom.sizes \
   --chip-peaks data/codebook/chip/GCM1.narrowPeak \
-  --ght-peaks data/codebook/ght/GCM1.narrowPeak \
+  --ght-magix data/codebook/ght_v2/GCM1_MAGIX.bed \
   --focal-tf GCM1 \
   --output results/capselex/GCM1.fixed_genome.loci.tsv.gz
 
@@ -147,6 +160,11 @@ pytest
 counts, input/output sizes and SHA-256 hashes. Raw and large processed files are intentionally excluded from
 Git. See
 [`docs/data_access.md`](docs/data_access.md) for public accessions and the small-file download strategy.
+
+For MAGIX input, the frozen primary rule is Benjamini-Hochberg FDR <= 0.05 and a positive refined
+`coefficient.ar`. The manifest records both choices. The public GEO GSE278858 BED archive is useful for a
+fully checksummed smoke test, but predates the revised Codebook v2 MAGIX release and is not accepted for
+manuscript primary results.
 
 ## Repository layout
 

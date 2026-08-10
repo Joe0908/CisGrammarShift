@@ -24,6 +24,7 @@ from cisgrammar.capselex_genomic_assets import (
     build_legacy_assay_union_loci,
     iter_fixed_genome_loci,
     read_chrom_sizes,
+    read_magix,
     read_narrowpeak,
 )
 from cisgrammar.capselex_tf_panel import run_tf_panel
@@ -70,6 +71,9 @@ def _build_capselex_parser(subparsers: argparse._SubParsersAction[argparse.Argum
     loci.add_argument("--universe", choices=LOCUS_UNIVERSES, required=True)
     _path(loci, "--chip-peaks", required=False)
     _path(loci, "--ght-peaks", required=False)
+    _path(loci, "--ght-magix", required=False)
+    loci.add_argument("--ght-fdr-max", type=float, default=0.05)
+    loci.add_argument("--ght-include-nonpositive", action="store_true")
     _path(loci, "--chrom-sizes", required=False)
     loci.add_argument("--focal-tf", required=True)
     loci.add_argument("--width-bp", type=int, default=200)
@@ -129,22 +133,46 @@ def _write_locus_chunks(chunks: Iterable[pd.DataFrame], output: Path) -> dict[st
 
 def _build_loci(args: argparse.Namespace) -> None:
     chip = read_narrowpeak(args.chip_peaks) if args.chip_peaks is not None else None
-    ght = read_narrowpeak(args.ght_peaks) if args.ght_peaks is not None else None
+    if args.ght_peaks is not None and args.ght_magix is not None:
+        raise ValueError("provide only one of --ght-peaks and --ght-magix")
+    if args.ght_magix is not None:
+        ght = read_magix(
+            args.ght_magix,
+            fdr_max=args.ght_fdr_max,
+            require_positive=not args.ght_include_nonpositive,
+        )
+        ght_processing: dict[str, object] | None = {
+            "format": "magix",
+            "fdr_max": args.ght_fdr_max,
+            "score_column": "coefficient.ar",
+            "require_positive_score": not args.ght_include_nonpositive,
+            "uses_chip_outcome": False,
+        }
+    elif args.ght_peaks is not None:
+        ght = read_narrowpeak(args.ght_peaks)
+        ght_processing = {"format": "narrowpeak", "uses_chip_outcome": False}
+    else:
+        ght = None
+        ght_processing = None
 
     if args.universe == "ght-only":
         if ght is None:
-            raise ValueError("--ght-peaks is required for the ght-only universe")
+            raise ValueError("--ght-peaks or --ght-magix is required for the ght-only universe")
         chunks: Iterable[pd.DataFrame] = [
             build_ght_only_loci(ght, args.focal_tf, args.width_bp, chip_peaks=chip)
         ]
     elif args.universe == "assay-union":
         if chip is None or ght is None:
-            raise ValueError("--chip-peaks and --ght-peaks are required for the assay-union universe")
+            raise ValueError(
+                "--chip-peaks and one of --ght-peaks/--ght-magix are required for "
+                "the assay-union universe"
+            )
         chunks = [build_assay_union_loci(chip, ght, args.focal_tf, args.width_bp)]
     elif args.universe == "legacy-assay-union":
         if chip is None or ght is None:
             raise ValueError(
-                "--chip-peaks and --ght-peaks are required for the legacy-assay-union universe"
+                "--chip-peaks and one of --ght-peaks/--ght-magix are required for "
+                "the legacy-assay-union universe"
             )
         chunks = [build_legacy_assay_union_loci(chip, ght, args.focal_tf, args.width_bp)]
     elif args.universe == "fixed-genome":
@@ -163,7 +191,9 @@ def _build_loci(args: argparse.Namespace) -> None:
 
     counts = _write_locus_chunks(chunks, args.output)
     input_paths = [
-        path for path in (args.chip_peaks, args.ght_peaks, args.chrom_sizes) if path is not None
+        path
+        for path in (args.chip_peaks, args.ght_peaks, args.ght_magix, args.chrom_sizes)
+        if path is not None
     ]
     manifest_path = args.manifest or args.output.with_name(args.output.name + ".manifest.json")
     universe_audit = LOCUS_UNIVERSE_AUDIT[args.universe]
@@ -174,6 +204,7 @@ def _build_loci(args: argparse.Namespace) -> None:
             "locus_width_bp": args.width_bp,
             "locus_universe": args.universe,
             **universe_audit,
+            "ght_processing": ght_processing,
             "counts": counts,
             "inputs": asset_manifest(input_paths),
             "output": asset_manifest([args.output])[0],
