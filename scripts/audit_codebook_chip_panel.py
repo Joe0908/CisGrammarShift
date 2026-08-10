@@ -37,6 +37,16 @@ def main() -> None:
     parser.add_argument("--bigwig-directory", type=Path, required=True)
     parser.add_argument("--locus-directory", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--locus-release",
+        default="GSE278858 pre-v2 GHT-only smoke loci",
+        help="Auditable release label for the GHT locus inputs",
+    )
+    parser.add_argument(
+        "--locus-primary-eligible",
+        action="store_true",
+        help="Mark the supplied locus release as eligible for primary analysis",
+    )
     args = parser.parse_args()
 
     manifest = json.loads(args.resolved_manifest.read_text(encoding="utf-8"))
@@ -91,15 +101,19 @@ def main() -> None:
 
     write_json(
         {
-            "schema_version": "codebook_chip_gpzn_smoke_qc_v1",
+            "schema_version": "codebook_chip_gpzn_qc_v2",
             "accession": manifest["accession"],
             "chip_assets_primary_eligible": True,
             "processing_pipeline": "Toronto_GPZN_only",
             "outcome_definition": "mean_of_replicate_log1p_200bp_exact_mean_signal",
             "replicate_confirmation": "same_incremental_effect_direction_in_both_replicates",
-            "qc_locus_universe": "GSE278858 pre-v2 GHT-only smoke loci",
-            "qc_locus_universe_primary_eligible": False,
-            "reason_not_primary": "Codebook v2 revised GHT MAGIX candidate peak generation.",
+            "qc_locus_universe": args.locus_release,
+            "qc_locus_universe_primary_eligible": args.locus_primary_eligible,
+            "reason_not_primary": (
+                None
+                if args.locus_primary_eligible
+                else "The supplied GHT locus release is not approved by the frozen primary contract."
+            ),
             "tf_qc": records,
         },
         args.output,

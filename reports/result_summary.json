@@ -1,7 +1,20 @@
 {
   "schema_version": "cisgrammarshift_result_summary_v2",
   "manuscript_ready": false,
-  "audit_status": "legacy outcome-informed locus universe; primary ght-only rerun required",
+  "audit_status": "official Codebook v2 GHT-only loci and ChIP replicate QC complete; primary feature/model rerun required",
+  "codebook_v2_primary_assets": {
+    "status": "eligible",
+    "release": "codebook-v2-web-2026-08-10",
+    "primary_focal_loci": {
+      "FLI1": 50250,
+      "GABPA": 5057,
+      "GCM1": 19497,
+      "PAX7": 18485,
+      "RFX5": 38894
+    },
+    "max_sensitivity_loci": 71564,
+    "focal_members_byte_identical_to_geo": true
+  },
   "legacy_codebook": {
     "result_status": "legacy sensitivity only",
     "locus_universe": "legacy-assay-union",
@@ -38,7 +51,7 @@
   },
   "provisional_claim": "incremental genomic occupancy association within predeclared loci",
   "required_next_analysis": [
-    "ght-only primary rerun",
+    "ght-only primary feature and nested-model rerun",
     "fixed-genome sensitivity",
     "per-TF and per-fold out-of-fold reporting",
     "1000-permutation final null"

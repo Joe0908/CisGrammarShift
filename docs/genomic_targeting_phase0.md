@@ -56,16 +56,20 @@ partner controls cover every representative pair except ZBTB20–FLI1; that sing
 outcome analysis rather than scored without its matched monomer control.
 
 The reported historical universe contains 1,204,394 loci, of which 1,035,968 belong to the five-TF panel.
-Primary GHT-only counts have not yet been calculated.
+The official Codebook v2 GHT-only call produces 50,250 FLI1, 5,057 GABPA, 19,497 GCM1, 18,485 PAX7 and
+38,894 RFX5 autosomal selected intervals; MAX contributes 71,564 sensitivity intervals. These counts use
+the frozen `fdr <= 0.05` and positive refined-coefficient rule.
 
 The raw-data fallback has been narrowed without weakening the contract. Author-selected focal target
 FASTQs total 2.260 GiB for the primary five-TF panel (2.896 GiB including MAX), but an exact corrected-v2
 MAGIX rebuild still needs production design/batch-aggregate inputs absent from the accessible public source
-snapshot, or the official v2 BED files. Supplementary Table 3 resolves the nine focal batch identifiers, but
+snapshot. Supplementary Table 3 resolves the nine focal batch identifiers, but
 the production file lists do not state whether aggregates contain all batch experiments (79.476 GiB) or only
 approved experiments (26.870 GiB). The public production scripts require a roughly 13-million-bin
 library-size fit and request 100 GB RAM. A focal-only substitute would be a different model and is not
-accepted as primary evidence.
+accepted as primary evidence. This raw reconstruction is no longer required for the primary analysis:
+the official Codebook v2 processed archive has been acquired, and its six focal members pass the frozen
+integrity and eligibility audit.
 
 ## Historical result requiring primary rerun
 

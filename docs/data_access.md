@@ -56,11 +56,19 @@ under `data/`, which is ignored by Git.
 
 ## GHT MAGIX version boundary
 
-The GEO `GSE278858_BED_files.tar.gz` archive is a reproducible pre-v2 snapshot. Its SHA-256 is frozen in
-`configs/codebook_geo_v1_magix_panel.json`, and `scripts/audit_codebook_magix.py` extracts only the six-panel
-files, checks each against the GEO workbook MD5, validates the MAGIX schema, and reports locus counts. It is
-explicitly **smoke-test only** because Codebook v2 changed MAGIX preprocessing from fixed genomic bins to
-peak-first candidate regions and consequently changed locations and scores.
+The GEO `GSE278858_BED_files.tar.gz` archive is a reproducible independently deposited snapshot. Its
+SHA-256 is frozen in `configs/codebook_geo_v1_magix_panel.json`, and
+`scripts/audit_codebook_magix.py` extracts only the six-panel files, checks each against the GEO workbook
+MD5, validates the MAGIX schema, and reports locus counts.
+
+The current official Codebook v2 `Peaks_MAGIX_McGill.tar.gz` archive was downloaded manually from the v2
+data page on 2026-08-10. Its archive SHA-256 is
+`e1f225936529f8f0b2b338fcdfd8913e653012da1380e9622f200cce1c269a9b`. Direct extraction from that tar,
+without reusing an existing directory, established that the six focal v2 BED members are byte-identical to
+the corresponding GEO files. The v2 tar differs in packaging and member names, but the focal numerical
+content does not. This is recorded as an observed release-specific equivalence, not assumed from dates.
+`scripts/audit_codebook_v2_magix_panel.py` verifies each member's SHA-256, schema, width, coordinate names,
+duplicates and selected-locus count before primary use.
 
 The manuscript primary analysis therefore requires the corrected Codebook v2 MAGIX files. It uses the
 outcome-independent rule:
@@ -92,18 +100,19 @@ to the ENA `PRJEB76622` file report gives the following selective target-read do
 | MAX | sensitivity | 16 | 32 | 0.636 |
 
 Thus, focal target FASTQs are not the storage bottleneck: primary files total 2.260 GiB, or 2.896 GiB with
-MAX. Exact reproduction is nevertheless not declared ready. The public production scripts fit
+MAX. A from-FASTQ exact reproduction is nevertheless not declared ready. The public production scripts fit
 batch-aggregate covariates and a genome-wide library-size model over approximately 13 million 200-bp bins;
 they request 100 GB RAM for that step. The nine batches containing the primary focal experiments contain
 79.476 GiB of all GHT experiment FASTQs, or 26.870 GiB if restricted to approved experiments. The production
 design matrices and file lists are not tracked in the MAGIX source repository, and the released methods do
-not disambiguate these two aggregate membership rules. Until that rule or the official corrected v2 BED
-files are available, focal-only refitting would change the published model and is forbidden for the primary
-paper.
+not disambiguate these two aggregate membership rules. Focal-only refitting would change the published
+model and remains forbidden. The acquired official processed v2 BED members are used instead, so this raw
+reconstruction ambiguity is no longer a primary-analysis blocker.
 
 `configs/codebook_ght_v2_rebuild.json` freezes the source versions, and
 `reports/codebook_ght_v2_rebuild_audit.json` records all selected ERR accessions, per-file ENA URLs, MD5s,
-byte sizes, and the unresolved exact-rebuild boundary.
+byte sizes, and the unresolved exact-rebuild boundary. The processed-asset audit is separately recorded in
+`reports/codebook_ght_v2_magix_focal_audit.json`.
 
 ## Primary whitelist
 

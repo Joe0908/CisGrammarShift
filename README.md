@@ -219,18 +219,21 @@ Git. See
 [`docs/data_access.md`](docs/data_access.md) for public accessions and the small-file download strategy.
 
 For MAGIX input, the frozen primary rule is Benjamini-Hochberg FDR <= 0.05 and a positive refined
-`coefficient.ar`. The manifest records both choices. The public GEO GSE278858 BED archive is useful for a
-fully checksummed smoke test, but predates the revised Codebook v2 MAGIX release and is not accepted for
-manuscript primary results.
+`coefficient.ar`. The manifest records both choices. The current official Codebook v2 web archive was
+acquired on 2026-08-10. Its six focal BED members are byte-identical to the corresponding GEO members even
+though the tar archive itself has a different SHA-256 and simplified member names. The v2 provenance,
+member hashes and eligibility audit are frozen in `configs/codebook_ght_v2_magix_focal_manifest.json` and
+`reports/codebook_ght_v2_magix_focal_audit.json`.
 
 Selective raw-data acquisition is feasible: the exact target FASTQs linked to the five primary author
 MAGIX sets total 2.260 GiB; adding MAX totals 2.896 GiB. This is not yet an exact v2 rebuild. The released
 MAGIX production workflow uses batch-aggregate covariates. Supplementary Table 3 now resolves the nine
 relevant batch identifiers, but neither the public source tree nor the paper freezes whether those aggregate
 lists contained all experiments (79.476 GiB for the relevant batches) or approved experiments only
-(26.870 GiB). The corrected Codebook v2 BED archive was also unavailable during the 2026-08-10 audit. The
-repository therefore keeps `exact_author_v2_rebuild_ready=false`; it does not choose the cheaper aggregate
-definition or replace the missing production design with an easier model.
+(26.870 GiB). The repository therefore keeps `exact_author_v2_rebuild_ready=false` for a from-FASTQ
+reconstruction; it does not choose the cheaper aggregate definition or replace the missing production
+design with an easier model. That reconstruction limitation no longer blocks the primary analysis because
+the official processed v2 focal BED members are now available and checksummed.
 
 The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
 `log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and
