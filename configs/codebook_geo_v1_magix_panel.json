@@ -46,7 +46,7 @@
     },
     {
       "tf": "MAX",
-      "role": "cap_null_control",
+      "role": "low_cap_coverage_sensitivity",
       "filename": "MAX_MAGIX_GHT00107_GHT00108_GHT00109_GHT00110.bed"
     }
   ]

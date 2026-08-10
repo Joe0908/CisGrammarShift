@@ -43,7 +43,8 @@ values below are provenance-preserved legacy estimates, not the paper's final qu
 
 ### Codebook occupancy panel
 
-- Primary focal TFs: `FLI1`, `GABPA`, `GCM1`, `PAX7`, and `RFX5`; `MAX` is retained as a CAP-null control.
+- Primary focal TFs: `FLI1`, `GABPA`, `GCM1`, `PAX7`, and `RFX5`; `MAX` is retained as a low-CAP-coverage
+  sensitivity analysis, not a CAP-null control.
 - Historical locus universe: 1,204,394 200-bp hg38 legacy assay-union loci; 1,035,968 loci in the panel.
 - M0: continuous GHT, focal/partner monomer scores, GC, accessibility proxy, and genomic context.
 - M1: M0 plus CAP composite and spacing/orientation grammar features calibrated on training chromosomes.
@@ -106,6 +107,19 @@ python scripts/audit_codebook_magix.py \
   --archive data/codebook/geo_peaks/GSE278858_BED_files.tar.gz \
   --extraction-directory data/codebook/geo_peaks/focal_magix \
   --output reports/codebook_geo_v1_magix_asset_audit.json
+
+# Download and cross-audit the official CAP-SELEX interaction/PWM/spacing supplements
+python scripts/download_manifest.py \
+  --manifest configs/capselex_nature_supplement_manifest.json \
+  --output-directory data/capselex/nature_supplements \
+  --resolved-manifest reports/capselex_nature_supplement_resolved.json \
+  --jobs 4
+
+python scripts/audit_capselex_nature_supplements.py \
+  --interaction-table data/capselex/nature_supplements/41586_2025_8844_MOESM4_ESM.xlsx \
+  --pwm-table data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx \
+  --spacing-table data/capselex/nature_supplements/41586_2025_8844_MOESM9_ESM.xlsx \
+  --output reports/capselex_nature_supplement_audit.json
 
 # Resolve and download only 12 Toronto GPZN ChIP bigWigs (six TFs x two replicates)
 python scripts/download_manifest.py \

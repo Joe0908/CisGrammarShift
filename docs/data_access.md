@@ -14,6 +14,22 @@
 Codebook v2 metadata files are the canonical source for corrected labels. All joins use explicit normalized
 TF symbols and retain original identifiers for audit.
 
+## CAP-SELEX supplementary assets
+
+The official Nature article supplements are downloaded individually rather than reconstructed from figures:
+
+- Supplementary Table 1 (`MOESM3`): DNA and protein sequence metadata;
+- Supplementary Table 2 (`MOESM4`): directed interaction matrix;
+- Supplementary Table 3 (`MOESM5`): 1,348 PWM models;
+- Supplementary Table 7 (`MOESM9`): 3,914 oriented 6-mer count rows across gaps 0--28.
+
+`configs/capselex_nature_supplement_manifest.json` freezes the publisher URLs and byte sizes, while
+`reports/capselex_nature_supplement_resolved.json` records locally computed SHA-256 hashes. The parser
+normalizes documented aliases such as `RFXDC2 -> RFX7`; after normalization, all 913 composite-positive
+matrix pairs have a Table 3 PWM and all 1,336 spacing-positive pairs have Table 7 counts. The raw interaction
+matrix contains 2,223 positive directed cells. That literal table-cell count is not silently substituted for
+the paper's separately reported, deduplicated headline count.
+
 ## Avoiding the 175.39-GB ChIP archive
 
 The monolithic Codebook merged-bigWig archive is unnecessary. GEO `GSE280248` provides Toronto-processed

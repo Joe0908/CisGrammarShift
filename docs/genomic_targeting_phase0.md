@@ -43,8 +43,14 @@ Three predeclared sensitivity universes test selection dependence:
 ## Panel and coverage
 
 Primary focal TFs are FLI1, GABPA, GCM1, PAX7 and RFX5. They span multiple structural families and have
-adequate CAP grammar coverage. MAX lacks a primary-eligible CAP grammar and is retained as an explicit
-CAP-null control.
+adequate CAP grammar coverage. MAX is retained outside the primary panel as a predeclared low-coverage
+sensitivity analysis. It is not a CAP-null control: the official Supplementary Table 3 contains one
+representative MAX–TEAD4 PWM, and Supplementary Table 7 contains five MAX spacing pairs.
+
+The official Nature supplements are now checksummed and parsed directly. Across the six-TF acquisition
+panel, the audit found 171, 45, 25, 6, 12 and 15 positive directed pairs for FLI1, GABPA, GCM1, MAX, PAX7
+and RFX5, respectively. Every focal TF has raw CAP feature assets. This is a coverage statement only;
+partner expression, monomer controls and the frozen feature-selection rule determine model eligibility.
 
 The reported historical universe contains 1,204,394 loci, of which 1,035,968 belong to the five-TF panel.
 Primary GHT-only counts have not yet been calculated.

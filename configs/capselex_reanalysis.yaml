@@ -1,4 +1,4 @@
-schema_version: capselex_reanalysis_v3
+schema_version: capselex_reanalysis_v4
 seed: 20260809
 
 contract:
@@ -23,7 +23,7 @@ contract:
 
 primary_panel:
   focal_tfs: [FLI1, GABPA, GCM1, PAX7, RFX5]
-  cap_null_control: MAX
+  low_cap_coverage_sensitivity: MAX
   outcome: mean_of_replicate_log1p_200bp_exact_mean_signal
   replicate_sensitivity: separate_models_same_incremental_effect_direction
   intrinsic: continuous_ght_magix
