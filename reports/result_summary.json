@@ -1,7 +1,7 @@
 {
-  "schema_version": "cisgrammarshift_result_summary_v2",
+  "schema_version": "cisgrammarshift_result_summary_v4",
   "manuscript_ready": false,
-  "audit_status": "official Codebook v2 GHT-only loci and ChIP replicate QC complete; primary feature/model rerun required",
+  "audit_status": "official Codebook v2 primary and frozen TGIF2-GCM1 external-context screening complete; both positive-claim gates failed",
   "codebook_v2_primary_assets": {
     "status": "eligible",
     "release": "codebook-v2-web-2026-08-10",
@@ -14,6 +14,58 @@
     },
     "max_sensitivity_loci": 71564,
     "focal_members_byte_identical_to_geo": true
+  },
+  "primary_screening": {
+    "analysis_status": "100-permutation screening",
+    "locus_universe": "official Codebook v2 GHT-only fixed 200-bp tiles",
+    "primary_focal_tfs": ["FLI1", "GABPA", "GCM1", "RFX5"],
+    "partner_availability_negative_control": "PAX7",
+    "low_cap_coverage_sensitivity": "MAX",
+    "effect_threshold_partial_r2": 0.005,
+    "minimum_positive_focal_tfs": 4,
+    "positive_primary_focal_tfs": 1,
+    "panel_go_gate_passed": false,
+    "tf_results": {
+      "FLI1": {
+        "expression_supported_pairs": 16,
+        "mapped_loci": 50060,
+        "partial_r2": 0.010678814582767537,
+        "chromosome_bootstrap_95_interval": [0.009111437371688496, 0.012230814355843219],
+        "empirical_p": 0.009900990099009901,
+        "replicate_partial_r2": [0.005943771549913879, 0.013159491936401979],
+        "passed": true
+      },
+      "GABPA": {
+        "expression_supported_pairs": 4,
+        "mapped_loci": 5041,
+        "partial_r2": 0.0028808874709009835,
+        "chromosome_bootstrap_95_interval": [0.0003537384336617433, 0.005567700335576621],
+        "empirical_p": 0.009900990099009901,
+        "replicate_partial_r2": [0.004630452172978972, 0.00046178895363924166],
+        "passed": false
+      },
+      "GCM1": {
+        "expression_supported_pairs": 4,
+        "mapped_loci": 19369,
+        "partial_r2": 0.0038257262009214754,
+        "chromosome_bootstrap_95_interval": [0.001804420971074569, 0.0054778589798053804],
+        "empirical_p": 0.009900990099009901,
+        "replicate_partial_r2": [0.0026025334573532843, 0.004387646213410035],
+        "composite_branch_partial_r2": 0.00936835130493019,
+        "spacing_branch_partial_r2": 0.00003094501269162997,
+        "passed": false
+      },
+      "RFX5": {
+        "expression_supported_pairs": 3,
+        "mapped_loci": 38701,
+        "partial_r2": 0.0011904879651387645,
+        "chromosome_bootstrap_95_interval": [0.00044242920077654235, 0.0021499094531237826],
+        "empirical_p": 0.009900990099009901,
+        "replicate_partial_r2": [0.0013931847448467316, 0.0004678715104818876],
+        "passed": false
+      }
+    },
+    "interpretation": "All four primary TFs had positive mean-outcome increments, but only FLI1 exceeded the predeclared effect-size threshold; statistical stability at large n is not sufficient for the panel claim."
   },
   "legacy_codebook": {
     "result_status": "legacy sensitivity only",
@@ -28,9 +80,49 @@
     "spacing_only_partial_r2": 0.00060
   },
   "historical_gcm1_occupancy_association": {
-    "result_status": "requires ght-only rerun",
+    "result_status": "legacy outcome-informed sensitivity; superseded by the focused ght-only external-context test",
     "EVT": {"partial_r2": 0.001532, "binned_monomer_partial_r2": 0.001538},
     "ST": {"partial_r2": 0.001759, "binned_monomer_partial_r2": 0.001493}
+  },
+  "exploratory_pair_decomposition": {
+    "analysis_role": "outcome-informed candidate generation only",
+    "FLI1_leading_pair": {
+      "pair": "GATA3_FLI1",
+      "mechanism": "composite",
+      "partial_r2": 0.01050602912804044,
+      "chromosome_bootstrap_95_interval": [0.008736366381487157, 0.012463252296178558]
+    },
+    "GCM1_leading_pair": {
+      "pair": "TGIF2_GCM1",
+      "mechanism": "composite",
+      "partial_r2": 0.012557460755576288,
+      "chromosome_bootstrap_95_interval": [0.010079673714808998, 0.015242918760468767]
+    }
+  },
+  "focused_trophoblast_screening": {
+    "candidate": "TGIF2_GCM1",
+    "mechanism": "composite",
+    "loci": 19497,
+    "expression_gate_passed": true,
+    "minimum_TGIF2_TPM": 1.19,
+    "effect_threshold_partial_r2": 0.005,
+    "EVT": {
+      "partial_r2": 0.00247076134891111,
+      "chromosome_bootstrap_95_interval": [0.001009399093559926, 0.003740961798628442],
+      "empirical_p": 0.009900990099009901,
+      "clone_partial_r2": [0.0036183842014831935, 0.0011397580531442575],
+      "passed": false
+    },
+    "ST": {
+      "partial_r2": 0.003470774628370421,
+      "chromosome_bootstrap_95_interval": [0.0016112376505054427, 0.005342329713559376],
+      "empirical_p": 0.009900990099009901,
+      "clone_partial_r2": [0.0031578904199836, 0.0030381263646174217],
+      "passed": false
+    },
+    "replication_passed_in_both_states": false,
+    "final_1000_permutation_test_run": false,
+    "interpretation": "Directionally consistent weak cross-context association below the predeclared effect threshold; not evidence of TGIF2 co-occupancy or causal cooperation."
   },
   "continuous_function": {
     "software": {"r": "4.2.2", "deseq2": "1.36.0"},
@@ -49,13 +141,12 @@
       "positive_coefficient_folds": 2
     }
   },
-  "provisional_claim": "incremental genomic occupancy association within predeclared loci",
+  "narrow_supported_interpretation": "TF-specific, rather than general, incremental genomic occupancy association within predeclared GHT-only loci",
   "required_next_analysis": [
-    "ght-only primary feature and nested-model rerun",
-    "fixed-genome sensitivity",
-    "per-TF and per-fold out-of-fold reporting",
-    "1000-permutation final null"
+    "do not run the predeclared 1000-permutation final tests because neither positive-claim gate passed",
+    "obtain direct partner occupancy or motif/partner perturbation before making a cooperative mechanism claim",
+    "select any new project direction with a newly frozen contract and independent outcome data"
   ],
-  "supported_claim": "the historical pipeline produced a positive association that requires outcome-independent rerunning",
-  "unsupported_claim": "GCM1-dependent transcriptional causality"
+  "supported_claim": "CAP-derived grammar features showed heterogeneous held-out occupancy increments; FLI1 alone passed the frozen TF-level effect criterion, while TGIF2-GCM1 showed a weak directionally consistent external-context association below its effect gate",
+  "unsupported_claim": "a general CAP grammar mechanism across TFs, TGIF2-GCM1 co-occupancy or causality, another named in-cell partner interaction, or GCM1-dependent transcriptional causality"
 }

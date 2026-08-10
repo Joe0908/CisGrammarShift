@@ -64,8 +64,9 @@ class AnalysisContract:
         write_json({"schema_version": "analysis_contract_v3", **asdict(self)}, path)
 
 
-PRIMARY_FOCAL_TFS = ("FLI1", "GABPA", "GCM1", "PAX7", "RFX5")
-CAP_NULL_CONTROL = "MAX"
+PRIMARY_FOCAL_TFS = ("FLI1", "GABPA", "GCM1", "RFX5")
+PARTNER_AVAILABILITY_NEGATIVE_CONTROLS = ("PAX7",)
+LOW_CAP_COVERAGE_SENSITIVITY_TFS = ("MAX",)
 FORBIDDEN_PRIMARY_ASSETS = (
     "TOPs",
     "CTOPs",

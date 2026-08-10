@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 import json
 
 import numpy as np
@@ -8,6 +9,7 @@ import pytest
 
 from cisgrammar.capselex_chip_qc import replicate_qc
 from cisgrammar.capselex_genomic_assets import (
+    add_cross_assembly_bigwig_signal,
     build_assay_union_loci,
     build_ght_only_loci,
     build_legacy_assay_union_loci,
@@ -15,7 +17,11 @@ from cisgrammar.capselex_genomic_assets import (
     read_chrom_sizes,
     read_magix,
 )
-from cisgrammar.capselex_genomic_model import chromosome_nested_continuous, chromosome_shift_null
+from cisgrammar.capselex_genomic_model import (
+    chromosome_bootstrap_partial_r2,
+    chromosome_nested_continuous,
+    chromosome_shift_null,
+)
 from cisgrammar.cli import _run_capselex, build_parser
 
 
@@ -186,6 +192,39 @@ def test_replicate_qc() -> None:
     assert qc["spearman_log1p"] == pytest.approx(1.0)
 
 
+def test_cross_assembly_bigwig_signal_preserves_mapping_audit(tmp_path) -> None:
+    import pyBigWig
+
+    bigwig_path = tmp_path / "source.bw"
+    with pyBigWig.open(str(bigwig_path), "w") as bigwig:
+        bigwig.addHeader([("chr1", 1000)])
+        bigwig.addEntries(["chr1"], [100], ends=[200], values=[3.0])
+    chain_path = tmp_path / "test.chain.gz"
+    with gzip.open(chain_path, "wt", encoding="utf-8") as handle:
+        handle.write("unused by fake liftOver\n")
+    binary = tmp_path / "liftOver"
+    binary.write_text(
+        "#!/usr/bin/env python3\n"
+        "import pathlib, sys\n"
+        "source, chain, mapped, unmapped = map(pathlib.Path, sys.argv[-4:])\n"
+        "lines = source.read_text().splitlines()\n"
+        "pathlib.Path(mapped).write_text(lines[0] + '\\n')\n"
+        "pathlib.Path(unmapped).write_text('#unmapped\\n' + lines[1] + '\\n')\n",
+        encoding="utf-8",
+    )
+    binary.chmod(0o755)
+    loci = pd.DataFrame(
+        {"chrom": ["chr1", "chr1"], "start": [100, 300], "end": [200, 400]}
+    )
+    result = add_cross_assembly_bigwig_signal(
+        loci, bigwig_path, chain_path, binary, "dnase", "hg19"
+    )
+    assert result["dnase_mapped"].tolist() == [True, False]
+    assert result.loc[0, "dnase"] == pytest.approx(3.0)
+    assert np.isnan(result.loc[1, "dnase"])
+    assert result.loc[0, "dnase_hg19_start"] == 100
+
+
 def test_nested_continuous_recovers_increment() -> None:
     rng = np.random.default_rng(9)
     n = 500
@@ -202,6 +241,9 @@ def test_nested_continuous_recovers_increment() -> None:
     result = chromosome_nested_continuous(frame, "outcome", ["baseline"], ["grammar"])
     assert result.summary["partial_r2"] > 0.3
     assert result.predictions.notna().all().all()
+    frame["chrom"] = [f"chr{index % 10 + 1}" for index in range(n)]
+    bootstrap = chromosome_bootstrap_partial_r2(frame, result.predictions, replicates=100, seed=4)
+    assert bootstrap["ci95_percentile"][0] > 0.3
 
 
 def test_chromosome_shift_preserves_within_chromosome_values() -> None:
@@ -209,3 +251,24 @@ def test_chromosome_shift_preserves_within_chromosome_values() -> None:
     shifted = chromosome_shift_null(frame, ["grammar"], seed=2)
     assert sorted(shifted.loc[:3, "grammar"]) == [0, 1, 2, 3]
     assert not shifted["grammar"].equals(frame["grammar"])
+
+
+def test_chromosome_shift_respects_tf_within_chromosome_blocks() -> None:
+    frame = pd.DataFrame(
+        {
+            "focal_tf": ["A"] * 3 + ["B"] * 3,
+            "chrom": ["chr1"] * 6,
+            "grammar": np.arange(6),
+        }
+    )
+    shifted = chromosome_shift_null(frame, ["grammar"], group_columns=["focal_tf"], seed=2)
+    assert sorted(shifted.loc[:2, "grammar"]) == [0, 1, 2]
+    assert sorted(shifted.loc[3:, "grammar"]) == [3, 4, 5]
+
+
+def test_chromosome_shift_supports_noninteger_index() -> None:
+    frame = pd.DataFrame(
+        {"chrom": ["chr1"] * 4, "grammar": np.arange(4)}, index=["a", "b", "c", "d"]
+    )
+    shifted = chromosome_shift_null(frame, ["grammar"], seed=2)
+    assert sorted(shifted["grammar"]) == [0, 1, 2, 3]

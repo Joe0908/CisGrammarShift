@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import gzip
+import shutil
+import subprocess
+import tempfile
 from collections.abc import Iterator
 from pathlib import Path
 from typing import Literal
@@ -427,6 +431,81 @@ def add_bigwig_signal(
             value = bigwig.stats(str(chrom), int(start), int(end), type=statistic, exact=True)[0]
             values.append(0.0 if value is None or not np.isfinite(value) else float(value))
     result[column] = values
+    return result
+
+
+def add_cross_assembly_bigwig_signal(
+    loci: pd.DataFrame,
+    source_bigwig: str | Path,
+    chain_gz: str | Path,
+    lift_over_binary: str | Path,
+    column: str,
+    source_assembly: str,
+) -> pd.DataFrame:
+    """Project locus intervals through a UCSC chain and query the source-assembly BigWig."""
+    import pyBigWig
+
+    require_columns(loci, ("chrom", "start", "end"), "locus table")
+    result = loci.copy()
+    binary = Path(lift_over_binary).resolve()
+    if not binary.stat().st_mode & 0o111:
+        binary.chmod(binary.stat().st_mode | 0o111)
+    mapped_coordinates: dict[int, tuple[str, int, int]] = {}
+    with tempfile.TemporaryDirectory(prefix="cisgrammar_liftover_") as temporary:
+        directory = Path(temporary)
+        input_bed = directory / "input.bed"
+        mapped_bed = directory / "mapped.bed"
+        unmapped_bed = directory / "unmapped.bed"
+        chain = directory / "mapping.over.chain"
+        with input_bed.open("w", encoding="utf-8") as handle:
+            for index, (chrom, start, end) in enumerate(
+                result[["chrom", "start", "end"]].itertuples(index=False, name=None)
+            ):
+                handle.write(f"{chrom}\t{int(start)}\t{int(end)}\t{index}\n")
+        with gzip.open(chain_gz, "rb") as source, chain.open("wb") as target:
+            shutil.copyfileobj(source, target)
+        subprocess.run(
+            [
+                str(binary),
+                "-bedPlus=4",
+                "-tab",
+                str(input_bed),
+                str(chain),
+                str(mapped_bed),
+                str(unmapped_bed),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        with mapped_bed.open(encoding="utf-8") as handle:
+            for raw in handle:
+                chrom, start, end, raw_index = raw.rstrip("\n").split("\t")[:4]
+                index = int(raw_index)
+                if index in mapped_coordinates:
+                    raise RuntimeError(f"locus mapped more than once: {index}")
+                mapped_coordinates[index] = (chrom, int(start), int(end))
+
+    values = np.full(len(result), np.nan, dtype=float)
+    mapped_chrom = np.full(len(result), "", dtype=object)
+    mapped_start = np.full(len(result), -1, dtype=np.int64)
+    mapped_end = np.full(len(result), -1, dtype=np.int64)
+    with pyBigWig.open(str(source_bigwig)) as bigwig:
+        chromosomes = bigwig.chroms()
+        for index, (chrom, start, end) in mapped_coordinates.items():
+            if chrom not in chromosomes or start < 0 or end <= start or end > chromosomes[chrom]:
+                continue
+            value = bigwig.stats(chrom, start, end, type="mean", exact=True)[0]
+            values[index] = 0.0 if value is None or not np.isfinite(value) else float(value)
+            mapped_chrom[index] = chrom
+            mapped_start[index] = start
+            mapped_end[index] = end
+    prefix = f"{column}_{source_assembly}"
+    result[column] = values
+    result[f"{column}_mapped"] = np.isfinite(values)
+    result[f"{prefix}_chrom"] = mapped_chrom
+    result[f"{prefix}_start"] = mapped_start
+    result[f"{prefix}_end"] = mapped_end
     return result
 
 

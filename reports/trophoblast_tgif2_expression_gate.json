@@ -1,0 +1,60 @@
+{
+  "candidate": "TGIF2_GCM1",
+  "claim_boundary": "RNA abundance supports TGIF2 availability but does not establish protein abundance or co-occupancy with GCM1.",
+  "expression_gate_passed": true,
+  "gene": "TGIF2",
+  "minimum_observed_tpm": 1.19,
+  "minimum_tpm_in_every_profile": 1.0,
+  "schema_version": "trophoblast_tgif2_expression_gate_v1",
+  "source": "GSE244254 submitted RSEM gene results",
+  "source_assets": [
+    {
+      "bytes": 23592960,
+      "path": "data/trophoblast/gcm1_replication/GSE244254_RAW.tar",
+      "sha256": "5f2b1c3935fb65e1b71ee2ba09f423fb1f24b6cc65c12bd2533e58cd406ec719"
+    },
+    {
+      "bytes": 1271,
+      "path": "reports/trophoblast_gcm1_replication_resolved.json",
+      "sha256": "bf80ffba03d067661af02cd040f7b82b6def9770234be3b0e093c6cda34b8af5"
+    }
+  ],
+  "states": {
+    "EVT": {
+      "B31": {
+        "FPKM": 5.41,
+        "TPM": 8.61,
+        "expected_count": 191.0
+      },
+      "CT27": {
+        "FPKM": 2.6,
+        "TPM": 4.44,
+        "expected_count": 80.0
+      }
+    },
+    "ST_day2": {
+      "B31": {
+        "FPKM": 2.43,
+        "TPM": 3.5,
+        "expected_count": 84.86
+      },
+      "CT27": {
+        "FPKM": 2.74,
+        "TPM": 4.03,
+        "expected_count": 88.0
+      }
+    },
+    "ST_day4": {
+      "B31": {
+        "FPKM": 1.18,
+        "TPM": 1.19,
+        "expected_count": 40.0
+      },
+      "CT27": {
+        "FPKM": 1.39,
+        "TPM": 1.31,
+        "expected_count": 45.0
+      }
+    }
+  }
+}

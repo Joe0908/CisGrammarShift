@@ -161,15 +161,55 @@ def chromosome_shift_null(
     frame: pd.DataFrame,
     columns: list[str],
     chromosome_column: str = "chrom",
+    group_columns: list[str] | None = None,
     seed: int = 20260809,
 ) -> pd.DataFrame:
-    """Circularly shift grammar features within chromosomes while keeping context fixed."""
+    """Circularly shift grammar features within chromosome-defined exchangeability blocks."""
     rng = np.random.default_rng(seed)
     result = frame.copy()
-    for _, indices in result.groupby(chromosome_column, sort=False).groups.items():
-        positions = np.asarray(list(indices), dtype=int)
+    groups = [*(group_columns or []), chromosome_column]
+    group_key: str | list[str] = groups[0] if len(groups) == 1 else groups
+    column_positions = [result.columns.get_loc(column) for column in columns]
+    for positions in result.groupby(group_key, sort=False).indices.values():
+        positions = np.asarray(positions, dtype=int)
         if positions.size < 2:
             continue
         shift = int(rng.integers(1, positions.size))
-        result.loc[positions, columns] = np.roll(result.loc[positions, columns].to_numpy(), shift, axis=0)
+        values = result.iloc[positions, column_positions].to_numpy()
+        result.iloc[positions, column_positions] = np.roll(values, shift, axis=0)
     return result
+
+
+def chromosome_bootstrap_partial_r2(
+    frame: pd.DataFrame,
+    predictions: pd.DataFrame,
+    chromosome_column: str = "chrom",
+    replicates: int = 2000,
+    seed: int = 20260809,
+) -> dict[str, object]:
+    """Bootstrap held-out prediction error by chromosome-sized independent blocks."""
+    if replicates < 1:
+        raise ValueError("at least one chromosome bootstrap replicate is required")
+    if len(frame) != len(predictions):
+        raise ValueError("frame and held-out predictions must have equal length")
+    chromosome = frame[chromosome_column].to_numpy()
+    outcome = predictions["outcome"].to_numpy(dtype=float)
+    residual0 = np.square(outcome - predictions["m0_prediction"].to_numpy(dtype=float))
+    residual1 = np.square(outcome - predictions["m1_prediction"].to_numpy(dtype=float))
+    chromosomes = np.unique(chromosome)
+    sse0 = np.array([residual0[chromosome == value].sum() for value in chromosomes])
+    sse1 = np.array([residual1[chromosome == value].sum() for value in chromosomes])
+    observed = float(1 - sse1.sum() / sse0.sum())
+    rng = np.random.default_rng(seed)
+    samples = rng.integers(0, len(chromosomes), size=(replicates, len(chromosomes)))
+    bootstrap = 1 - sse1[samples].sum(axis=1) / sse0[samples].sum(axis=1)
+    return {
+        "observed": observed,
+        "replicates": replicates,
+        "independent_unit": "autosomal_chromosome",
+        "ci95_percentile": [
+            float(np.quantile(bootstrap, 0.025)),
+            float(np.quantile(bootstrap, 0.975)),
+        ],
+        "bootstrap_median": float(np.median(bootstrap)),
+    }

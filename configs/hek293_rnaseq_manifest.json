@@ -1,0 +1,36 @@
+{
+  "schema_version": "hek293_rnaseq_manifest_v1",
+  "source": {
+    "geo_sample": "GSM3611199",
+    "geo_series": ["GSE126682", "GSE126911"],
+    "biosample": "HEK293 wildtype",
+    "replicates": 2,
+    "quantification": "Salmon 1.6 transcript quantification",
+    "genome_build_reported_by_submitter": "hg38",
+    "role": "outcome-independent partner-availability filter"
+  },
+  "assets": [
+    {
+      "filename": "GSM3611199_HEK293_rep1_quant.sf.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM3611nnn/GSM3611199/suppl/GSM3611199_HEK293_rep1_quant.sf.txt.gz",
+      "size_bytes": 2589935,
+      "sha256": "d597bf476fa4d5f6fca784de7b8dc65666641a8630eac449833fe84118dd1d80",
+      "replicate": 1
+    },
+    {
+      "filename": "GSM3611199_HEK293_rep2_quant.sf.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM3611nnn/GSM3611199/suppl/GSM3611199_HEK293_rep2_quant.sf.txt.gz",
+      "size_bytes": 2557616,
+      "sha256": "f37df659202e22c227ba3383a119844a98c650b05863520617bfcd53181377cd",
+      "replicate": 2
+    },
+    {
+      "filename": "gencode.v29.annotation.gtf.gz",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.annotation.gtf.gz",
+      "size_bytes": 39387922,
+      "md5": "949dca487934459e6338090040e77628",
+      "sha256": "e77a9568d8783f432a03f5e49d8f52d89e8b0e795382cfcb1d93bbd279b0c2b9",
+      "role": "era-matched transcript-to-gene mapping"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "biosample": "independent wild-type HEK293 RNA-seq",
+  "claim_boundary": "Expression in an independent HEK293 culture supports partner availability but does not establish protein abundance, simultaneous occupancy, or a physical interaction.",
+  "expression_supported_definition": "gene-level summed transcript TPM >= 1 in each of two independent HEK293 replicates",
+  "geo_sample": "GSM3611199",
+  "output_table": {
+    "bytes": 3042,
+    "path": "results/capselex/hek293_partner_expression.tsv",
+    "sha256": "537b3fee185dcfe3f395997787b512eff8616bc834840ba108a89589c25e26d7"
+  },
+  "panel": [
+    {
+      "expression_supported_pairs": 16,
+      "focal_tf": "FLI1",
+      "pairs": 31,
+      "supported_pairs": [
+        "ATF2_FLI1",
+        "BHLHE40_FLI1",
+        "CREB1_FLI1",
+        "CUX1_FLI1",
+        "GATA3_FLI1",
+        "GLI2_FLI1",
+        "HOXA10_FLI1",
+        "HOXC11_FLI1",
+        "IRF8_FLI1",
+        "KLF13_FLI1",
+        "MAF_FLI1",
+        "SIX4_FLI1",
+        "SREBF2_FLI1",
+        "TFAP4_FLI1",
+        "ZBTB18_FLI1",
+        "ZBTB7A_FLI1"
+      ],
+      "unsupported_pairs": [
+        "BARHL2_FLI1",
+        "BHLHE22_FLI1",
+        "EGR1_FLI1",
+        "FIGLA_FLI1",
+        "FLI1_TBX21",
+        "GATA5_FLI1",
+        "GCM1_FLI1",
+        "GSC2_FLI1",
+        "MAFA_FLI1",
+        "MYOG_FLI1",
+        "NEUROG1_FLI1",
+        "NRL_FLI1",
+        "POU1F1_FLI1",
+        "POU3F4_FLI1",
+        "SCRT2_FLI1"
+      ]
+    },
+    {
+      "expression_supported_pairs": 4,
+      "focal_tf": "GABPA",
+      "pairs": 5,
+      "supported_pairs": [
+        "HOXA10_GABPA",
+        "HOXD4_GABPA",
+        "MNX1_GABPA",
+        "TFE3_GABPA"
+      ],
+      "unsupported_pairs": [
+        "EGR1_GABPA"
+      ]
+    },
+    {
+      "expression_supported_pairs": 4,
+      "focal_tf": "GCM1",
+      "pairs": 7,
+      "supported_pairs": [
+        "ELK3_GCM1",
+        "GCM1_HOXA2",
+        "MLX_GCM1",
+        "TGIF2_GCM1"
+      ],
+      "unsupported_pairs": [
+        "FOXI1_GCM1",
+        "GCM1_FLI1",
+        "VAX1_GCM1"
+      ]
+    },
+    {
+      "expression_supported_pairs": 1,
+      "focal_tf": "MAX",
+      "pairs": 1,
+      "supported_pairs": [
+        "MAX_TEAD4"
+      ],
+      "unsupported_pairs": []
+    },
+    {
+      "expression_supported_pairs": 0,
+      "focal_tf": "PAX7",
+      "pairs": 1,
+      "supported_pairs": [],
+      "unsupported_pairs": [
+        "PAX7_TBX4"
+      ]
+    },
+    {
+      "expression_supported_pairs": 3,
+      "focal_tf": "RFX5",
+      "pairs": 5,
+      "supported_pairs": [
+        "RFX5_CREM",
+        "RFX5_HOXA2",
+        "RFX5_TCF3"
+      ],
+      "unsupported_pairs": [
+        "RFX5_OTP",
+        "RFX5_TBX6"
+      ]
+    }
+  ],
+  "partner_replicate_log1p_pearson": 0.973261491975568,
+  "replicate_1_mapping": {
+    "mapped_tpm": 994300.5115120001,
+    "mapped_transcripts": 197251,
+    "total_tpm": 999999.9998120001,
+    "tpm_mapping_fraction": 0.9943005116989285,
+    "transcript_mapping_fraction": 0.9962071090191008,
+    "transcripts": 198002
+  },
+  "replicate_2_mapping": {
+    "mapped_tpm": 995584.4954000001,
+    "mapped_transcripts": 197251,
+    "total_tpm": 999999.9999779998,
+    "tpm_mapping_fraction": 0.9955844954219032,
+    "transcript_mapping_fraction": 0.9962071090191008,
+    "transcripts": 198002
+  },
+  "schema_version": "hek293_partner_expression_audit_v1",
+  "source_assets": [
+    {
+      "bytes": 2589935,
+      "path": "data/reference/hek293_rnaseq/GSM3611199_HEK293_rep1_quant.sf.txt.gz",
+      "sha256": "d597bf476fa4d5f6fca784de7b8dc65666641a8630eac449833fe84118dd1d80"
+    },
+    {
+      "bytes": 2557616,
+      "path": "data/reference/hek293_rnaseq/GSM3611199_HEK293_rep2_quant.sf.txt.gz",
+      "sha256": "f37df659202e22c227ba3383a119844a98c650b05863520617bfcd53181377cd"
+    },
+    {
+      "bytes": 39387922,
+      "path": "data/reference/hek293_rnaseq/gencode.v29.annotation.gtf.gz",
+      "sha256": "e77a9568d8783f432a03f5e49d8f52d89e8b0e795382cfcb1d93bbd279b0c2b9"
+    },
+    {
+      "bytes": 14885,
+      "path": "reports/monomer_pwm_panel_audit.json",
+      "sha256": "f354dc28a25a0b363d59c2a80a8b611b69eda1c943762e50db9af077a19141a8"
+    }
+  ],
+  "threshold_role": "outcome-independent audit; primary-versus-sensitivity placement is decided only after coverage is inspected and documented",
+  "transcript_mapping": "GENCODE v29 transcript IDs with version suffix removed"
+}

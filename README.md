@@ -22,12 +22,15 @@ association follow-up.
 
 ## Current audit status
 
-The existing numerical results are **not yet manuscript-ready**. They were generated on a historical
-assay-union in which ChIP affected locus inclusion and, through source-prioritized deduplication, could also
-set the sequence-window centre. That design is now exposed as `legacy-assay-union` and retained only as a
-sensitivity analysis. The frozen primary rerun uses GHT-selected, fixed genomic tiles (`ght-only`), for which
-ChIP affects neither selection nor centering. Until that rerun is complete, `0.02030` and the downstream hTSC
-values below are provenance-preserved legacy estimates, not the paper's final quantitative findings.
+The official Codebook v2 GHT-only rerun is complete. The predeclared panel claim **failed**: only FLI1, one
+of four expression-evaluable focal TFs, exceeded the partial-R² effect threshold. A frozen GCM1–TGIF2
+follow-up then showed small, directionally consistent increments in both trophoblast states, but neither
+reached its predeclared effect threshold. The repository is therefore a complete, reproducible feasibility
+and falsification study; it is **not yet a positive-mechanism manuscript**.
+
+The historical assay-union result is retained only for provenance. In that universe ChIP affected locus
+inclusion and could set the sequence-window centre. The official primary universe instead contains
+GHT-selected fixed tiles (`ght-only`), for which ChIP affects neither selection nor centering.
 
 ## Study layers
 
@@ -39,11 +42,43 @@ values below are provenance-preserved legacy estimates, not the paper's final qu
 | hTSC association replication | Test cross-context reproducibility | Same predeclared GCM1 loci/features; external outcomes only | EVT/ST GCM1 ChIP |
 | HiChIP + knockout RNA | Test functional extension | Outcome-blind linkage and nested chromosome folds | Binary targets and DESeq2 LFC |
 
-## Legacy results awaiting the outcome-independent rerun
+## Official v2 primary result
 
-### Codebook occupancy panel
+All estimates below use chromosome-held-out fitting on official Codebook v2 GHT-only loci. The primary CAP
+feature averages only partners detected at >=1 TPM in each of two wild-type HEK293 RNA-seq replicates. The
+success rule required partial R² >=0.005, one-sided chromosome-shift p<=0.05, and positive median addition
+coefficients for the mean outcome and both biological replicates.
 
-- Primary focal TFs: `FLI1`, `GABPA`, `GCM1`, `PAX7`, and `RFX5`; `MAX` is retained as a low-CAP-coverage
+| Focal TF | Expression-supported pairs | Loci with DNase mapping | Partial R² | Chromosome-bootstrap 95% interval | Replicate partial R² | Passed |
+|---|---:|---:|---:|---:|---:|---:|
+| FLI1 | 16 | 50,060 | 0.010679 | 0.009111–0.012231 | 0.005944 / 0.013159 | Yes |
+| GABPA | 4 | 5,041 | 0.002881 | 0.000354–0.005568 | 0.004630 / 0.000462 | No |
+| GCM1 | 4 | 19,369 | 0.003826 | 0.001804–0.005478 | 0.002603 / 0.004388 | No |
+| RFX5 | 3 | 38,701 | 0.001190 | 0.000442–0.002150 | 0.001393 / 0.000468 | No |
+
+Each screening permutation test gave `p=1/101`; with tens of thousands of loci this is not a substitute for
+the frozen effect-size gate. The required four-of-four panel result was one-of-four, so the general CAP
+grammar claim is rejected and the 1,000-permutation panel analysis was not run.
+
+Exploratory pair decomposition identified GATA3–FLI1 and TGIF2–GCM1 as leading pair-specific profiles.
+Because this ranking used the Codebook ChIP outcome, it is candidate generation rather than discovery
+evidence. TGIF2 passed an outcome-independent trophoblast expression gate before external ChIP was read.
+On the same 19,497 GCM1 GHT-only loci, the frozen TGIF2–GCM1 composite score had positive coefficients in
+all folds and both clones, but failed the `0.005` threshold in both states:
+
+| External state | Clone correlation | Partial R² | Chromosome-bootstrap 95% interval | Screening p | Passed |
+|---|---:|---:|---:|---:|---:|
+| EVT | 0.680 | 0.002471 | 0.001009–0.003741 | 1/101 | No |
+| ST | 0.692 | 0.003471 | 0.001611–0.005342 | 1/101 | No |
+
+This supports, at most, a weak transferable sequence association. It does not identify TGIF2 co-occupancy
+or causal cooperation, and the predeclared 1,000-permutation final test was not triggered.
+
+## Legacy results retained for provenance
+
+### Historical Codebook occupancy panel
+
+- Historical focal TFs: `FLI1`, `GABPA`, `GCM1`, `PAX7`, and `RFX5`; `MAX` was a low-CAP-coverage
   sensitivity analysis, not a CAP-null control.
 - Historical locus universe: 1,204,394 200-bp hg38 legacy assay-union loci; 1,035,968 loci in the panel.
 - M0: continuous GHT, focal/partner monomer scores, GC, accessibility proxy, and genomic context.
@@ -147,6 +182,33 @@ python scripts/audit_monomer_pwm_panel.py \
   --cap-audit reports/capselex_nature_supplement_audit.json \
   --output reports/monomer_pwm_panel_audit.json
 
+# Freeze hg38 sequence plus independent HEK293 accessibility and partner-expression controls
+python scripts/download_manifest.py \
+  --manifest configs/ucsc_hg38_reference_manifest.json \
+  --output-directory data/reference/ucsc_hg38 \
+  --resolved-manifest reports/ucsc_hg38_reference_resolved.json \
+  --jobs 3
+
+python scripts/download_manifest.py \
+  --manifest configs/hek293_dnase_manifest.json \
+  --output-directory data/reference/hek293_dnase \
+  --resolved-manifest reports/hek293_dnase_resolved.json \
+  --jobs 2
+
+python scripts/download_manifest.py \
+  --manifest configs/hek293_rnaseq_manifest.json \
+  --output-directory data/reference/hek293_rnaseq \
+  --resolved-manifest reports/hek293_rnaseq_resolved.json \
+  --jobs 2
+
+python scripts/audit_hek293_partner_expression.py \
+  --replicate-1 data/reference/hek293_rnaseq/GSM3611199_HEK293_rep1_quant.sf.txt.gz \
+  --replicate-2 data/reference/hek293_rnaseq/GSM3611199_HEK293_rep2_quant.sf.txt.gz \
+  --gencode data/reference/hek293_rnaseq/gencode.v29.annotation.gtf.gz \
+  --monomer-audit reports/monomer_pwm_panel_audit.json \
+  --output-table results/capselex/hek293_partner_expression.tsv \
+  --output-report reports/hek293_partner_expression_audit.json
+
 # Resolve and download only 12 Toronto GPZN ChIP bigWigs (six TFs x two replicates)
 python scripts/download_manifest.py \
   --manifest configs/codebook_chip_geo_metadata_manifest.json \
@@ -163,6 +225,68 @@ python scripts/download_manifest.py \
   --output-directory data/codebook/chip_gpzn \
   --resolved-manifest reports/codebook_chip_gpzn_panel_resolved.json \
   --jobs 4
+
+# Build per-locus CAP/GHT/ChIP features after the official v2 GHT loci have been frozen
+for tf in FLI1 GABPA GCM1 RFX5 PAX7 MAX; do
+  python scripts/build_capselex_primary_features.py \
+    --focal-tf "$tf" \
+    --loci "results/capselex/primary_codebook_v2/${tf}.ght_only.loci.tsv.gz" \
+    --magix "data/codebook/ght_v2/Peaks_MAGIX_McGill/${tf}.bed" \
+    --chip-resolved-manifest reports/codebook_chip_gpzn_panel_resolved.json \
+    --chip-directory data/codebook/chip_gpzn \
+    --reference-resolved-manifest reports/ucsc_hg38_reference_resolved.json \
+    --reference-directory data/reference/ucsc_hg38 \
+    --cap-pwm-table data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx \
+    --mex-top1 data/codebook/zenodo_pwm/MEX_top1.zip \
+    --jaspar data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt \
+    --monomer-audit reports/monomer_pwm_panel_audit.json \
+    --output "results/capselex/primary_features/${tf}.features.tsv.gz" \
+    --report "reports/capselex_primary_features_${tf}.json"
+done
+
+# Screening model: four expression-evaluable primary TFs, MAX sensitivity, PAX7 availability control
+python scripts/run_capselex_primary_models.py \
+  --feature-directory results/capselex/primary_features \
+  --focal-tfs FLI1 GABPA GCM1 RFX5 \
+  --sensitivity-tfs MAX \
+  --availability-negative-controls PAX7 \
+  --partner-expression results/capselex/hek293_partner_expression.tsv \
+  --dnase-directory data/reference/hek293_dnase \
+  --dnase-resolved-manifest reports/hek293_dnase_resolved.json \
+  --permutations 100 \
+  --output reports/capselex_primary_genomic_model_screening.json
+
+# Exploratory pair decomposition after the frozen panel gate failed
+python scripts/decompose_capselex_pair_contributions.py \
+  --feature-directory results/capselex/primary_features \
+  --focal-tfs FLI1 GABPA GCM1 RFX5 \
+  --partner-expression results/capselex/hek293_partner_expression.tsv \
+  --dnase-directory data/reference/hek293_dnase \
+  --dnase-resolved-manifest reports/hek293_dnase_resolved.json \
+  --output reports/capselex_pair_decomposition.json
+
+# Freeze, acquire and test the outcome-independent TGIF2 expression gate
+python scripts/download_manifest.py \
+  --manifest configs/trophoblast_gcm1_replication_manifest.json \
+  --output-directory data/trophoblast/gcm1_replication \
+  --resolved-manifest reports/trophoblast_gcm1_replication_resolved.json \
+  --jobs 4
+
+python scripts/audit_trophoblast_tgif2_expression.py \
+  --archive data/trophoblast/gcm1_replication/GSE244254_RAW.tar \
+  --resolved-manifest reports/trophoblast_gcm1_replication_resolved.json \
+  --output reports/trophoblast_tgif2_expression_gate.json
+
+# Frozen external-context screening; 1,000 permutations run only if both states pass
+python scripts/run_trophoblast_tgif2_replication.py \
+  --features results/capselex/primary_features/GCM1.features.tsv.gz \
+  --asset-directory data/trophoblast/gcm1_replication \
+  --resolved-manifest reports/trophoblast_gcm1_replication_resolved.json \
+  --expression-gate reports/trophoblast_tgif2_expression_gate.json \
+  --pair-decomposition reports/capselex_pair_decomposition.json \
+  --permutations 100 \
+  --partial-r2-threshold 0.005 \
+  --output reports/trophoblast_tgif2_gcm1_replication_screening.json
 
 # Build the directed CAP pair dataset and run the TF-held-out panel
 cisgrammar capselex dataset \
@@ -225,8 +349,8 @@ though the tar archive itself has a different SHA-256 and simplified member name
 member hashes and eligibility audit are frozen in `configs/codebook_ght_v2_magix_focal_manifest.json` and
 `reports/codebook_ght_v2_magix_focal_audit.json`.
 
-Selective raw-data acquisition is feasible: the exact target FASTQs linked to the five primary author
-MAGIX sets total 2.260 GiB; adding MAX totals 2.896 GiB. This is not yet an exact v2 rebuild. The released
+Selective raw-data acquisition is feasible: the exact target FASTQs linked to the five-TF acquisition panel
+total 2.260 GiB; adding MAX totals 2.896 GiB. This is not yet an exact v2 rebuild. The released
 MAGIX production workflow uses batch-aggregate covariates. Supplementary Table 3 now resolves the nine
 relevant batch identifiers, but neither the public source tree nor the paper freezes whether those aggregate
 lists contained all experiments (79.476 GiB for the relevant batches) or approved experiments only
@@ -238,6 +362,13 @@ the official processed v2 focal BED members are now available and checksummed.
 The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
 `log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and
 a claimed CAP increment must have the same direction in both.
+
+Partner availability is frozen before ChIP modelling from two wild-type HEK293 RNA-seq replicates in
+GSM3611199. Transcript TPMs are summed to GENCODE v29 genes; a partner is expression-supported only when it
+has at least 1 TPM in each replicate. PAX7's only representative pair is PAX7–TBX4, while TBX4 is 0 TPM in
+both replicates. PAX7 is therefore an availability negative control rather than an interpretable primary
+cooperativity case. The primary panel is FLI1, GABPA, GCM1 and RFX5; MAX–TEAD4 remains the predeclared
+low-CAP-coverage sensitivity.
 
 ## Repository layout
 
@@ -253,18 +384,19 @@ legacy/original/         Preserved student-stage scripts and figures
 
 ## Claim boundary
 
-Provisional claim to be retested on `ght-only` loci:
+Supported result:
 
-> Independently measured CAP composite grammar may contain incremental information about held-out focal-TF
-> occupancy beyond intrinsic binding, monomer motifs, sequence context, and the available accessibility
-> covariate.
+> CAP-derived sequence features showed heterogeneous held-out occupancy increments on outcome-independent
+> GHT-only loci; only FLI1 passed the predeclared TF-level effect criterion.
 
-The current evidence does not support treating this as a final manuscript claim until the primary GHT-only
-rerun and its fixed-genome sensitivity are complete.
+The directionally consistent TGIF2–GCM1 trophoblast result is reported as a weak association that failed its
+predeclared effect criterion, not as replication of a mechanism.
 
 Not supported:
 
 - a uniquely identified in-cell ETS protein partner;
+- a general CAP-grammar occupancy mechanism across TFs;
+- TGIF2 co-occupancy or causal cooperation with GCM1;
 - CAP grammar as a general predictor of GCM1-dependent transcription;
 - cooperative causality without motif or partner perturbation.
 
@@ -273,6 +405,7 @@ Not supported:
 - [CAP feasibility and shortcut diagnosis](docs/capselex_feasibility.md)
 - [Primary genomic-targeting design](docs/genomic_targeting_phase0.md)
 - [Independent trophoblast and functional validation](docs/trophoblast_validation.md)
+- [Research audit and publication decision](docs/research_audit_2026-08-10.md)
 - [Public data access and anti-circularity rules](docs/data_access.md)
 - [Machine-readable result summary](reports/result_summary.json)
 

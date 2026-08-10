@@ -1,0 +1,63 @@
+{
+  "assets": [
+    {
+      "filename": "GSM2902639_HEK293_DNase.bw",
+      "sha256": "b28064995dd5b71a56da854f400a14bff7c7c68086fa06f6d7756606edabdd6f",
+      "sha256_source": "manifest",
+      "size_bytes": 1108506272,
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2902nnn/GSM2902639/suppl/GSM2902639_HEK293_DNase.bw"
+    },
+    {
+      "filename": "hg19ToHg38.over.chain.gz",
+      "md5": "35887f73fe5e2231656504d1f6430900",
+      "md5_source": "manifest",
+      "sha256": "5c0598e500ceb5a78c73086929e8ef993aec309bcafb595139b53d440b125a1d",
+      "sha256_source": "manifest",
+      "size_bytes": 227698,
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz"
+    },
+    {
+      "filename": "hg38ToHg19.over.chain.gz",
+      "md5": "ff3031d93792f4cbb86af44055efd903",
+      "md5_source": "manifest",
+      "sha256": "14a712e8e147d9fc8e9d87d51977b46f6f8ddb93efbe5d0843d86b6205f587b1",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 1246411,
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/liftOver/hg38ToHg19.over.chain.gz"
+    },
+    {
+      "filename": "bigWigToBedGraph",
+      "sha256": "22f22e03e6c91561e2bdfa7f967e6e8a60ba7a9b3a7b09ef051162e7bcb90bed",
+      "sha256_source": "manifest",
+      "size_bytes": 8772664,
+      "url": "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bigWigToBedGraph"
+    },
+    {
+      "filename": "liftOver",
+      "sha256": "b7e295f3e06186ab34c89b2abdc58e98e55ac5aa158db4df1c6292b023a272bd",
+      "sha256_source": "manifest",
+      "size_bytes": 24769384,
+      "url": "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/liftOver"
+    },
+    {
+      "filename": "bedGraphToBigWig",
+      "sha256": "1a1527cf364e1e572a81c7284fc9ccd2b3690b5896baa5b57399864f85ad7771",
+      "sha256_source": "manifest",
+      "size_bytes": 8799360,
+      "url": "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedGraphToBigWig"
+    }
+  ],
+  "biological_source": {
+    "assay": "DNase-seq",
+    "biosample": "HEK293",
+    "claim_boundary": "Accessibility was measured in an independent HEK293 culture and is a cell-line proxy, not the matched chromatin state of each Codebook ChIP experiment.",
+    "geo_sample": "GSM2902639",
+    "geo_series": "GSE108513",
+    "normalization": "library-depth-normalized signal in 10-bp bins",
+    "primary_role": "chromatin accessibility covariate",
+    "replication": "one pooled DNase library",
+    "source_assembly": "hg19",
+    "target_assembly": "hg38"
+  },
+  "schema_version": "hek293_dnase_manifest_v1"
+}

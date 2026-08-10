@@ -9,10 +9,38 @@ The historical 204,916-locus GCM1 universe was projected into human trophoblast 
 - `GSE244254`: WT and GCM1-knockout RNA-seq;
 - GENCODE v48 basic annotation on GRCh38 for promoters.
 
-External hTSC ChIP did not define a new peak-selected test set. Only the two outcome columns were replaced;
-loci, sequences, CAP profiles, monomer scores and chromosome folds remained frozen. However, the frozen
-universe had originally been constructed using Codebook ChIP, so this is an external-outcome association
-replication, not a fully assay-independent locus-selection design. It will be rerun on GHT-only tiles.
+The original external hTSC analysis used a Codebook-ChIP-informed historical universe. It is retained below
+for provenance. The focused TGIF2–GCM1 test instead uses the same official Codebook v2 GCM1 GHT-only tiles as
+the primary analysis; external hTSC ChIP affects neither locus selection nor feature construction.
+
+## Frozen TGIF2–GCM1 external-context test
+
+TGIF2–GCM1 was the leading exploratory GCM1 pair in Codebook HEK293 ChIP. Before reading the hTSC ChIP
+outcomes, the candidate, composite mechanism, two states, two-clone agreement rule, partial-R² threshold
+(`0.005`) and two-stage permutation rule were frozen. TGIF2 then passed the outcome-independent expression
+gate in all six relevant RNA profiles:
+
+| State | B31 TGIF2 TPM | CT27 TGIF2 TPM |
+|---|---:|---:|
+| EVT | 8.61 | 4.44 |
+| ST day 2 | 3.50 | 4.03 |
+| ST day 4 | 1.19 | 1.31 |
+
+RNA detection establishes availability only; it does not establish TGIF2 protein abundance or co-occupancy.
+The frozen model tested the composite CAP excess score beyond GHT score, focal and TGIF2 monomer scores,
+GC and CpG content on 19,497 GCM1 GHT-only loci. Each state used the mean of clone-specific log1p exact
+200-bp GCM1 ChIP signals as its primary outcome.
+
+| State | Clone Spearman r | Partial R² | Chromosome-bootstrap 95% interval | Screening p | Positive in all folds | Passed |
+|---|---:|---:|---:|---:|---:|---:|
+| EVT | 0.680 | 0.002471 | 0.001009–0.003741 | 1/101 | Yes | No |
+| ST | 0.692 | 0.003471 | 0.001611–0.005342 | 1/101 | Yes | No |
+
+All four clone-specific median coefficients were positive. EVT clone partial R² values were 0.003618 (B31)
+and 0.001140 (CT27); ST values were 0.003158 and 0.003038. Both state-level effects nevertheless fell below
+the predeclared `0.005` threshold. The replication criterion therefore failed, and the 1,000-permutation final
+test was not triggered. The directionality is consistent with a weak transferable sequence association, but
+the current evidence does not support a TGIF2–GCM1 cooperative mechanism.
 
 ## Historical occupancy association
 
@@ -67,8 +95,9 @@ unshrunk KO-versus-WT log2 fold change, and no `padj` threshold is applied.
 
 All three functional endpoints are negative. ChIP, HiChIP and knockout RNA were collected on different
 differentiation days, so the null does not prove absence of every possible transcriptional effect.
-Establishing causality requires a time-matched ETS-partner or composite-motif perturbation. Any occupancy
-claim remains provisional until the GHT-only primary analysis is complete.
+Establishing causality requires a time-matched partner or composite-motif perturbation. The official GHT-only
+primary analysis and focused external-context test are now complete; neither supports a general CAP grammar
+mechanism or GCM1-dependent transcriptional causality.
 
 No alternative profile weighting, promoter window, contact threshold, expression filter or locus aggregator
 will be selected after observing these endpoints.

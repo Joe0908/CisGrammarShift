@@ -14,6 +14,11 @@
 Codebook v2 metadata files are the canonical source for corrected labels. All joins use explicit normalized
 TF symbols and retain original identifiers for audit.
 
+The focused trophoblast test downloads only four processed GCM1 BigWigs from `GSE244252` (B31 and CT27 in
+EVT and ST) plus the 22.5-MiB `GSE244254_RAW.tar` archive used for the pre-outcome TGIF2 expression gate.
+Together the four BigWigs are 1,181,654,675 bytes. Exact URLs, byte sizes and SHA-256 values are frozen in
+`configs/trophoblast_gcm1_replication_manifest.json`; raw assay-wide archives are not required.
+
 ## CAP-SELEX supplementary assets
 
 The official Nature article supplements are downloaded individually rather than reconstructed from figures:
@@ -95,12 +100,13 @@ to the ENA `PRJEB76622` file report gives the following selective target-read do
 | FLI1 | primary | 19 | 35 | 0.842 |
 | GABPA | primary | 8 | 16 | 0.385 |
 | GCM1 | primary | 12 | 24 | 0.589 |
-| PAX7 | primary | 8 | 16 | 0.280 |
+| PAX7 | availability control | 8 | 16 | 0.280 |
 | RFX5 | primary | 3 | 6 | 0.164 |
 | MAX | sensitivity | 16 | 32 | 0.636 |
 
-Thus, focal target FASTQs are not the storage bottleneck: primary files total 2.260 GiB, or 2.896 GiB with
-MAX. A from-FASTQ exact reproduction is nevertheless not declared ready. The public production scripts fit
+Thus, focal target FASTQs are not the storage bottleneck: the five-TF acquisition panel totals 2.260 GiB,
+or 2.896 GiB with MAX. The four expression-evaluable primary TFs total 1.980 GiB. A from-FASTQ exact
+reproduction is nevertheless not declared ready. The public production scripts fit
 batch-aggregate covariates and a genome-wide library-size model over approximately 13 million 200-bp bins;
 they request 100 GB RAM for that step. The nine batches containing the primary focal experiments contain
 79.476 GiB of all GHT experiment FASTQs, or 26.870 GiB if restricted to approved experiments. The production
@@ -121,6 +127,10 @@ byte sizes, and the unresolved exact-rebuild boundary. The processed-asset audit
 - Toronto `GPZN` bigWigs for all focal replicates;
 - revised GHT MAGIX peaks/scores;
 - hg38 chromosome sizes from a versioned reference for the fixed-genome sensitivity;
+- UCSC hg38.2bit and the checksummed `twoBitToFa` binary for exact 400-bp sequence contexts;
+- HEK293 DNase-seq `GSM2902639` plus the UCSC hg38-to-hg19 chain for locus-specific accessibility queries;
+- two wild-type HEK293 Salmon quantifications from `GSM3611199` and GENCODE v29 for the independent
+  partner-expression audit;
 - raw CAP composite PWMs and spacing annotations;
 - external hTSC files from the GEO series above.
 
