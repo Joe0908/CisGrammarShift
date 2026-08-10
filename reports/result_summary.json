@@ -1,6 +1,10 @@
 {
-  "schema_version": "cisgrammarshift_result_summary_v1",
-  "primary_codebook": {
+  "schema_version": "cisgrammarshift_result_summary_v2",
+  "manuscript_ready": false,
+  "audit_status": "legacy outcome-informed locus universe; primary ght-only rerun required",
+  "legacy_codebook": {
+    "result_status": "legacy sensitivity only",
+    "locus_universe": "legacy-assay-union",
     "focal_tfs": ["FLI1", "GABPA", "GCM1", "PAX7", "RFX5"],
     "panel_loci": 1035968,
     "partial_r2": 0.02030,
@@ -10,7 +14,8 @@
     "composite_only_partial_r2": 0.01999,
     "spacing_only_partial_r2": 0.00060
   },
-  "independent_gcm1_occupancy": {
+  "historical_gcm1_occupancy_association": {
+    "result_status": "requires ght-only rerun",
     "EVT": {"partial_r2": 0.001532, "binned_monomer_partial_r2": 0.001538},
     "ST": {"partial_r2": 0.001759, "binned_monomer_partial_r2": 0.001493}
   },
@@ -31,6 +36,13 @@
       "positive_coefficient_folds": 2
     }
   },
-  "supported_claim": "incremental genomic occupancy association",
+  "provisional_claim": "incremental genomic occupancy association within predeclared loci",
+  "required_next_analysis": [
+    "ght-only primary rerun",
+    "fixed-genome sensitivity",
+    "per-TF and per-fold out-of-fold reporting",
+    "1000-permutation final null"
+  ],
+  "supported_claim": "the historical pipeline produced a positive association that requires outcome-independent rerunning",
   "unsupported_claim": "GCM1-dependent transcriptional causality"
 }

@@ -18,9 +18,10 @@ M_1 = M_0 + \mathrm{CAP\ grammar}.
 
 ## Anti-circularity contract
 
-- The universe is the union of fixed 200-bp hg38 tiles containing a ChIP summit or GHT peak midpoint.
+- The primary universe contains fixed 200-bp hg38 tiles selected by GHT peak midpoints only.
+- Every primary window is centred on the fixed tile, never on a ChIP or GHT summit.
+- ChIP can annotate a primary tile and supplies the outcome, but cannot determine primary inclusion or centre.
 - Exact sequence features use a fixed 400-bp context around each tile.
-- ChIP intensity never chooses the exact sequence-window centre.
 - Source membership may be audited but is not a predictive feature.
 - Train/validation/test separation is by chromosome.
 - CAP feature multiplicity correction and monomer residualization use training chromosomes only.
@@ -30,15 +31,25 @@ M_1 = M_0 + \mathrm{CAP\ grammar}.
 
 The versioned contract is represented by `AnalysisContract` and `configs/capselex_reanalysis.yaml`.
 
+Three predeclared sensitivity universes test selection dependence:
+
+| Universe | ChIP selects loci? | ChIP centres sequence? | Role |
+|---|---:|---:|---|
+| `ght-only` | No | No | Primary |
+| `assay-union` | Yes | No | Outcome-informed selection sensitivity |
+| `fixed-genome` | No | No | Fully selection-independent sensitivity |
+| `legacy-assay-union` | Yes | Yes | Historical result reproduction only |
+
 ## Panel and coverage
 
 Primary focal TFs are FLI1, GABPA, GCM1, PAX7 and RFX5. They span multiple structural families and have
 adequate CAP grammar coverage. MAX lacks a primary-eligible CAP grammar and is retained as an explicit
 CAP-null control.
 
-The constructed universe contains 1,204,394 loci, of which 1,035,968 belong to the five-TF primary panel.
+The reported historical universe contains 1,204,394 loci, of which 1,035,968 belong to the five-TF panel.
+Primary GHT-only counts have not yet been calculated.
 
-## Primary result
+## Historical result requiring primary rerun
 
 | Analysis | Held-out partial R² | Interval / null |
 |---|---:|---|
@@ -49,14 +60,16 @@ The constructed universe contains 1,204,394 loci, of which 1,035,968 belong to t
 | Representative profiles only | 0.00565 | passes the frozen 0.005 gate |
 | 20×20 monomer-bin residualization | 0.01914 | 0.01812–0.02015; p=1/101 |
 
-All five primary TFs show a positive increment. GABPA replicate-separated fits and omission of the
-contaminated GCM1 replicate `THC_0621` preserve the conclusion.
+These estimates came from `legacy-assay-union`; they are retained for provenance and will not be presented
+as primary manuscript evidence. GABPA replicate-separated fits and omission of the contaminated GCM1
+replicate `THC_0621` were internally stable, but they do not repair outcome-informed locus construction.
 
 ## Interpretation
 
-The result is not “CAP predicts ChIP” in the abstract. It is evidence that CAP-measured composite sequence
-grammar contains incremental information about held-out genomic occupancy after strong measured controls.
-It does not prove that a named partner is present or that cooperativity causes transcription.
+If the GHT-only and fixed-genome reruns retain the increment, the result would support the narrower statement
+that CAP-measured composite sequence grammar contains incremental information about held-out occupancy after
+measured controls. The historical analysis alone does not establish that claim. No analysis here proves that
+a named partner is present or that cooperativity causes transcription.
 
 The independent GCM1 validation and functional claim boundary are documented in
 [`trophoblast_validation.md`](trophoblast_validation.md).

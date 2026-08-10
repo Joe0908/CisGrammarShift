@@ -1,11 +1,14 @@
-schema_version: capselex_reanalysis_v1
+schema_version: capselex_reanalysis_v2
 seed: 20260809
 
 contract:
   locus_width_bp: 200
   sequence_context_bp: 400
   chromosome_folds: 5
-  grammar_permutations: 100
+  primary_locus_universe: ght-only
+  sensitivity_locus_universes: [assay-union, fixed-genome, legacy-assay-union]
+  screening_grammar_permutations: 100
+  grammar_permutations: 1000
   primary_partial_r2: 0.005
   minimum_positive_focal_tfs: 4
   promoter_half_width_bp: 2000
@@ -17,6 +20,8 @@ primary_panel:
   intrinsic: continuous_ght_magix
   chromatin: hek293t_dnase_proxy
   split: chromosome
+  locus_selection: ght_peak_tiles
+  locus_centering: fixed_200bp_genome_tiles
 
 independent_validation:
   focal_tf: GCM1

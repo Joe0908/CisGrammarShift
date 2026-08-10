@@ -29,6 +29,7 @@ belong in a local manifest under `data/`, which is ignored by Git.
 - Toronto or one consistently chosen independent peak pipeline;
 - Toronto `GPZN` bigWigs for all focal replicates;
 - revised GHT MAGIX peaks/scores;
+- hg38 chromosome sizes from a versioned reference for the fixed-genome sensitivity;
 - raw CAP composite PWMs and spacing annotations;
 - external hTSC files from the GEO series above.
 
@@ -41,6 +42,10 @@ or outcomes:
 - MOODS triple-optimized intersections;
 - ChIP/GHT triple-optimized or triple-overlap peak sets;
 - any peak or feature selected after reading the held-out outcome.
+
+ChIP-derived loci are also forbidden in the primary universe. The `assay-union` implementation is retained
+only as an explicitly outcome-informed sensitivity, while `legacy-assay-union` reproduces the former
+ChIP-prioritized centering behavior for audit purposes.
 
 They may be described as external descriptive resources only, never used to construct the primary universe
 or CAP branch.

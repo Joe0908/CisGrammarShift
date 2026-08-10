@@ -1,18 +1,20 @@
-# Independent GCM1 trophoblast validation
+# GCM1 trophoblast association replication
 
 ## Design
 
-The frozen 204,916-locus GCM1 universe was projected into independent human trophoblast data:
+The historical 204,916-locus GCM1 universe was projected into human trophoblast data:
 
 - `GSE244252`: two-clone GCM1 ChIP-seq in EVT and ST differentiation;
 - `GSE244253`: H3K4me3 HiChIP interactions for promoter–distal linkage;
 - `GSE244254`: WT and GCM1-knockout RNA-seq;
 - GENCODE v48 basic annotation on GRCh38 for promoters.
 
-External ChIP did not define a new peak-selected test set. Only the two outcome columns were replaced; loci,
-sequences, CAP profiles, monomer scores and chromosome folds remained frozen.
+External hTSC ChIP did not define a new peak-selected test set. Only the two outcome columns were replaced;
+loci, sequences, CAP profiles, monomer scores and chromosome folds remained frozen. However, the frozen
+universe had originally been constructed using Codebook ChIP, so this is an external-outcome association
+replication, not a fully assay-independent locus-selection design. It will be rerun on GHT-only tiles.
 
-## Occupancy replication
+## Historical occupancy association
 
 | State | Full CAP partial R² | Binned-monomer partial R² | Empirical p |
 |---|---:|---:|---:|
@@ -21,7 +23,7 @@ sequences, CAP profiles, monomer scores and chromosome folds remained frozen.
 
 Composite profiles retain most of the signal; spacing-only chromosome-block intervals cross zero.
 
-The leading ETV1, GABPA and ELK3 CAP models are correlated ETS-like grammars. RNA expression rejects a
+The leading ETV1, GABPA and ELK3 CAP models are correlated ETS-like grammars. RNA expression argues against a
 literal ETV1-partner interpretation in hTSCs: ETV1 is essentially absent, while GABPA, ELK3 and several
 other ETS factors are expressed. The supported unit is a transferable GCM1–ETS-like sequence grammar.
 
@@ -63,10 +65,10 @@ unshrunk KO-versus-WT log2 fold change, and no `padj` threshold is applied.
 
 ## Claim boundary
 
-All three functional endpoints are negative. The manuscript-level claim is limited to reproducible
-incremental occupancy association. ChIP, HiChIP and knockout RNA were collected on different differentiation
-days, so the null does not prove absence of every possible transcriptional effect. Establishing causality
-requires a time-matched ETS-partner or composite-motif perturbation.
+All three functional endpoints are negative. ChIP, HiChIP and knockout RNA were collected on different
+differentiation days, so the null does not prove absence of every possible transcriptional effect.
+Establishing causality requires a time-matched ETS-partner or composite-motif perturbation. Any occupancy
+claim remains provisional until the GHT-only primary analysis is complete.
 
 No alternative profile weighting, promoter window, contact threshold, expression filter or locus aggregator
 will be selected after observing these endpoints.

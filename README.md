@@ -12,24 +12,22 @@ TF genomic occupancy is often predicted from a focal TF motif and chromatin cont
 reports thousands of directed, DNA-guided TF-pair interactions. This project asks a narrower mechanistic
 question:
 
-> Does independently measured cooperative DNA grammar explain held-out variation in focal-TF genomic
-> occupancy beyond intrinsic GHT-SELEX binding, monomer motifs, sequence context, and accessibility—and
-> does that increment extend to GCM1-dependent transcription?
+> Within an outcome-independent locus universe, does cooperative DNA grammar explain held-out variation in
+> focal-TF occupancy beyond intrinsic GHT-SELEX binding, monomer motifs, sequence context, and
+> accessibility—and does any increment associate with GCM1-dependent transcription?
 
 The repository keeps the original counterfactual synthetic benchmark as a positive-control layer, but the
-primary study is now an accessioned CAP-SELEX × GHT-SELEX × ChIP-seq analysis with independent human
-trophoblast validation.
+primary study is now an accessioned CAP-SELEX × GHT-SELEX × ChIP-seq analysis with human trophoblast
+association follow-up.
 
-## Result in one paragraph
+## Current audit status
 
-CAP composite grammar contributes a small, reproducible increment to held-out ChIP intensity. In the
-five-TF Codebook panel the macro chromosome-held-out partial R² is `0.02030` (chromosome-block 95% interval
-`0.01924–0.02131`; empirical `p = 1/101`); all five focal TFs are positive. A stricter training-only 20×20
-focal/partner monomer-bin control retains `0.01914`. Independent GCM1 ChIP-seq in hTSC differentiation
-replicates a smaller increment in EVT (`0.00153`) and ST (`0.00176`), each at `p = 1/101`. The transferable
-signal is a GCM1–ETS-like composite grammar class, not a uniquely identified ETV1 partner. Two binary target
-benchmarks and the exact R 4.2.2 / DESeq2 1.36.0 continuous-effect analysis are negative, so downstream
-transcriptional causality is not claimed.
+The existing numerical results are **not yet manuscript-ready**. They were generated on a historical
+assay-union in which ChIP affected locus inclusion and, through source-prioritized deduplication, could also
+set the sequence-window centre. That design is now exposed as `legacy-assay-union` and retained only as a
+sensitivity analysis. The frozen primary rerun uses GHT-selected, fixed genomic tiles (`ght-only`), for which
+ChIP affects neither selection nor centering. Until that rerun is complete, `0.02030` and the downstream hTSC
+values below are provenance-preserved legacy estimates, not the paper's final quantitative findings.
 
 ## Study layers
 
@@ -37,16 +35,16 @@ transcriptional causality is not claimed.
 |---|---|---|---|
 | Synthetic counterfactual | Architecture/implementation positive control | Matched motif instances and pair-level splits | Programmed spacing rule |
 | CAP pair feasibility | Diagnose coverage and shortcut learning | Pair-, TF-, family- and paralogue-held-out splits | Directed CAP labels |
-| Codebook primary panel | Test endogenous occupancy increment | Fixed assay-union loci and chromosome-held-out fitting | Continuous focal-TF ChIP |
-| Independent hTSC | Test cross-context reproducibility | Same frozen GCM1 loci/features; external outcomes only | EVT/ST GCM1 ChIP |
+| Codebook primary panel | Test induced-expression occupancy increment | GHT-only fixed tiles and chromosome-held-out fitting | Continuous focal-TF ChIP |
+| hTSC association replication | Test cross-context reproducibility | Same predeclared GCM1 loci/features; external outcomes only | EVT/ST GCM1 ChIP |
 | HiChIP + knockout RNA | Test functional extension | Outcome-blind linkage and nested chromosome folds | Binary targets and DESeq2 LFC |
 
-## Primary results
+## Legacy results awaiting the outcome-independent rerun
 
 ### Codebook occupancy panel
 
 - Primary focal TFs: `FLI1`, `GABPA`, `GCM1`, `PAX7`, and `RFX5`; `MAX` is retained as a CAP-null control.
-- Locus universe: 1,204,394 fixed 200-bp hg38 assay-union loci; 1,035,968 loci in the primary panel.
+- Historical locus universe: 1,204,394 200-bp hg38 legacy assay-union loci; 1,035,968 loci in the panel.
 - M0: continuous GHT, focal/partner monomer scores, GC, accessibility proxy, and genomic context.
 - M1: M0 plus CAP composite and spacing/orientation grammar features calibrated on training chromosomes.
 - Full CAP partial R²: `0.02030`; without the DNase proxy: `0.01696`.
@@ -54,10 +52,12 @@ transcriptional causality is not claimed.
 - Representative CAP profiles only: `0.00565`.
 - Training-only binned-monomer residualization: `0.01914` (`0.01812–0.02015`, `p = 1/101`).
 
-### Independent GCM1 trophoblast occupancy
+### Historical GCM1 trophoblast occupancy association
 
-The frozen 204,916-locus GCM1 universe was projected into `GSE244252` without allowing the external ChIP
-signal to choose loci or tune features.
+The historical 204,916-locus GCM1 universe was projected into `GSE244252` without allowing the external
+hTSC ChIP signal to choose loci or tune features. Because the universe was originally constructed using
+Codebook ChIP, these values remain a cross-context association sensitivity rather than a fully
+outcome-independent primary result.
 
 | State | Full CAP partial R² | Binned-monomer sensitivity | Empirical p |
 |---|---:|---:|---:|
@@ -102,12 +102,22 @@ cisgrammar capselex tf-panel \
   --target composite_motif \
   --output results/capselex/tf_panel_composite.json
 
-# Build outcome-independent Codebook ChIP/GHT assay-union loci
+# Primary: GHT chooses tiles; ChIP is outcome/annotation only
 cisgrammar capselex build-loci \
+  --universe ght-only \
   --chip-peaks data/codebook/chip/GCM1.narrowPeak \
   --ght-peaks data/codebook/ght/GCM1.narrowPeak \
   --focal-tf GCM1 \
-  --output results/capselex/GCM1.loci.tsv
+  --output results/capselex/GCM1.ght_only.loci.tsv.gz
+
+# Sensitivity: neither assay chooses the full-genome tiles (written chromosome-by-chromosome)
+cisgrammar capselex build-loci \
+  --universe fixed-genome \
+  --chrom-sizes data/reference/hg38.chrom.sizes \
+  --chip-peaks data/codebook/chip/GCM1.narrowPeak \
+  --ght-peaks data/codebook/ght/GCM1.narrowPeak \
+  --focal-tf GCM1 \
+  --output results/capselex/GCM1.fixed_genome.loci.tsv.gz
 
 # Export exact count matrices, then run the locked R analysis
 cisgrammar capselex trophoblast-deseq2-export \
@@ -130,8 +140,9 @@ ruff check .
 pytest
 ```
 
-Raw and large processed files are intentionally excluded from Git. Every analysis output records input
-paths, sizes, SHA-256 hashes, software versions, and the locked design. See
+`build-loci` writes a sidecar manifest containing the declared universe, outcome-dependence flags, row
+counts, input/output sizes and SHA-256 hashes. Raw and large processed files are intentionally excluded from
+Git. See
 [`docs/data_access.md`](docs/data_access.md) for public accessions and the small-file download strategy.
 
 ## Repository layout
@@ -148,11 +159,14 @@ legacy/original/         Preserved student-stage scripts and figures
 
 ## Claim boundary
 
-Supported:
+Provisional claim to be retested on `ght-only` loci:
 
-> Independently measured CAP composite grammar contains reproducible information about held-out focal-TF
+> Independently measured CAP composite grammar may contain incremental information about held-out focal-TF
 > occupancy beyond intrinsic binding, monomer motifs, sequence context, and the available accessibility
-> covariate; the independent GCM1 signal localizes to an ETS-like grammar class.
+> covariate.
+
+The current evidence does not support treating this as a final manuscript claim until the primary GHT-only
+rerun and its fixed-genome sensitivity are complete.
 
 Not supported:
 

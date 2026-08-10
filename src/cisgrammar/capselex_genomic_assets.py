@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from collections.abc import Iterator
 from pathlib import Path
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -21,6 +23,127 @@ NARROWPEAK_COLUMNS = (
     "summit_offset",
 )
 
+LocusUniverse = Literal["ght-only", "assay-union", "fixed-genome", "legacy-assay-union"]
+LOCUS_UNIVERSES: tuple[LocusUniverse, ...] = (
+    "ght-only",
+    "assay-union",
+    "fixed-genome",
+    "legacy-assay-union",
+)
+LOCUS_UNIVERSE_AUDIT: dict[LocusUniverse, dict[str, str | bool]] = {
+    "ght-only": {
+        "selection_rule": "ght_tile_only",
+        "center_rule": "fixed_tile_center",
+        "outcome_used_for_selection": False,
+        "outcome_used_for_centering": False,
+    },
+    "assay-union": {
+        "selection_rule": "chip_or_ght_tile",
+        "center_rule": "fixed_tile_center",
+        "outcome_used_for_selection": True,
+        "outcome_used_for_centering": False,
+    },
+    "fixed-genome": {
+        "selection_rule": "all_full_autosomal_tiles",
+        "center_rule": "fixed_tile_center",
+        "outcome_used_for_selection": False,
+        "outcome_used_for_centering": False,
+    },
+    "legacy-assay-union": {
+        "selection_rule": "chip_or_ght_tile_chip_priority",
+        "center_rule": "legacy_selected_peak_midpoint",
+        "outcome_used_for_selection": True,
+        "outcome_used_for_centering": True,
+    },
+}
+
+
+def _validate_width(width_bp: int) -> None:
+    if width_bp <= 0 or width_bp % 2:
+        raise ValueError("locus width must be a positive even number")
+
+
+def _tile_counts(points: pd.DataFrame | None, width_bp: int, source: str) -> pd.DataFrame:
+    if points is None or points.empty:
+        return pd.DataFrame(columns=["chrom", "tile", f"{source}_count"])
+    require_columns(points, ("chrom", "midpoint"), f"{source} point table")
+    frame = points.loc[points["chrom"].isin(AUTOSOMES), ["chrom", "midpoint"]].copy()
+    frame["midpoint"] = pd.to_numeric(frame["midpoint"], errors="raise").astype(int)
+    frame = frame[frame["midpoint"] >= 0]
+    frame["tile"] = (frame["midpoint"] // width_bp).astype(int)
+    return (
+        frame.groupby(["chrom", "tile"], as_index=False)
+        .size()
+        .rename(columns={"size": f"{source}_count"})
+    )
+
+
+def _membership_table(
+    chip_peaks: pd.DataFrame | None,
+    ght_peaks: pd.DataFrame | None,
+    width_bp: int,
+) -> pd.DataFrame:
+    chip = _tile_counts(chip_peaks, width_bp, "chip")
+    ght = _tile_counts(ght_peaks, width_bp, "ght")
+    membership = chip.merge(ght, on=["chrom", "tile"], how="outer")
+    for column in ("chip_count", "ght_count"):
+        if column not in membership:
+            membership[column] = 0
+        membership[column] = membership[column].fillna(0).astype(int)
+    return membership
+
+
+def _finalize_fixed_tiles(
+    tiles: pd.DataFrame,
+    focal_tf: str,
+    width_bp: int,
+    locus_universe: LocusUniverse,
+) -> pd.DataFrame:
+    require_columns(tiles, ("chrom", "tile", "chip_count", "ght_count"), "tile table")
+    result = tiles.copy()
+    result["tile"] = pd.to_numeric(result["tile"], errors="raise").astype(int)
+    result["start"] = result["tile"] * width_bp
+    result["end"] = result["start"] + width_bp
+    result["midpoint"] = result["start"] + width_bp // 2
+    result["chip_source"] = result["chip_count"].gt(0)
+    result["ght_source"] = result["ght_count"].gt(0)
+    result["focal_tf"] = focal_tf
+    result["locus_universe"] = locus_universe
+    for key, value in LOCUS_UNIVERSE_AUDIT[locus_universe].items():
+        result[key] = value
+    result["locus_id"] = (
+        result["focal_tf"]
+        + ":"
+        + result["chrom"]
+        + ":"
+        + result["start"].astype(str)
+        + "-"
+        + result["end"].astype(str)
+    )
+    columns = [
+        "locus_id",
+        "focal_tf",
+        "chrom",
+        "start",
+        "end",
+        "midpoint",
+        "tile",
+        "chip_source",
+        "ght_source",
+        "chip_count",
+        "ght_count",
+        "locus_universe",
+        "selection_rule",
+        "center_rule",
+        "outcome_used_for_selection",
+        "outcome_used_for_centering",
+    ]
+    result = add_chromosome_folds(result[columns])
+    result["_chrom_order"] = result["chrom"].map({chrom: i for i, chrom in enumerate(AUTOSOMES)})
+    return result.sort_values(["_chrom_order", "start", "locus_id"]).drop(columns="_chrom_order").reset_index(
+        drop=True
+    )
+
 
 def read_narrowpeak(path: str | Path) -> pd.DataFrame:
     assert_primary_asset_allowed(path)
@@ -31,8 +154,15 @@ def read_narrowpeak(path: str | Path) -> pd.DataFrame:
     frame.columns = list(NARROWPEAK_COLUMNS[: frame.shape[1]])
     for column in ("start", "end"):
         frame[column] = pd.to_numeric(frame[column], errors="raise").astype(int)
+    if frame["start"].lt(0).any() or frame["end"].le(frame["start"]).any():
+        raise ValueError("narrowPeak intervals require 0 <= start < end")
     if "summit_offset" in frame:
-        summit = frame["start"] + pd.to_numeric(frame["summit_offset"], errors="coerce").fillna(0).astype(int)
+        offset = pd.to_numeric(frame["summit_offset"], errors="coerce")
+        invalid_offset = offset.ge(0) & offset.ge(frame["end"] - frame["start"])
+        if invalid_offset.any():
+            raise ValueError("narrowPeak summit offsets must fall inside their intervals")
+        summit = frame["start"] + offset.fillna(-1).astype(int)
+        summit = summit.where(offset.ge(0), (frame["start"] + frame["end"]) // 2)
     else:
         summit = ((frame["start"] + frame["end"]) // 2).astype(int)
     frame["midpoint"] = summit
@@ -41,8 +171,7 @@ def read_narrowpeak(path: str | Path) -> pd.DataFrame:
 
 def fixed_loci(points: pd.DataFrame, width_bp: int = 200, source: str = "unknown") -> pd.DataFrame:
     require_columns(points, ("chrom", "midpoint"), "point table")
-    if width_bp <= 0 or width_bp % 2:
-        raise ValueError("locus width must be a positive even number")
+    _validate_width(width_bp)
     half = width_bp // 2
     result = points[["chrom", "midpoint"]].copy()
     result["start"] = (result["midpoint"].astype(int) - half).clip(lower=0)
@@ -57,22 +186,69 @@ def build_assay_union_loci(
     focal_tf: str,
     width_bp: int = 200,
 ) -> pd.DataFrame:
+    """Build the ChIP/GHT tile union without allowing either assay to set the centre.
+
+    ChIP still contributes to inclusion, so this is an outcome-informed *selection*
+    sensitivity. Every sequence window is nevertheless centred on a fixed genomic tile,
+    removing the more serious summit-centering shortcut in the historical implementation.
+    """
+    _validate_width(width_bp)
+    membership = _membership_table(chip_peaks, ght_peaks, width_bp)
+    return _finalize_fixed_tiles(
+        membership,
+        focal_tf,
+        width_bp,
+        locus_universe="assay-union",
+    )
+
+
+def build_ght_only_loci(
+    ght_peaks: pd.DataFrame,
+    focal_tf: str,
+    width_bp: int = 200,
+    chip_peaks: pd.DataFrame | None = None,
+) -> pd.DataFrame:
+    """Build the primary outcome-independent universe from GHT peak tiles only."""
+    _validate_width(width_bp)
+    membership = _membership_table(chip_peaks, ght_peaks, width_bp)
+    selected = membership[membership["ght_count"].gt(0)].copy()
+    return _finalize_fixed_tiles(
+        selected,
+        focal_tf,
+        width_bp,
+        locus_universe="ght-only",
+    )
+
+
+def build_legacy_assay_union_loci(
+    chip_peaks: pd.DataFrame,
+    ght_peaks: pd.DataFrame,
+    focal_tf: str,
+    width_bp: int = 200,
+) -> pd.DataFrame:
+    """Reproduce the historical ChIP-prioritized summit-centred universe explicitly.
+
+    This function exists only for a documented legacy sensitivity. It must not be used as
+    the primary analysis because ChIP affects both locus inclusion and sequence centering.
+    """
+    _validate_width(width_bp)
     chip = fixed_loci(chip_peaks, width_bp, "chip")
     ght = fixed_loci(ght_peaks, width_bp, "ght")
     combined = pd.concat([chip, ght], ignore_index=True)
     combined["tile"] = (combined["midpoint"] // width_bp).astype(int)
-    membership = combined.pivot_table(
-        index=["chrom", "tile"], columns="source", values="midpoint", aggfunc="size", fill_value=0
-    )
+    membership = _membership_table(chip_peaks, ght_peaks, width_bp)
     selected = (
         combined.sort_values(["chrom", "tile", "source", "midpoint"])
         .drop_duplicates(["chrom", "tile"])
         .drop(columns="source")
+        .merge(membership, on=["chrom", "tile"], how="left", validate="one_to_one")
     )
-    selected = selected.merge(membership.reset_index(), on=["chrom", "tile"], how="left")
-    selected["chip_source"] = selected.get("chip", 0).gt(0)
-    selected["ght_source"] = selected.get("ght", 0).gt(0)
+    selected["chip_source"] = selected["chip_count"].gt(0)
+    selected["ght_source"] = selected["ght_count"].gt(0)
     selected["focal_tf"] = focal_tf
+    selected["locus_universe"] = "legacy-assay-union"
+    for key, value in LOCUS_UNIVERSE_AUDIT["legacy-assay-union"].items():
+        selected[key] = value
     selected["locus_id"] = (
         selected["focal_tf"]
         + ":"
@@ -82,7 +258,90 @@ def build_assay_union_loci(
         + "-"
         + selected["end"].astype(str)
     )
-    return add_chromosome_folds(selected).sort_values(["chrom", "start"]).reset_index(drop=True)
+    columns = [
+        "locus_id",
+        "focal_tf",
+        "chrom",
+        "start",
+        "end",
+        "midpoint",
+        "tile",
+        "chip_source",
+        "ght_source",
+        "chip_count",
+        "ght_count",
+        "locus_universe",
+        "selection_rule",
+        "center_rule",
+        "outcome_used_for_selection",
+        "outcome_used_for_centering",
+    ]
+    selected = add_chromosome_folds(selected[columns])
+    selected["_chrom_order"] = selected["chrom"].map(
+        {chrom: i for i, chrom in enumerate(AUTOSOMES)}
+    )
+    return (
+        selected.sort_values(["_chrom_order", "start", "locus_id"])
+        .drop(columns="_chrom_order")
+        .reset_index(drop=True)
+    )
+
+
+def read_chrom_sizes(path: str | Path) -> pd.DataFrame:
+    """Read a UCSC-style two-column chromosome-size file and retain autosomes."""
+    frame = pd.read_csv(
+        path,
+        sep=r"\s+",
+        header=None,
+        comment="#",
+        usecols=[0, 1],
+        names=["chrom", "size"],
+    )
+    frame["size"] = pd.to_numeric(frame["size"], errors="raise").astype(int)
+    frame = frame[frame["chrom"].isin(AUTOSOMES)].copy()
+    if frame["chrom"].duplicated().any():
+        duplicated = ", ".join(sorted(frame.loc[frame["chrom"].duplicated(), "chrom"].unique()))
+        raise ValueError(f"chromosome sizes contain duplicates: {duplicated}")
+    if frame.empty or frame["size"].le(0).any():
+        raise ValueError("positive autosomal chromosome sizes are required")
+    order = {chrom: index for index, chrom in enumerate(AUTOSOMES)}
+    frame["_order"] = frame["chrom"].map(order)
+    return frame.sort_values("_order").drop(columns="_order").reset_index(drop=True)
+
+
+def iter_fixed_genome_loci(
+    chrom_sizes: pd.DataFrame,
+    focal_tf: str,
+    width_bp: int = 200,
+    chip_peaks: pd.DataFrame | None = None,
+    ght_peaks: pd.DataFrame | None = None,
+) -> Iterator[pd.DataFrame]:
+    """Yield full-width autosomal tiles in chromosome-sized chunks.
+
+    Streaming avoids materializing roughly fifteen million hg38 200-bp tiles at once.
+    The final chromosome remainder shorter than ``width_bp`` is excluded so every locus
+    has exactly the frozen width.
+    """
+    _validate_width(width_bp)
+    require_columns(chrom_sizes, ("chrom", "size"), "chromosome sizes")
+    membership = _membership_table(chip_peaks, ght_peaks, width_bp)
+    for chrom, size in chrom_sizes[["chrom", "size"]].itertuples(index=False, name=None):
+        if chrom not in AUTOSOMES:
+            continue
+        n_tiles = int(size) // width_bp
+        if n_tiles < 1:
+            continue
+        tiles = pd.DataFrame({"chrom": chrom, "tile": np.arange(n_tiles, dtype=np.int64)})
+        chrom_membership = membership[membership["chrom"].eq(chrom)].drop(columns="chrom")
+        tiles = tiles.merge(chrom_membership, on="tile", how="left", validate="one_to_one")
+        for column in ("chip_count", "ght_count"):
+            tiles[column] = tiles[column].fillna(0).astype(int)
+        yield _finalize_fixed_tiles(
+            tiles,
+            focal_tf,
+            width_bp,
+            locus_universe="fixed-genome",
+        )
 
 
 def add_bigwig_signal(
