@@ -107,6 +107,23 @@ python scripts/audit_codebook_magix.py \
   --extraction-directory data/codebook/geo_peaks/focal_magix \
   --output reports/codebook_geo_v1_magix_asset_audit.json
 
+# Resolve and download only 12 Toronto GPZN ChIP bigWigs (six TFs x two replicates)
+python scripts/download_manifest.py \
+  --manifest configs/codebook_chip_geo_metadata_manifest.json \
+  --output-directory data/codebook/chip_geo_metadata
+
+python scripts/build_codebook_chip_manifest.py \
+  --soft data/codebook/chip_geo_metadata/GSE280248_family.soft.gz \
+  --filelist data/codebook/chip_geo_metadata/GSE280248_filelist.txt \
+  --panel-config configs/codebook_geo_v1_magix_panel.json \
+  --output configs/codebook_chip_gpzn_panel_manifest.json
+
+python scripts/download_manifest.py \
+  --manifest configs/codebook_chip_gpzn_panel_manifest.json \
+  --output-directory data/codebook/chip_gpzn \
+  --resolved-manifest reports/codebook_chip_gpzn_panel_resolved.json \
+  --jobs 4
+
 # Build the directed CAP pair dataset and run the TF-held-out panel
 cisgrammar capselex dataset \
   --interaction-table data/capselex/interaction_matrix.xlsx \
@@ -165,6 +182,10 @@ For MAGIX input, the frozen primary rule is Benjamini-Hochberg FDR <= 0.05 and a
 `coefficient.ar`. The manifest records both choices. The public GEO GSE278858 BED archive is useful for a
 fully checksummed smoke test, but predates the revised Codebook v2 MAGIX release and is not accepted for
 manuscript primary results.
+
+The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
+`log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and
+a claimed CAP increment must have the same direction in both.
 
 ## Repository layout
 

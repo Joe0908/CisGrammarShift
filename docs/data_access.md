@@ -20,6 +20,12 @@ The monolithic Codebook merged-bigWig archive is unnecessary. GEO `GSE280248` pr
 `GPZN` bigWigs per sample, allowing only the required replicates to be downloaded. All focal samples must use
 the same processing pipeline; Toronto and McGill absolute signals are never mixed in one comparison.
 
+For the frozen six-TF panel, the 12 selected GPZN files total 4,616,661,075 bytes (4.30 GiB). Their GSM
+accessions and GEO URLs are derived from the series SOFT rather than manually copied. The resolved manifest
+records a locally computed SHA-256 for every downloaded bigWig. Both biological replicates are retained:
+the mean of replicate `log1p` signals is the primary outcome, while replicate-resolved models must agree in
+incremental-effect direction.
+
 The checksum-aware `scripts/download_manifest.py` downloads a whitelisted subset. URLs, SHA-256 hashes and
 expected byte sizes are frozen in `configs/codebook_geo_metadata_manifest.json`. Large assay files remain
 under `data/`, which is ignored by Git.

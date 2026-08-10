@@ -10,6 +10,10 @@ contract:
   primary_ght_format: magix
   primary_ght_fdr_max: 0.05
   primary_ght_require_positive_refined_coefficient: true
+  primary_chip_pipeline: Toronto_GPZN
+  chip_replicates_per_tf: 2
+  primary_chip_outcome: mean_of_replicate_log1p_200bp_exact_mean_signal
+  replicate_confirmation: same_incremental_effect_direction_in_both_replicates
   sensitivity_locus_universes: [assay-union, fixed-genome, legacy-assay-union]
   screening_grammar_permutations: 100
   grammar_permutations: 1000
@@ -20,7 +24,8 @@ contract:
 primary_panel:
   focal_tfs: [FLI1, GABPA, GCM1, PAX7, RFX5]
   cap_null_control: MAX
-  outcome: mean_log1p_merged_chip_bigwig
+  outcome: mean_of_replicate_log1p_200bp_exact_mean_signal
+  replicate_sensitivity: separate_models_same_incremental_effect_direction
   intrinsic: continuous_ght_magix
   chromatin: hek293t_dnase_proxy
   split: chromosome

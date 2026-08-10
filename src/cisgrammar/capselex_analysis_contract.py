@@ -16,6 +16,10 @@ class AnalysisContract:
     primary_ght_format: str = "magix"
     primary_ght_fdr_max: float = 0.05
     primary_ght_require_positive_refined_coefficient: bool = True
+    primary_chip_pipeline: str = "Toronto_GPZN"
+    chip_replicates_per_tf: int = 2
+    primary_chip_outcome: str = "mean_of_replicate_log1p_200bp_exact_mean_signal"
+    replicate_confirmation: str = "same_incremental_effect_direction_in_both_replicates"
     sensitivity_locus_universes: tuple[str, ...] = (
         "assay-union",
         "fixed-genome",
@@ -44,6 +48,12 @@ class AnalysisContract:
             raise ValueError("the primary GHT FDR threshold must fall between zero and one")
         if not self.primary_ght_require_positive_refined_coefficient:
             raise ValueError("the primary GHT call must require a positive refined coefficient")
+        if self.primary_chip_pipeline != "Toronto_GPZN":
+            raise ValueError("all primary ChIP outcomes must use one Toronto GPZN pipeline")
+        if self.chip_replicates_per_tf != 2:
+            raise ValueError("the primary ChIP outcome requires exactly two biological replicates")
+        if self.replicate_confirmation != "same_incremental_effect_direction_in_both_replicates":
+            raise ValueError("replicate-resolved effect-direction confirmation is required")
         if self.screening_grammar_permutations < 1:
             raise ValueError("at least one null permutation is required")
         if self.grammar_permutations < self.screening_grammar_permutations:

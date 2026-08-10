@@ -1,0 +1,17 @@
+{
+  "schema_version": "public_asset_manifest_v1",
+  "assets": [
+    {
+      "filename": "GSE280248_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE280nnn/GSE280248/soft/GSE280248_family.soft.gz",
+      "size_bytes": 91612,
+      "sha256": "9bd7b3528db7f98087f1d274f9ca104ea1addc23e05e4114680ebd0eef550e52"
+    },
+    {
+      "filename": "GSE280248_filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE280nnn/GSE280248/suppl/filelist.txt",
+      "size_bytes": 186092,
+      "sha256": "efa3233bc6e82eb39a5f369f7adaf2e5d041d4d762de1e3639f49e2cc442444c"
+    }
+  ]
+}
