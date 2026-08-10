@@ -2,16 +2,76 @@
   "all_target_fastq_bytes": 3109282341,
   "all_target_fastq_gib": 2.896,
   "audit_date": "2026-08-10",
-  "claim_boundary": "This audit proves that focal target reads are small enough to acquire selectively. It does not claim exact reproduction of corrected v2 MAGIX peaks until the production design and batch aggregate inputs, or the official corrected BED files, are available.",
+  "batch_background_download_scenarios": {
+    "all_panel_including_sensitivity": {
+      "all_ght_experiments_in_batches": {
+        "experiment_count": 531,
+        "experiments_with_geo_runs": 531,
+        "fastq_file_count": 4071,
+        "run_count": 2040,
+        "total_size_bytes": 85336491632,
+        "total_size_gib": 79.476
+      },
+      "approved_ght_experiments_only": {
+        "experiment_count": 170,
+        "experiments_with_geo_runs": 170,
+        "fastq_file_count": 1307,
+        "run_count": 658,
+        "total_size_bytes": 28851323836,
+        "total_size_gib": 26.87
+      },
+      "batch_keys": [
+        "YWC_C",
+        "YWE_B",
+        "YWF_B",
+        "YWK_B",
+        "YWK_D",
+        "YWL_B",
+        "YWN_B",
+        "YWO_B",
+        "YWP_B"
+      ]
+    },
+    "primary_panel": {
+      "all_ght_experiments_in_batches": {
+        "experiment_count": 531,
+        "experiments_with_geo_runs": 531,
+        "fastq_file_count": 4071,
+        "run_count": 2040,
+        "total_size_bytes": 85336491632,
+        "total_size_gib": 79.476
+      },
+      "approved_ght_experiments_only": {
+        "experiment_count": 170,
+        "experiments_with_geo_runs": 170,
+        "fastq_file_count": 1307,
+        "run_count": 658,
+        "total_size_bytes": 28851323836,
+        "total_size_gib": 26.87
+      },
+      "batch_keys": [
+        "YWC_C",
+        "YWE_B",
+        "YWF_B",
+        "YWK_B",
+        "YWK_D",
+        "YWL_B",
+        "YWN_B",
+        "YWO_B",
+        "YWP_B"
+      ]
+    }
+  },
+  "claim_boundary": "This audit proves that focal target reads are small enough to acquire selectively. It does not claim exact reproduction of corrected v2 MAGIX peaks until the production design and batch aggregate membership rule, or the official corrected BED files, are available.",
   "config_asset": {
-    "bytes": 1051,
+    "bytes": 1325,
     "path": "configs/codebook_ght_v2_rebuild.json",
-    "sha256": "da9d852bcf14bfd6b1469b3d977bed25e9ca86272d18f2de79ba4754e5e2779d"
+    "sha256": "e783049047d9524edb4bd787a28dc29fe656ae6221e7c8ad7cfd99416983092a"
   },
   "exact_author_v2_rebuild_ready": false,
   "exact_rebuild_blockers": [
-    "The MAGIX production design matrices are not tracked in the public source repository.",
-    "The published workflow fits batch-aggregate covariates; focal target FASTQs alone do not reproduce those aggregate counts or the authors' fitted library-size model.",
+    "The MAGIX production design matrices and batch file lists are not tracked in the public source repository. Supplementary Table 3 exposes batch membership, but the released materials do not state whether production aggregates include every experiment or only approved experiments.",
+    "The published workflow fits batch-aggregate covariates; focal target FASTQs alone do not reproduce those aggregate counts or the authors' fitted library-size model. The two plausible aggregate scopes have materially different acquisition costs and cannot be chosen after inspecting outcomes.",
     "The corrected v2 MAGIX BED archive was unavailable from the Codebook host on the audit date."
   ],
   "magix_source": {
@@ -22,6 +82,13 @@
   },
   "panel": [
     {
+      "batch_keys": [
+        "YWC_C",
+        "YWF_B",
+        "YWL_B",
+        "YWN_B",
+        "YWO_B"
+      ],
       "fastq_file_count": 35,
       "magix_peak_filename": "FLI1_MAGIX_GHT00085_GHT00086_GHT00087_GHT00088_GHT01486.bed",
       "role": "primary",
@@ -378,6 +445,10 @@
       "total_size_bytes": 903788551
     },
     {
+      "batch_keys": [
+        "YWE_B",
+        "YWL_B"
+      ],
       "fastq_file_count": 16,
       "magix_peak_filename": "GABPA_MAGIX_GHT00059_GHT00060.bed",
       "role": "primary",
@@ -540,6 +611,11 @@
       "total_size_bytes": 412887480
     },
     {
+      "batch_keys": [
+        "YWF_B",
+        "YWK_B",
+        "YWK_D"
+      ],
       "fastq_file_count": 24,
       "magix_peak_filename": "GCM1_MAGIX_GHT00206_GHT00207_GHT00849.bed",
       "role": "primary",
@@ -778,6 +854,10 @@
       "total_size_bytes": 632692955
     },
     {
+      "batch_keys": [
+        "YWK_B",
+        "YWK_D"
+      ],
       "fastq_file_count": 16,
       "magix_peak_filename": "PAX7_MAGIX_GHT00160_GHT00161.bed",
       "role": "primary",
@@ -940,6 +1020,9 @@
       "total_size_bytes": 300934681
     },
     {
+      "batch_keys": [
+        "YWP_B"
+      ],
       "fastq_file_count": 6,
       "magix_peak_filename": "RFX5_MAGIX_GHT00291.bed",
       "role": "primary",
@@ -1007,6 +1090,12 @@
       "total_size_bytes": 175861813
     },
     {
+      "batch_keys": [
+        "YWE_B",
+        "YWL_B",
+        "YWN_B",
+        "YWO_B"
+      ],
       "fastq_file_count": 32,
       "magix_peak_filename": "MAX_MAGIX_GHT00107_GHT00108_GHT00109_GHT00110.bed",
       "role": "low_cap_coverage_sensitivity",
@@ -1331,6 +1420,11 @@
       "bytes": 935200,
       "path": "data/codebook/geo_metadata/GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx",
       "sha256": "53bc3221d6975e431129ba1f42d3d432e6a4f34fc69dcfa31b5f8936993e4d52"
+    },
+    {
+      "bytes": 582994,
+      "path": "data/codebook/ght_nature_supplements/41592_2026_3177_MOESM5_ESM.xlsx",
+      "sha256": "89bbbcbaa0187bc94bf613c0b96c97d5b5d6d235502a29e7c079b950560261f3"
     },
     {
       "bytes": 1565679,

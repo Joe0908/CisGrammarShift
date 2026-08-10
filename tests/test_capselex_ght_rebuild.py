@@ -5,7 +5,11 @@ import csv
 import pytest
 from openpyxl import Workbook
 
-from cisgrammar.capselex_ght_rebuild import build_ght_rebuild_audit, read_selected_ght_runs
+from cisgrammar.capselex_ght_rebuild import (
+    build_ght_rebuild_audit,
+    read_ght_experiments,
+    read_selected_ght_runs,
+)
 
 
 def _write_metadata(path) -> None:
@@ -68,6 +72,17 @@ def _write_metadata(path) -> None:
             "MAX_MAGIX_GHT00107.bed",
         ]
     )
+    sheet.append(
+        [
+            None,
+            "Genomic HT-SELEX analysis of TEST target sites, selection Cycle1 Exp. GHT00900_1",
+            "ERR_BG",
+            None,
+            "all.bw",
+            "cycle.bw",
+            None,
+        ]
+    )
     workbook.save(path)
 
 
@@ -78,6 +93,19 @@ def _write_ena(path) -> None:
         writer.writerow(["ERR1", "host/ERR1_1.fastq.gz;host/ERR1_2.fastq.gz", "a;b", "10;11"])
         writer.writerow(["ERR2", "host/ERR2.fastq.gz", "c", "12"])
         writer.writerow(["ERR3", "host/ERR3_1.fastq.gz;host/ERR3_2.fastq.gz", "d;e", "13;14"])
+        writer.writerow(["ERR_BG", "host/ERR_BG.fastq.gz", "f", "15"])
+
+
+def _write_experiment_metadata(path) -> None:
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "TableS3"
+    sheet.append(["UID", "Greco Experiment ID", "TF Id", "Batch ID", "Approved", "Assay"])
+    sheet.append(["GHT00206", "YWK_B_AffSeq_G12_GCM1", "GCM1", "YWK", True, "GHT-SELEX"])
+    sheet.append(["GHT00107", "YWE_B_AffSeq_D11_MAX", "MAX", "YWE", True, "GHT-SELEX"])
+    sheet.append(["GHT00900", "YWK_B_AffSeq_A01_TEST", "TEST", "YWK", False, "GHT-SELEX"])
+    sheet.append(["HTS00001", "YWK_B_HT-SELEX_A01_TEST", "TEST", "YWK", True, "HT-SELEX"])
+    workbook.save(path)
 
 
 def test_selected_runs_follow_final_magix_column(tmp_path) -> None:
@@ -90,11 +118,14 @@ def test_selected_runs_follow_final_magix_column(tmp_path) -> None:
 
 def test_rebuild_audit_freezes_sizes_and_marks_missing_production_design(tmp_path) -> None:
     metadata = tmp_path / "metadata.xlsx"
+    experiment_metadata = tmp_path / "experiment_metadata.xlsx"
     ena = tmp_path / "ena.tsv"
     _write_metadata(metadata)
+    _write_experiment_metadata(experiment_metadata)
     _write_ena(ena)
     report = build_ght_rebuild_audit(
         metadata,
+        experiment_metadata,
         ena,
         primary_tfs=["GCM1"],
         sensitivity_tfs=["MAX"],
@@ -107,6 +138,21 @@ def test_rebuild_audit_freezes_sizes_and_marks_missing_production_design(tmp_pat
     assert report["exact_author_v2_rebuild_ready"] is False
     assert report["panel"][0]["runs"][0]["read_layout"] == "paired"
     assert report["panel"][0]["runs"][1]["read_layout"] == "single"
+    background = report["batch_background_download_scenarios"]["primary_panel"]
+    assert background["batch_keys"] == ["YWK_B"]
+    assert background["all_ght_experiments_in_batches"]["total_size_bytes"] == 48
+    assert background["approved_ght_experiments_only"]["total_size_bytes"] == 33
+
+
+def test_experiment_metadata_distinguishes_batch_suffixes(tmp_path) -> None:
+    path = tmp_path / "experiment_metadata.xlsx"
+    _write_experiment_metadata(path)
+    records = read_ght_experiments(path)
+    assert [(record.experiment_id, record.batch_key, record.approved) for record in records] == [
+        ("GHT00206", "YWK_B", True),
+        ("GHT00107", "YWE_B", True),
+        ("GHT00900", "YWK_B", False),
+    ]
 
 
 def test_selected_runs_require_every_requested_tf(tmp_path) -> None:

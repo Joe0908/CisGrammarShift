@@ -7,6 +7,13 @@
     "size_bytes": 935200,
     "sha256": "53bc3221d6975e431129ba1f42d3d432e6a4f34fc69dcfa31b5f8936993e4d52"
   },
+  "experiment_metadata": {
+    "doi": "10.1038/s41592-026-03177-9",
+    "supplement": "Supplementary Table 3",
+    "filename": "41592_2026_3177_MOESM5_ESM.xlsx",
+    "size_bytes": 582994,
+    "sha256": "89bbbcbaa0187bc94bf613c0b96c97d5b5d6d235502a29e7c079b950560261f3"
+  },
   "ena_filereport": {
     "accession": "PRJEB76622",
     "filename": "PRJEB76622_fastq_filereport_2026-08-10.tsv",

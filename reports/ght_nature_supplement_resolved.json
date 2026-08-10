@@ -1,0 +1,22 @@
+{
+  "article_doi": "10.1038/s41592-026-03177-9",
+  "assets": [
+    {
+      "description": "Supplementary Table 2: experimental batch-specific protocol details",
+      "filename": "41592_2026_3177_MOESM4_ESM.xlsx",
+      "sha256": "da51080358063782a6d062e2fde008235a2ecb9c7305ab296609a4dcbfa1eb2d",
+      "sha256_source": "manifest",
+      "size_bytes": 15855,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03177-9/MediaObjects/41592_2026_3177_MOESM4_ESM.xlsx"
+    },
+    {
+      "description": "Supplementary Table 3: GHT-SELEX experiment metadata",
+      "filename": "41592_2026_3177_MOESM5_ESM.xlsx",
+      "sha256": "89bbbcbaa0187bc94bf613c0b96c97d5b5d6d235502a29e7c079b950560261f3",
+      "sha256_source": "manifest",
+      "size_bytes": 582994,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03177-9/MediaObjects/41592_2026_3177_MOESM5_ESM.xlsx"
+    }
+  ],
+  "schema_version": "public_asset_manifest_v1"
+}

@@ -23,6 +23,7 @@ def main() -> None:
         description="Freeze focal GHT target FASTQs and audit exact MAGIX v2 rebuild readiness"
     )
     parser.add_argument("--metadata", type=Path, required=True)
+    parser.add_argument("--experiment-metadata", type=Path, required=True)
     parser.add_argument("--ena-report", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -30,10 +31,12 @@ def main() -> None:
 
     config = json.loads(args.config.read_text(encoding="utf-8"))
     verify_frozen_asset(args.metadata, config["metadata"])
+    verify_frozen_asset(args.experiment_metadata, config["experiment_metadata"])
     verify_frozen_asset(args.ena_report, config["ena_filereport"])
 
     report = build_ght_rebuild_audit(
         args.metadata,
+        args.experiment_metadata,
         args.ena_report,
         config["primary_tfs"],
         config["sensitivity_tfs"],

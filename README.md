@@ -100,6 +100,12 @@ python scripts/download_manifest.py \
   --manifest configs/codebook_geo_metadata_manifest.json \
   --output-directory data/codebook/geo_metadata
 
+# Download the formal GHT paper's batch protocol and experiment metadata tables
+python scripts/download_manifest.py \
+  --manifest configs/ght_nature_supplement_manifest.json \
+  --output-directory data/codebook/ght_nature_supplements \
+  --resolved-manifest reports/ght_nature_supplement_resolved.json
+
 # Smoke test only: extract and audit the frozen pre-v2 GEO MAGIX panel
 python scripts/audit_codebook_magix.py \
   --config configs/codebook_geo_v1_magix_panel.json \
@@ -116,6 +122,7 @@ curl -L --fail \
 python scripts/audit_codebook_ght_rebuild.py \
   --config configs/codebook_ght_v2_rebuild.json \
   --metadata data/codebook/geo_metadata/GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx \
+  --experiment-metadata data/codebook/ght_nature_supplements/41592_2026_3177_MOESM5_ESM.xlsx \
   --ena-report data/codebook/ena_metadata/PRJEB76622_fastq_filereport_2026-08-10.tsv \
   --output reports/codebook_ght_v2_rebuild_audit.json
 
@@ -218,10 +225,12 @@ manuscript primary results.
 
 Selective raw-data acquisition is feasible: the exact target FASTQs linked to the five primary author
 MAGIX sets total 2.260 GiB; adding MAX totals 2.896 GiB. This is not yet an exact v2 rebuild. The released
-MAGIX production workflow uses batch-aggregate covariates, but its production design matrices are not in
-the public source tree, and the corrected Codebook v2 BED archive was unavailable during the 2026-08-10
-audit. The repository therefore freezes all focal run URLs, ENA MD5 checksums and byte sizes while keeping
-`exact_author_v2_rebuild_ready=false`; it does not replace the missing design with an easier model.
+MAGIX production workflow uses batch-aggregate covariates. Supplementary Table 3 now resolves the nine
+relevant batch identifiers, but neither the public source tree nor the paper freezes whether those aggregate
+lists contained all experiments (79.476 GiB for the relevant batches) or approved experiments only
+(26.870 GiB). The corrected Codebook v2 BED archive was also unavailable during the 2026-08-10 audit. The
+repository therefore keeps `exact_author_v2_rebuild_ready=false`; it does not choose the cheaper aggregate
+definition or replace the missing production design with an easier model.
 
 The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
 `log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and

@@ -78,8 +78,9 @@ because a GHT-only universe cannot by construction estimate that class.
 
 MAGIX is now public under GPL-3.0 at `csglab/MAGIX`; the audit pins commit
 `bc800e825d19686aa5b73f3090d1eb31dddabbd3` and the authors' Zenodo v1.0.1 DOI. The corrected GEO workbook
-identifies the exact runs that contributed to each published merged MAGIX peak set. Joining those runs to
-the ENA `PRJEB76622` file report gives the following selective download sizes:
+identifies the exact runs that contributed to each published merged MAGIX peak set. The formal paper's
+Supplementary Table 3 independently supplies experiment approval and batch membership. Joining these tables
+to the ENA `PRJEB76622` file report gives the following selective target-read download sizes:
 
 | TF | Role | Runs | FASTQs | Compressed size (GiB) |
 |---|---|---:|---:|---:|
@@ -93,9 +94,12 @@ the ENA `PRJEB76622` file report gives the following selective download sizes:
 Thus, focal target FASTQs are not the storage bottleneck: primary files total 2.260 GiB, or 2.896 GiB with
 MAX. Exact reproduction is nevertheless not declared ready. The public production scripts fit
 batch-aggregate covariates and a genome-wide library-size model over approximately 13 million 200-bp bins;
-they request 100 GB RAM for that step. The production design matrices and batch aggregate inputs are not
-tracked in the MAGIX source repository. Until those inputs or the official corrected v2 BED files are
-available, focal-only refitting would change the published model and is forbidden for the primary paper.
+they request 100 GB RAM for that step. The nine batches containing the primary focal experiments contain
+79.476 GiB of all GHT experiment FASTQs, or 26.870 GiB if restricted to approved experiments. The production
+design matrices and file lists are not tracked in the MAGIX source repository, and the released methods do
+not disambiguate these two aggregate membership rules. Until that rule or the official corrected v2 BED
+files are available, focal-only refitting would change the published model and is forbidden for the primary
+paper.
 
 `configs/codebook_ght_v2_rebuild.json` freezes the source versions, and
 `reports/codebook_ght_v2_rebuild_audit.json` records all selected ERR accessions, per-file ENA URLs, MD5s,

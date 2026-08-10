@@ -61,7 +61,9 @@ Primary GHT-only counts have not yet been calculated.
 The raw-data fallback has been narrowed without weakening the contract. Author-selected focal target
 FASTQs total 2.260 GiB for the primary five-TF panel (2.896 GiB including MAX), but an exact corrected-v2
 MAGIX rebuild still needs production design/batch-aggregate inputs absent from the accessible public source
-snapshot, or the official v2 BED files. The public production scripts require a roughly 13-million-bin
+snapshot, or the official v2 BED files. Supplementary Table 3 resolves the nine focal batch identifiers, but
+the production file lists do not state whether aggregates contain all batch experiments (79.476 GiB) or only
+approved experiments (26.870 GiB). The public production scripts require a roughly 13-million-bin
 library-size fit and request 100 GB RAM. A focal-only substitute would be a different model and is not
 accepted as primary evidence.
 
