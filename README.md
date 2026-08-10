@@ -86,7 +86,10 @@ claim now requires a time-matched motif or partner perturbation rather than addi
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[dev,ml]"  # full tests and synthetic training
+
+# For CAP/GHT/ChIP data processing only, the lightweight core is sufficient:
+# python -m pip install -e .
 
 # Freeze the non-circular contract
 cisgrammar capselex contract --output results/capselex/analysis_contract.json

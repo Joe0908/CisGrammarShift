@@ -223,7 +223,14 @@ def _run_capselex(args: argparse.Namespace) -> None:
 def main() -> None:
     args = build_parser().parse_args()
     if args.command == "run":
-        from cisgrammar.experiment import run_experiment
+        try:
+            from cisgrammar.experiment import run_experiment
+        except ModuleNotFoundError as error:
+            if error.name == "torch":
+                raise SystemExit(
+                    'synthetic model training requires the ML extra: pip install -e ".[ml]"'
+                ) from error
+            raise
 
         run_experiment(args.config, args.output, requested_device=args.device)
     elif args.command == "capselex":
