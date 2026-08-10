@@ -1,0 +1,31 @@
+{
+  "schema_version": "public_asset_manifest_v1",
+  "source": {
+    "doi": "10.5281/zenodo.15667805",
+    "record_url": "https://zenodo.org/records/15667805",
+    "title": "Codebook Motif Explorer Supplementary Dataset"
+  },
+  "assets": [
+    {
+      "filename": "README",
+      "url": "https://zenodo.org/api/records/15667805/files/README/content",
+      "size_bytes": 4199,
+      "sha256": "20a33b01618b76d260fc5071d4fa745a94f49b2647977d85a3da7e2804336914",
+      "zenodo_md5": "3646815063fa54186f5c96b47f4d324b"
+    },
+    {
+      "filename": "MEX_top1.zip",
+      "url": "https://zenodo.org/api/records/15667805/files/MEX_top1.zip/content",
+      "size_bytes": 211605,
+      "sha256": "461857182b6683a837052d05dca5ce2737e2abc56c67bd71a8d2d2884dd5ef15",
+      "zenodo_md5": "4fcdbe10b3c37e7b87f20e6c54af0536"
+    },
+    {
+      "filename": "metadata_complete_motif.zip",
+      "url": "https://zenodo.org/api/records/15667805/files/metadata_complete_motif.zip/content",
+      "size_bytes": 2576614,
+      "sha256": "06e3f7226aca3af18aca475977bfa73e8a26cf27ce6d3653f538b5d529dbd339",
+      "zenodo_md5": "b7e3b686a9592c85730acabcb214b645"
+    }
+  ]
+}

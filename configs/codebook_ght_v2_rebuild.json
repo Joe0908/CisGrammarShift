@@ -1,0 +1,32 @@
+{
+  "schema_version": "codebook_ght_v2_rebuild_config_v1",
+  "audit_date": "2026-08-10",
+  "metadata": {
+    "accession": "GSE278858",
+    "filename": "GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx",
+    "size_bytes": 935200,
+    "sha256": "53bc3221d6975e431129ba1f42d3d432e6a4f34fc69dcfa31b5f8936993e4d52"
+  },
+  "ena_filereport": {
+    "accession": "PRJEB76622",
+    "filename": "PRJEB76622_fastq_filereport_2026-08-10.tsv",
+    "url": "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB76622&result=read_run&fields=run_accession,experiment_title,fastq_ftp,fastq_md5,fastq_bytes&format=tsv&limit=0",
+    "size_bytes": 1565679,
+    "sha256": "171b37bb9b87fe6a162659a94986a36c22040c0f9e650b4505328a918017f003"
+  },
+  "primary_tfs": [
+    "FLI1",
+    "GABPA",
+    "GCM1",
+    "PAX7",
+    "RFX5"
+  ],
+  "sensitivity_tfs": [
+    "MAX"
+  ],
+  "magix": {
+    "repository": "https://github.com/csglab/MAGIX",
+    "commit": "bc800e825d19686aa5b73f3090d1eb31dddabbd3",
+    "release_doi": "10.5281/zenodo.20846978"
+  }
+}

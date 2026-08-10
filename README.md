@@ -108,6 +108,17 @@ python scripts/audit_codebook_magix.py \
   --extraction-directory data/codebook/geo_peaks/focal_magix \
   --output reports/codebook_geo_v1_magix_asset_audit.json
 
+# Freeze the exact author-selected focal GHT runs and audit v2 rebuild readiness
+curl -L --fail \
+  'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB76622&result=read_run&fields=run_accession,experiment_title,fastq_ftp,fastq_md5,fastq_bytes&format=tsv&limit=0' \
+  -o data/codebook/ena_metadata/PRJEB76622_fastq_filereport_2026-08-10.tsv
+
+python scripts/audit_codebook_ght_rebuild.py \
+  --config configs/codebook_ght_v2_rebuild.json \
+  --metadata data/codebook/geo_metadata/GSE278858_PRJEB76622_GHT-SELEX_GEO_Fix_with_sra_accessions28012026.xlsx \
+  --ena-report data/codebook/ena_metadata/PRJEB76622_fastq_filereport_2026-08-10.tsv \
+  --output reports/codebook_ght_v2_rebuild_audit.json
+
 # Download and cross-audit the official CAP-SELEX interaction/PWM/spacing supplements
 python scripts/download_manifest.py \
   --manifest configs/capselex_nature_supplement_manifest.json \
@@ -120,6 +131,14 @@ python scripts/audit_capselex_nature_supplements.py \
   --pwm-table data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx \
   --spacing-table data/capselex/nature_supplements/41586_2025_8844_MOESM9_ESM.xlsx \
   --output reports/capselex_nature_supplement_audit.json
+
+# Freeze focal and partner monomer controls from held-out-ranked MEX, CAP HT-SELEX and JASPAR 2024
+python scripts/audit_monomer_pwm_panel.py \
+  --mex-top1 data/codebook/zenodo_pwm/MEX_top1.zip \
+  --jaspar data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt \
+  --cap-pwm-table data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx \
+  --cap-audit reports/capselex_nature_supplement_audit.json \
+  --output reports/monomer_pwm_panel_audit.json
 
 # Resolve and download only 12 Toronto GPZN ChIP bigWigs (six TFs x two replicates)
 python scripts/download_manifest.py \
@@ -196,6 +215,13 @@ For MAGIX input, the frozen primary rule is Benjamini-Hochberg FDR <= 0.05 and a
 `coefficient.ar`. The manifest records both choices. The public GEO GSE278858 BED archive is useful for a
 fully checksummed smoke test, but predates the revised Codebook v2 MAGIX release and is not accepted for
 manuscript primary results.
+
+Selective raw-data acquisition is feasible: the exact target FASTQs linked to the five primary author
+MAGIX sets total 2.260 GiB; adding MAX totals 2.896 GiB. This is not yet an exact v2 rebuild. The released
+MAGIX production workflow uses batch-aggregate covariates, but its production design matrices are not in
+the public source tree, and the corrected Codebook v2 BED archive was unavailable during the 2026-08-10
+audit. The repository therefore freezes all focal run URLs, ENA MD5 checksums and byte sizes while keeping
+`exact_author_v2_rebuild_ready=false`; it does not replace the missing design with an easier model.
 
 The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
 `log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and

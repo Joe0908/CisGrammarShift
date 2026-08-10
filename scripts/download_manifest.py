@@ -9,21 +9,29 @@ import urllib.request
 from pathlib import Path
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
+def file_digest(path: Path, algorithm: str) -> str:
+    digest = hashlib.new(algorithm)
     with path.open("rb") as handle:
         while chunk := handle.read(1024 * 1024):
             digest.update(chunk)
     return digest.hexdigest()
 
 
+def sha256(path: Path) -> str:
+    return file_digest(path, "sha256")
+
+
 def download_asset(record: dict[str, object], output_directory: Path) -> dict[str, object]:
     destination = output_directory / str(record["filename"])
     expected_size = int(record["size_bytes"]) if record.get("size_bytes") else None
     expected_sha256 = str(record["sha256"]) if record.get("sha256") else None
+    expected_md5_value = record.get("md5") or record.get("zenodo_md5")
+    expected_md5 = str(expected_md5_value) if expected_md5_value else None
     complete = destination.exists() and (expected_size is None or destination.stat().st_size == expected_size)
     if complete and expected_sha256 is not None:
         complete = sha256(destination) == expected_sha256
+    if complete and expected_md5 is not None:
+        complete = file_digest(destination, "md5") == expected_md5
 
     if not complete:
         temporary = destination.with_suffix(destination.suffix + ".part")
@@ -48,14 +56,21 @@ def download_asset(record: dict[str, object], output_directory: Path) -> dict[st
     observed = sha256(destination)
     if expected_sha256 is not None and observed != expected_sha256:
         raise RuntimeError(f"checksum mismatch for {destination}")
+    observed_md5 = file_digest(destination, "md5") if expected_md5 is not None else None
+    if expected_md5 is not None and observed_md5 != expected_md5:
+        raise RuntimeError(f"MD5 checksum mismatch for {destination}")
     if expected_size is not None and destination.stat().st_size != expected_size:
         raise RuntimeError(f"size mismatch for {destination}")
-    return {
+    resolved = {
         **record,
         "size_bytes": destination.stat().st_size,
         "sha256": observed,
         "sha256_source": "manifest" if expected_sha256 else "computed_after_download",
     }
+    if observed_md5 is not None:
+        resolved["md5"] = observed_md5
+        resolved["md5_source"] = "manifest"
+    return resolved
 
 
 def main() -> None:

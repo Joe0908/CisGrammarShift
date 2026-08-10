@@ -62,10 +62,10 @@
         "BARHL1",
         "BARHL2",
         "BHLHA15",
-        "BHLHB2",
         "BHLHB5",
         "BHLHB8",
         "BHLHE22",
+        "BHLHE40",
         "BSX",
         "CDX1",
         "CEBPB",
@@ -216,9 +216,9 @@
         "VSX1",
         "VSX2",
         "XBP1",
+        "ZBTB18",
         "ZBTB20",
-        "ZBTB7A",
-        "ZNF238"
+        "ZBTB7A"
       ],
       "primary_eligibility_note": "Raw CAP coverage only; partner expression, monomer controls and the frozen feature-selection rule must be checked separately.",
       "primary_eligible": null,
@@ -229,8 +229,8 @@
       "representative_pwm_pairs": [
         "ATF2_FLI1",
         "BARHL2_FLI1",
-        "BHLHB2_FLI1",
         "BHLHE22_FLI1",
+        "BHLHE40_FLI1",
         "CREB1_FLI1",
         "CUX1_FLI1",
         "EGR1_FLI1",
@@ -256,9 +256,9 @@
         "SIX4_FLI1",
         "SREBF2_FLI1",
         "TFAP4_FLI1",
+        "ZBTB18_FLI1",
         "ZBTB20_FLI1",
-        "ZBTB7A_FLI1",
-        "ZNF238_FLI1"
+        "ZBTB7A_FLI1"
       ],
       "spacing_count_pairs": 85,
       "spacing_count_rows": 272,

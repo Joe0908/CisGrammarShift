@@ -16,6 +16,8 @@ TF_ALIASES = {
     "RFXDC2": "RFX7",
     "RXF5": "RFX5",
     "POU5F1B": "POU5F1",
+    "BHLHB2": "BHLHE40",
+    "ZNF238": "ZBTB18",
 }
 
 AUTOSOMES = tuple(f"chr{i}" for i in range(1, 23))

@@ -51,9 +51,19 @@ The official Nature supplements are now checksummed and parsed directly. Across 
 panel, the audit found 171, 45, 25, 6, 12 and 15 positive directed pairs for FLI1, GABPA, GCM1, MAX, PAX7
 and RFX5, respectively. Every focal TF has raw CAP feature assets. This is a coverage statement only;
 partner expression, monomer controls and the frozen feature-selection rule determine model eligibility.
+All six focal monomer controls are available from the held-out-ranked Codebook MEX top-1 archive. Frozen
+partner controls cover every representative pair except ZBTB20–FLI1; that single profile is excluded before
+outcome analysis rather than scored without its matched monomer control.
 
 The reported historical universe contains 1,204,394 loci, of which 1,035,968 belong to the five-TF panel.
 Primary GHT-only counts have not yet been calculated.
+
+The raw-data fallback has been narrowed without weakening the contract. Author-selected focal target
+FASTQs total 2.260 GiB for the primary five-TF panel (2.896 GiB including MAX), but an exact corrected-v2
+MAGIX rebuild still needs production design/batch-aggregate inputs absent from the accessible public source
+snapshot, or the official v2 BED files. The public production scripts require a roughly 13-million-bin
+library-size fit and request 100 GB RAM. A focal-only substitute would be a different model and is not
+accepted as primary evidence.
 
 ## Historical result requiring primary rerun
 

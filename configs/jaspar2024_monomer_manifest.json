@@ -1,0 +1,16 @@
+{
+  "schema_version": "public_asset_manifest_v1",
+  "source": {
+    "release": "JASPAR 2024",
+    "collection": "CORE vertebrates non-redundant",
+    "release_url": "https://jaspar2024.elixir.no/"
+  },
+  "assets": [
+    {
+      "filename": "JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt",
+      "url": "https://jaspar2024.elixir.no/download/data/2024/CORE/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt",
+      "size_bytes": 283814,
+      "sha256": "2a6c7c24afb0614ed418c9f02b68845adebf38f80f6cebabbcd5de804eaacb59"
+    }
+  ]
+}

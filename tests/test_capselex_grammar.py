@@ -5,7 +5,15 @@ import pandas as pd
 
 from cisgrammar.capselex_grammar_calibration import build_ets_grammar_score, cross_fitted_residualize
 from cisgrammar.capselex_grammar_scoring import GrammarProfile, binned_monomer_residuals, scan_grammar
-from cisgrammar.capselex_monomer_motifs import PWM, maximum_pwm_score, scan_pwm
+from cisgrammar.capselex_monomer_motifs import (
+    PWM,
+    maximum_pwm_score,
+    pwm_consensus,
+    pwm_information_bits,
+    read_jaspar_collection,
+    read_mex_top1_archive,
+    scan_pwm,
+)
 
 
 def deterministic_pwm(name: str, motif: str) -> PWM:
@@ -29,6 +37,35 @@ def test_grammar_prefers_specified_gap() -> None:
     good = scan_grammar("GGGAAATTCCCGGG", profile)
     bad = scan_grammar("GGGAAATTTTCCCG", profile)
     assert good > bad
+
+
+def test_read_monomer_pwm_archives(tmp_path) -> None:
+    import zipfile
+
+    mex = tmp_path / "top1.zip"
+    with zipfile.ZipFile(mex, "w") as archive:
+        archive.writestr(
+            "GCM1.NA@PBM@test.pcm",
+            ">GCM1.NA@PBM@test\n10 0 0 0\n0 10 0 0\n0 0 10 0\n0 0 0 10\n",
+        )
+    mex_records = read_mex_top1_archive(mex)
+    assert mex_records[0].symbol == "GCM1"
+    assert pwm_consensus(mex_records[0].pwm) == "ACGT"
+    assert pwm_information_bits(mex_records[0].pwm) > 7.9
+
+    jaspar = tmp_path / "jaspar.txt"
+    jaspar.write_text(
+        ">MA0001.1 GCM1\n"
+        "A [10 0]\n"
+        "C [0 10]\n"
+        "G [0 0]\n"
+        "T [0 0]\n",
+        encoding="utf-8",
+    )
+    jaspar_records = read_jaspar_collection(jaspar)
+    assert jaspar_records[0].source_id == "MA0001.1"
+    assert jaspar_records[0].symbol == "GCM1"
+    assert pwm_consensus(jaspar_records[0].pwm) == "AC"
 
 
 def test_training_only_residualization_removes_bin_mean() -> None:

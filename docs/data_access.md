@@ -30,6 +30,14 @@ matrix pairs have a Table 3 PWM and all 1,336 spacing-positive pairs have Table 
 matrix contains 2,223 positive directed cells. That literal table-cell count is not silently substituted for
 the paper's separately reported, deduplicated headline count.
 
+Focal monomer PWMs come from the Codebook Motif Explorer top-1 set archived at Zenodo record `15667805`;
+these models were ranked using held-out assay data. Partner controls use the same source when available,
+then individual HT-SELEX PWMs in CAP Supplementary Table 3, then the frozen JASPAR 2024 CORE vertebrate
+non-redundant release. The resulting representative-profile partner coverage is audited before sequence
+scoring; no ChIP outcome is used to choose a monomer model.
+The only uncovered representative partner is ZBTB20 in ZBTB20–FLI1. That CAP profile is excluded by the
+frozen contract; it is not assigned an inferred or outcome-selected surrogate motif.
+
 ## Avoiding the 175.39-GB ChIP archive
 
 The monolithic Codebook merged-bigWig archive is unnecessary. GEO `GSE280248` provides Toronto-processed
@@ -65,6 +73,33 @@ outcome-independent rule:
 This primary universe estimates the incremental CAP grammar association among loci with supported intrinsic
 GHT binding. The `fixed-genome` sensitivity is required to address GHT-negative/ChIP-positive targeting,
 because a GHT-only universe cannot by construction estimate that class.
+
+### Corrected-v2 recovery audit
+
+MAGIX is now public under GPL-3.0 at `csglab/MAGIX`; the audit pins commit
+`bc800e825d19686aa5b73f3090d1eb31dddabbd3` and the authors' Zenodo v1.0.1 DOI. The corrected GEO workbook
+identifies the exact runs that contributed to each published merged MAGIX peak set. Joining those runs to
+the ENA `PRJEB76622` file report gives the following selective download sizes:
+
+| TF | Role | Runs | FASTQs | Compressed size (GiB) |
+|---|---|---:|---:|---:|
+| FLI1 | primary | 19 | 35 | 0.842 |
+| GABPA | primary | 8 | 16 | 0.385 |
+| GCM1 | primary | 12 | 24 | 0.589 |
+| PAX7 | primary | 8 | 16 | 0.280 |
+| RFX5 | primary | 3 | 6 | 0.164 |
+| MAX | sensitivity | 16 | 32 | 0.636 |
+
+Thus, focal target FASTQs are not the storage bottleneck: primary files total 2.260 GiB, or 2.896 GiB with
+MAX. Exact reproduction is nevertheless not declared ready. The public production scripts fit
+batch-aggregate covariates and a genome-wide library-size model over approximately 13 million 200-bp bins;
+they request 100 GB RAM for that step. The production design matrices and batch aggregate inputs are not
+tracked in the MAGIX source repository. Until those inputs or the official corrected v2 BED files are
+available, focal-only refitting would change the published model and is forbidden for the primary paper.
+
+`configs/codebook_ght_v2_rebuild.json` freezes the source versions, and
+`reports/codebook_ght_v2_rebuild_audit.json` records all selected ERR accessions, per-file ENA URLs, MD5s,
+byte sizes, and the unresolved exact-rebuild boundary.
 
 ## Primary whitelist
 

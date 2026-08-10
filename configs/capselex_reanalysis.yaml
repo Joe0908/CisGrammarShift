@@ -8,6 +8,7 @@ contract:
   primary_locus_universe: ght-only
   primary_ght_asset_version: codebook-v2
   primary_ght_format: magix
+  primary_ght_magix_source_commit: bc800e825d19686aa5b73f3090d1eb31dddabbd3
   primary_ght_fdr_max: 0.05
   primary_ght_require_positive_refined_coefficient: true
   primary_chip_pipeline: Toronto_GPZN
@@ -20,6 +21,10 @@ contract:
   primary_partial_r2: 0.005
   minimum_positive_focal_tfs: 4
   promoter_half_width_bp: 2000
+  cap_pwm_subset: author_representative
+  require_focal_and_partner_monomer_pwm: true
+  missing_monomer_action: exclude_cap_profile_before_outcome_analysis
+  monomer_source_priority: [codebook_mex_top1, cap_individual_htselex, jaspar2024_core]
 
 primary_panel:
   focal_tfs: [FLI1, GABPA, GCM1, PAX7, RFX5]
