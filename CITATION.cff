@@ -1,17 +1,20 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using this metadata."
-title: "CisGrammarShift: a counterfactual benchmark for cis-regulatory grammar"
+title: "CisGrammarShift: intrinsic specificity and cooperative DNA grammar in genomic targeting"
 type: software
 authors:
   - family-names: Tao
     given-names: Yuqi
-repository-code: "https://github.com/Joe0908/DL-on-DNA-seq"
+repository-code: "https://github.com/Joe0908/CisGrammarShift"
 license: MIT
-version: 0.1.0
-date-released: 2026-07-25
+version: 0.2.0
+date-released: 2026-08-10
 keywords:
   - cis-regulatory grammar
   - transcription factors
-  - deep learning
+  - CAP-SELEX
+  - GHT-SELEX
+  - ChIP-seq
+  - transcription-factor cooperativity
   - genomics
   - distribution shift

@@ -1,0 +1,37 @@
+schema_version: capselex_reanalysis_v1
+seed: 20260809
+
+contract:
+  locus_width_bp: 200
+  sequence_context_bp: 400
+  chromosome_folds: 5
+  grammar_permutations: 100
+  primary_partial_r2: 0.005
+  minimum_positive_focal_tfs: 4
+  promoter_half_width_bp: 2000
+
+primary_panel:
+  focal_tfs: [FLI1, GABPA, GCM1, PAX7, RFX5]
+  cap_null_control: MAX
+  outcome: mean_log1p_merged_chip_bigwig
+  intrinsic: continuous_ght_magix
+  chromatin: hek293t_dnase_proxy
+  split: chromosome
+
+independent_validation:
+  focal_tf: GCM1
+  states: [EVT, ST]
+  external_chip: GSE244252
+  h3k4me3_hichip: GSE244253
+  knockout_rna: GSE244254
+  deseq2:
+    r: 4.2.2
+    package: 1.36.0
+    contrast: GCM1_KO_vs_WT
+
+forbidden_primary_assets:
+  - TOPs
+  - CTOPs
+  - MOODS_Triple_Optimized
+  - Peaks_Triple_Optimized
+  - Peaks_Triple_Overlap

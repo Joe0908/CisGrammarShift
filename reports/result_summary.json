@@ -1,0 +1,36 @@
+{
+  "schema_version": "cisgrammarshift_result_summary_v1",
+  "primary_codebook": {
+    "focal_tfs": ["FLI1", "GABPA", "GCM1", "PAX7", "RFX5"],
+    "panel_loci": 1035968,
+    "partial_r2": 0.02030,
+    "chromosome_block_95_interval": [0.01924, 0.02131],
+    "empirical_p": 0.009900990099009901,
+    "binned_monomer_partial_r2": 0.01914,
+    "composite_only_partial_r2": 0.01999,
+    "spacing_only_partial_r2": 0.00060
+  },
+  "independent_gcm1_occupancy": {
+    "EVT": {"partial_r2": 0.001532, "binned_monomer_partial_r2": 0.001538},
+    "ST": {"partial_r2": 0.001759, "binned_monomer_partial_r2": 0.001493}
+  },
+  "continuous_function": {
+    "software": {"r": "4.2.2", "deseq2": "1.36.0"},
+    "EVT": {
+      "linked_genes": 14705,
+      "m0_mse": 1.9771027097459704,
+      "m1_mse": 1.977575310866389,
+      "partial_r2": -0.0002390372124264226,
+      "positive_coefficient_folds": 1
+    },
+    "ST": {
+      "linked_genes": 14631,
+      "m0_mse": 3.243475985507973,
+      "m1_mse": 3.2449693118315692,
+      "partial_r2": -0.0004604092431293986,
+      "positive_coefficient_folds": 2
+    }
+  },
+  "supported_claim": "incremental genomic occupancy association",
+  "unsupported_claim": "GCM1-dependent transcriptional causality"
+}

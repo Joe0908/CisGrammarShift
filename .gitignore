@@ -5,8 +5,10 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .venv/
+.runtime-build/
 build/
 dist/
+data/
 results/
 *.pth
 *.pt
