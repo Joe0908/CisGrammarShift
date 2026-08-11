@@ -169,6 +169,12 @@ def main() -> None:
     result = pd.concat([loci, sequence_features, pwm_features], axis=1)
 
     chip_assets = _chip_assets(args.chip_resolved_manifest, args.chip_directory, args.focal_tf)
+    chip_manifest = json.loads(
+        args.chip_resolved_manifest.read_text(encoding="utf-8")
+    )
+    chip_pipeline = str(
+        chip_manifest.get("processing_pipeline", "unspecified_ChIP_pipeline")
+    )
     result = add_bigwig_signal(result, chip_assets[0][0], "chip_rep1")
     result = add_bigwig_signal(result, chip_assets[1][0], "chip_rep2")
     result["chip_rep1_log1p"] = np.log1p(result["chip_rep1"])
@@ -193,7 +199,10 @@ def main() -> None:
         "ght_score_aggregation": (
             "maximum positive coefficient.ar per fixed 200-bp tile; ties resolved by FDR then p-value"
         ),
-        "chip_outcome": "mean of replicate-specific log1p exact 200-bp mean GPZN signal",
+        "chip_outcome": (
+            "mean of replicate-specific log1p exact 200-bp mean "
+            f"{chip_pipeline} signal"
+        ),
         "chip_replicates": [
             {
                 "replicate": record["replicate"],

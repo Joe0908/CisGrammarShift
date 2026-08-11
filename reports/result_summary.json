@@ -1,7 +1,7 @@
 {
-  "schema_version": "cisgrammarshift_result_summary_v4",
+  "schema_version": "cisgrammarshift_result_summary_v5",
   "manuscript_ready": false,
-  "audit_status": "official Codebook v2 primary and frozen TGIF2-GCM1 external-context screening complete; both positive-claim gates failed",
+  "audit_status": "official Codebook v2 GHT-only primary with McGill GPHN, no-retuning Toronto GPZN processing sensitivity, and frozen TGIF2-GCM1 external-context screening complete; both positive-claim gates failed",
   "codebook_v2_primary_assets": {
     "status": "eligible",
     "release": "codebook-v2-web-2026-08-10",
@@ -18,7 +18,12 @@
   "primary_screening": {
     "analysis_status": "100-permutation screening",
     "locus_universe": "official Codebook v2 GHT-only fixed 200-bp tiles",
-    "primary_focal_tfs": ["FLI1", "GABPA", "GCM1", "RFX5"],
+    "primary_focal_tfs": [
+      "FLI1",
+      "GABPA",
+      "GCM1",
+      "RFX5"
+    ],
     "partner_availability_negative_control": "PAX7",
     "low_cap_coverage_sensitivity": "MAX",
     "effect_threshold_partial_r2": 0.005,
@@ -29,74 +34,136 @@
       "FLI1": {
         "expression_supported_pairs": 16,
         "mapped_loci": 50060,
-        "partial_r2": 0.010678814582767537,
-        "chromosome_bootstrap_95_interval": [0.009111437371688496, 0.012230814355843219],
+        "partial_r2": 0.011212831409487367,
+        "chromosome_bootstrap_95_interval": [
+          0.009461408405317367,
+          0.01286855446608673
+        ],
         "empirical_p": 0.009900990099009901,
-        "replicate_partial_r2": [0.005943771549913879, 0.013159491936401979],
+        "replicate_partial_r2": [
+          0.006122081353485576,
+          0.015333595493352115
+        ],
         "passed": true
       },
       "GABPA": {
         "expression_supported_pairs": 4,
         "mapped_loci": 5041,
-        "partial_r2": 0.0028808874709009835,
-        "chromosome_bootstrap_95_interval": [0.0003537384336617433, 0.005567700335576621],
+        "partial_r2": 0.00466572900242046,
+        "chromosome_bootstrap_95_interval": [
+          0.001177429962015375,
+          0.008198977398672787
+        ],
         "empirical_p": 0.009900990099009901,
-        "replicate_partial_r2": [0.004630452172978972, 0.00046178895363924166],
+        "replicate_partial_r2": [
+          0.004285757351915831,
+          0.0022683060878739836
+        ],
         "passed": false
       },
       "GCM1": {
         "expression_supported_pairs": 4,
         "mapped_loci": 19369,
-        "partial_r2": 0.0038257262009214754,
-        "chromosome_bootstrap_95_interval": [0.001804420971074569, 0.0054778589798053804],
+        "partial_r2": 0.00449696457797788,
+        "chromosome_bootstrap_95_interval": [
+          0.0022534965075151903,
+          0.006311872297583998
+        ],
         "empirical_p": 0.009900990099009901,
-        "replicate_partial_r2": [0.0026025334573532843, 0.004387646213410035],
-        "composite_branch_partial_r2": 0.00936835130493019,
-        "spacing_branch_partial_r2": 0.00003094501269162997,
-        "passed": false
+        "replicate_partial_r2": [
+          0.003289499137688612,
+          0.005386128927201139
+        ],
+        "passed": false,
+        "composite_branch_partial_r2": 0.010568023555618256,
+        "spacing_branch_partial_r2": 0.00010227752014824176
       },
       "RFX5": {
         "expression_supported_pairs": 3,
         "mapped_loci": 38701,
-        "partial_r2": 0.0011904879651387645,
-        "chromosome_bootstrap_95_interval": [0.00044242920077654235, 0.0021499094531237826],
+        "partial_r2": 0.0014227746482429193,
+        "chromosome_bootstrap_95_interval": [
+          0.0007289176054081137,
+          0.0022651496124472034
+        ],
         "empirical_p": 0.009900990099009901,
-        "replicate_partial_r2": [0.0013931847448467316, 0.0004678715104818876],
+        "replicate_partial_r2": [
+          0.0014084308448529814,
+          0.0010427400719964508
+        ],
         "passed": false
       }
     },
-    "interpretation": "All four primary TFs had positive mean-outcome increments, but only FLI1 exceeded the predeclared effect-size threshold; statistical stability at large n is not sufficient for the panel claim."
+    "interpretation": "All four primary TFs had positive mean-outcome increments, but only FLI1 exceeded the predeclared effect-size threshold; statistical stability at large n is not sufficient for the panel claim.",
+    "chip_processing_pipeline": "McGill_GPHN_only",
+    "processing_pipeline_sensitivity": "Toronto_GPZN_only_no_retuning",
+    "max_sensitivity": {
+      "expression_supported_pairs": 1,
+      "mapped_loci": 71255,
+      "partial_r2": 0.0030053021785000356,
+      "chromosome_bootstrap_95_interval": [
+        0.0018951001629689435,
+        0.004085817876200165
+      ],
+      "empirical_p": 0.009900990099009901,
+      "replicate_partial_r2": [
+        0.004221873733301518,
+        0.0005313838823701733
+      ],
+      "passed": false
+    }
   },
   "legacy_codebook": {
     "result_status": "legacy sensitivity only",
     "locus_universe": "legacy-assay-union",
-    "focal_tfs": ["FLI1", "GABPA", "GCM1", "PAX7", "RFX5"],
+    "focal_tfs": [
+      "FLI1",
+      "GABPA",
+      "GCM1",
+      "PAX7",
+      "RFX5"
+    ],
     "panel_loci": 1035968,
-    "partial_r2": 0.02030,
-    "chromosome_block_95_interval": [0.01924, 0.02131],
+    "partial_r2": 0.0203,
+    "chromosome_block_95_interval": [
+      0.01924,
+      0.02131
+    ],
     "empirical_p": 0.009900990099009901,
     "binned_monomer_partial_r2": 0.01914,
     "composite_only_partial_r2": 0.01999,
-    "spacing_only_partial_r2": 0.00060
+    "spacing_only_partial_r2": 0.0006
   },
   "historical_gcm1_occupancy_association": {
     "result_status": "legacy outcome-informed sensitivity; superseded by the focused ght-only external-context test",
-    "EVT": {"partial_r2": 0.001532, "binned_monomer_partial_r2": 0.001538},
-    "ST": {"partial_r2": 0.001759, "binned_monomer_partial_r2": 0.001493}
+    "EVT": {
+      "partial_r2": 0.001532,
+      "binned_monomer_partial_r2": 0.001538
+    },
+    "ST": {
+      "partial_r2": 0.001759,
+      "binned_monomer_partial_r2": 0.001493
+    }
   },
   "exploratory_pair_decomposition": {
     "analysis_role": "outcome-informed candidate generation only",
     "FLI1_leading_pair": {
       "pair": "GATA3_FLI1",
       "mechanism": "composite",
-      "partial_r2": 0.01050602912804044,
-      "chromosome_bootstrap_95_interval": [0.008736366381487157, 0.012463252296178558]
+      "partial_r2": 0.01245722726043319,
+      "chromosome_bootstrap_95_interval": [
+        0.01035413446585857,
+        0.014692035690889567
+      ]
     },
     "GCM1_leading_pair": {
       "pair": "TGIF2_GCM1",
       "mechanism": "composite",
-      "partial_r2": 0.012557460755576288,
-      "chromosome_bootstrap_95_interval": [0.010079673714808998, 0.015242918760468767]
+      "partial_r2": 0.013150538620524843,
+      "chromosome_bootstrap_95_interval": [
+        0.010370221410141257,
+        0.015844042163181173
+      ]
     }
   },
   "focused_trophoblast_screening": {
@@ -108,16 +175,28 @@
     "effect_threshold_partial_r2": 0.005,
     "EVT": {
       "partial_r2": 0.00247076134891111,
-      "chromosome_bootstrap_95_interval": [0.001009399093559926, 0.003740961798628442],
+      "chromosome_bootstrap_95_interval": [
+        0.001009399093559926,
+        0.003740961798628442
+      ],
       "empirical_p": 0.009900990099009901,
-      "clone_partial_r2": [0.0036183842014831935, 0.0011397580531442575],
+      "clone_partial_r2": [
+        0.0036183842014831935,
+        0.0011397580531442575
+      ],
       "passed": false
     },
     "ST": {
       "partial_r2": 0.003470774628370421,
-      "chromosome_bootstrap_95_interval": [0.0016112376505054427, 0.005342329713559376],
+      "chromosome_bootstrap_95_interval": [
+        0.0016112376505054427,
+        0.005342329713559376
+      ],
       "empirical_p": 0.009900990099009901,
-      "clone_partial_r2": [0.0031578904199836, 0.0030381263646174217],
+      "clone_partial_r2": [
+        0.0031578904199836,
+        0.0030381263646174217
+      ],
       "passed": false
     },
     "replication_passed_in_both_states": false,
@@ -125,7 +204,10 @@
     "interpretation": "Directionally consistent weak cross-context association below the predeclared effect threshold; not evidence of TGIF2 co-occupancy or causal cooperation."
   },
   "continuous_function": {
-    "software": {"r": "4.2.2", "deseq2": "1.36.0"},
+    "software": {
+      "r": "4.2.2",
+      "deseq2": "1.36.0"
+    },
     "EVT": {
       "linked_genes": 14705,
       "m0_mse": 1.9771027097459704,
@@ -147,6 +229,97 @@
     "obtain direct partner occupancy or motif/partner perturbation before making a cooperative mechanism claim",
     "select any new project direction with a newly frozen contract and independent outcome data"
   ],
-  "supported_claim": "CAP-derived grammar features showed heterogeneous held-out occupancy increments; FLI1 alone passed the frozen TF-level effect criterion, while TGIF2-GCM1 showed a weak directionally consistent external-context association below its effect gate",
-  "unsupported_claim": "a general CAP grammar mechanism across TFs, TGIF2-GCM1 co-occupancy or causality, another named in-cell partner interaction, or GCM1-dependent transcriptional causality"
+  "supported_claim": "CAP-derived grammar features showed heterogeneous held-out occupancy increments; FLI1 alone passed the frozen TF-level effect criterion, this decision was unchanged between GPHN and GPZN processing, and TGIF2-GCM1 showed a weak directionally consistent external-context association below its effect gate",
+  "unsupported_claim": "a general CAP grammar mechanism across TFs, TGIF2-GCM1 co-occupancy or causality, another named in-cell partner interaction, or GCM1-dependent transcriptional causality",
+  "processing_pipeline_sensitivity": {
+    "analysis_role": "prespecified ChIP-processing-pipeline sensitivity",
+    "primary_pipeline": "McGill_GPHN",
+    "sensitivity_pipeline": "Toronto_GPZN",
+    "retuning_performed": false,
+    "all_evaluable_effect_directions_positive_in_both_pipelines": true,
+    "all_threshold_decisions_concordant": true,
+    "records": [
+      {
+        "tf": "FLI1",
+        "panel_role": "primary_expression_supported",
+        "partial_r2_gphn": 0.011212831409487367,
+        "partial_r2_gpzn": 0.010678814582767537,
+        "ci95_low_gphn": 0.009461408405317367,
+        "ci95_low_gpzn": 0.009111437371688496,
+        "ci95_high_gphn": 0.01286855446608673,
+        "ci95_high_gpzn": 0.012230814355843219,
+        "median_standardized_coefficient_gphn": 0.09905503386085131,
+        "median_standardized_coefficient_gpzn": 0.12109861043495192,
+        "passed_prespecified_threshold_gphn": true,
+        "passed_prespecified_threshold_gpzn": true,
+        "partial_r2_difference_gphn_minus_gpzn": 0.0005340168267198298,
+        "positive_effect_both_pipelines": true
+      },
+      {
+        "tf": "GABPA",
+        "panel_role": "primary_expression_supported",
+        "partial_r2_gphn": 0.00466572900242046,
+        "partial_r2_gpzn": 0.0028808874709009835,
+        "ci95_low_gphn": 0.001177429962015375,
+        "ci95_low_gpzn": 0.0003537384336617433,
+        "ci95_high_gphn": 0.008198977398672787,
+        "ci95_high_gpzn": 0.005567700335576621,
+        "median_standardized_coefficient_gphn": 0.06419902914478728,
+        "median_standardized_coefficient_gpzn": 0.06588675577705079,
+        "passed_prespecified_threshold_gphn": false,
+        "passed_prespecified_threshold_gpzn": false,
+        "partial_r2_difference_gphn_minus_gpzn": 0.0017848415315194766,
+        "positive_effect_both_pipelines": true
+      },
+      {
+        "tf": "GCM1",
+        "panel_role": "primary_expression_supported",
+        "partial_r2_gphn": 0.00449696457797788,
+        "partial_r2_gpzn": 0.0038257262009214754,
+        "ci95_low_gphn": 0.0022534965075151903,
+        "ci95_low_gpzn": 0.001804420971074569,
+        "ci95_high_gphn": 0.006311872297583998,
+        "ci95_high_gpzn": 0.0054778589798053804,
+        "median_standardized_coefficient_gphn": 0.10212446819217205,
+        "median_standardized_coefficient_gpzn": 0.11272665161007657,
+        "passed_prespecified_threshold_gphn": false,
+        "passed_prespecified_threshold_gpzn": false,
+        "partial_r2_difference_gphn_minus_gpzn": 0.0006712383770564045,
+        "positive_effect_both_pipelines": true
+      },
+      {
+        "tf": "MAX",
+        "panel_role": "low_CAP_coverage_sensitivity",
+        "partial_r2_gphn": 0.0030053021785000356,
+        "partial_r2_gpzn": 0.002550365634065188,
+        "ci95_low_gphn": 0.0018951001629689435,
+        "ci95_low_gpzn": 0.0016684558899986795,
+        "ci95_high_gphn": 0.004085817876200165,
+        "ci95_high_gpzn": 0.0034798238746058855,
+        "median_standardized_coefficient_gphn": 0.03334545432061387,
+        "median_standardized_coefficient_gpzn": 0.046764154480155515,
+        "passed_prespecified_threshold_gphn": false,
+        "passed_prespecified_threshold_gpzn": false,
+        "partial_r2_difference_gphn_minus_gpzn": 0.00045493654443484743,
+        "positive_effect_both_pipelines": true
+      },
+      {
+        "tf": "RFX5",
+        "panel_role": "primary_expression_supported",
+        "partial_r2_gphn": 0.0014227746482429193,
+        "partial_r2_gpzn": 0.0011904879651387645,
+        "ci95_low_gphn": 0.0007289176054081137,
+        "ci95_low_gpzn": 0.00044242920077654235,
+        "ci95_high_gphn": 0.0022651496124472034,
+        "ci95_high_gpzn": 0.0021499094531237826,
+        "median_standardized_coefficient_gphn": 0.024130086328025956,
+        "median_standardized_coefficient_gpzn": 0.045729296316755354,
+        "passed_prespecified_threshold_gphn": false,
+        "passed_prespecified_threshold_gpzn": false,
+        "partial_r2_difference_gphn_minus_gpzn": 0.0002322866831041548,
+        "positive_effect_both_pipelines": true
+      }
+    ],
+    "claim_boundary": "Pipeline concordance supports processing robustness of association direction but does not establish causal TF cooperation."
+  }
 }
