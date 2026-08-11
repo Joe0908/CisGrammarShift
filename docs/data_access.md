@@ -45,19 +45,24 @@ frozen contract; it is not assigned an inferred or outcome-selected surrogate mo
 
 ## Avoiding the 175.39-GB ChIP archive
 
-The monolithic Codebook merged-bigWig archive is unnecessary. GEO `GSE280248` provides Toronto-processed
-`GPZN` bigWigs per sample, allowing only the required replicates to be downloaded. All focal samples must use
-the same processing pipeline; Toronto and McGill absolute signals are never mixed in one comparison.
+The monolithic Codebook merged-bigWig archive is unnecessary. Mihai Albu supplied the 12 requested
+McGill-processed `GPHN` files directly (six TFs by two biological replicates; 3,087,110,382 bytes total).
+Their filenames, sample UIDs, GSM mappings, byte sizes and SHA-256 values are frozen in
+`configs/codebook_chip_gphn_panel_manifest.json`. `scripts/audit_gphn_bigwig_panel.py` verifies the complete
+whitelist, hashes, bigWig structure and sentinel hg38 chromosome lengths before analysis. The bigWigs remain
+under `data/codebook/chip_gphn/`, which is ignored by Git.
 
-For the frozen six-TF panel, the 12 selected GPZN files total 4,616,661,075 bytes (4.30 GiB). Their GSM
-accessions and GEO URLs are derived from the series SOFT rather than manually copied. The resolved manifest
-records a locally computed SHA-256 for every downloaded bigWig. Both biological replicates are retained:
-the mean of replicate `log1p` signals is the primary outcome, while replicate-resolved models must agree in
-incremental-effect direction.
+GEO `GSE280248` also provides 12 corresponding Toronto-processed `GPZN` bigWigs individually. These total
+4,616,661,075 bytes (4.30 GiB), so they are a public fallback and a processing-pipeline sensitivity that also
+does not require the merged archive. GSM accessions and GEO URLs are derived from the series SOFT rather
+than manually copied; the resolved manifest records a locally computed SHA-256 for each download. The
+retained commands and claim boundary are documented in
+`provenance/legacy_gpzn_fallback/README.md`.
 
-The checksum-aware `scripts/download_manifest.py` downloads a whitelisted subset. URLs, SHA-256 hashes and
-expected byte sizes are frozen in `configs/codebook_geo_metadata_manifest.json`. Large assay files remain
-under `data/`, which is ignored by Git.
+The primary analysis uses GPHN only. GPZN is rerun with the same loci, features, model, chromosome splits,
+seed and decision threshold, without retuning. Replicates from different pipelines are never mixed. For
+each pipeline, the mean of replicate `log1p` signals is the model outcome, while replicate-resolved models
+must agree in incremental-effect direction.
 
 ## GHT MAGIX version boundary
 
@@ -123,8 +128,8 @@ byte sizes, and the unresolved exact-rebuild boundary. The processed-asset audit
 ## Primary whitelist
 
 - corrected Codebook v2 TF/plasmid and assay metadata;
-- Toronto or one consistently chosen independent peak pipeline;
-- Toronto `GPZN` bigWigs for all focal replicates;
+- McGill `GPHN` bigWigs for all focal replicates as the primary outcome source;
+- Toronto `GPZN` bigWigs only as the separately modelled no-retuning processing sensitivity;
 - revised GHT MAGIX peaks/scores;
 - hg38 chromosome sizes from a versioned reference for the fixed-genome sensitivity;
 - UCSC hg38.2bit and the checksummed `twoBitToFa` binary for exact 400-bp sequence contexts;

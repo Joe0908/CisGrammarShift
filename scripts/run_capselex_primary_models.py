@@ -119,6 +119,14 @@ def main() -> None:
         description="Run chromosome-held-out CAP grammar addition models for the focal panel"
     )
     parser.add_argument("--feature-directory", type=Path, required=True)
+    parser.add_argument(
+        "--chip-processing-pipeline",
+        default="Toronto_GPZN_only",
+        help=(
+            "Provenance label written into the report outcome. The default preserves "
+            "the historical GPZN workflow; pass McGill_GPHN_only for the primary rerun."
+        ),
+    )
     parser.add_argument("--focal-tfs", nargs="+", required=True)
     parser.add_argument("--sensitivity-tfs", nargs="*", default=[])
     parser.add_argument("--availability-negative-controls", nargs="*", default=[])
@@ -300,7 +308,10 @@ def main() -> None:
             "primary_panel": args.focal_tfs,
             "sensitivity_panel": args.sensitivity_tfs,
             "partner_availability_negative_controls": args.availability_negative_controls,
-            "outcome": "mean_of_replicate_log1p_200bp_exact_mean_GPZN_signal",
+            "outcome": (
+                "mean_of_replicate_log1p_200bp_exact_mean_"
+                f"{args.chip_processing_pipeline}_signal"
+            ),
             "split": "five chromosome folds with nested ridge-alpha selection",
             "accessibility_covariate": {
                 "name": "independent HEK293 DNase-seq proxy",

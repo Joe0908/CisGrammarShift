@@ -22,11 +22,13 @@ association follow-up.
 
 ## Current audit status
 
-The official Codebook v2 GHT-only rerun is complete. The predeclared panel claim **failed**: only FLI1, one
-of four expression-evaluable focal TFs, exceeded the partial-R² effect threshold. A frozen GCM1–TGIF2
-follow-up then showed small, directionally consistent increments in both trophoblast states, but neither
-reached its predeclared effect threshold. The repository is therefore a complete, reproducible feasibility
-and falsification study; it is **not yet a positive-mechanism manuscript**.
+The official Codebook v2 GHT-only rerun with the author-supplied McGill-GPHN ChIP tracks is complete. The
+predeclared panel claim **failed**: only FLI1, one of four expression-evaluable focal TFs, exceeded the
+partial-R² effect threshold. Repeating the frozen analysis with public Toronto-GPZN tracks, without
+retuning, preserved every TF-level pass/fail decision and the direction of all five evaluable effects. A
+frozen GCM1–TGIF2 follow-up then showed small, directionally consistent increments in both trophoblast
+states, but neither reached its predeclared effect threshold. The repository is therefore a complete,
+reproducible feasibility and falsification study; it is **not a positive-mechanism manuscript**.
 
 The historical assay-union result is retained only for provenance. In that universe ChIP affected locus
 inclusion and could set the sequence-window centre. The official primary universe instead contains
@@ -51,14 +53,19 @@ coefficients for the mean outcome and both biological replicates.
 
 | Focal TF | Expression-supported pairs | Loci with DNase mapping | Partial R² | Chromosome-bootstrap 95% interval | Replicate partial R² | Passed |
 |---|---:|---:|---:|---:|---:|---:|
-| FLI1 | 16 | 50,060 | 0.010679 | 0.009111–0.012231 | 0.005944 / 0.013159 | Yes |
-| GABPA | 4 | 5,041 | 0.002881 | 0.000354–0.005568 | 0.004630 / 0.000462 | No |
-| GCM1 | 4 | 19,369 | 0.003826 | 0.001804–0.005478 | 0.002603 / 0.004388 | No |
-| RFX5 | 3 | 38,701 | 0.001190 | 0.000442–0.002150 | 0.001393 / 0.000468 | No |
+| FLI1 | 16 | 50,060 | 0.011213 | 0.009461–0.012869 | 0.006122 / 0.015334 | Yes |
+| GABPA | 4 | 5,041 | 0.004666 | 0.001177–0.008199 | 0.004286 / 0.002268 | No |
+| GCM1 | 4 | 19,369 | 0.004497 | 0.002253–0.006312 | 0.003289 / 0.005386 | No |
+| RFX5 | 3 | 38,701 | 0.001423 | 0.000729–0.002265 | 0.001408 / 0.001043 | No |
 
 Each screening permutation test gave `p=1/101`; with tens of thousands of loci this is not a substitute for
 the frozen effect-size gate. The required four-of-four panel result was one-of-four, so the general CAP
 grammar claim is rejected and the 1,000-permutation panel analysis was not run.
+
+Toronto-GPZN sensitivity partial R² values were 0.010679, 0.002881, 0.003826 and 0.001190 for FLI1, GABPA,
+GCM1 and RFX5, respectively. MAX remained below threshold in both pipelines (GPHN 0.003005; GPZN
+0.002550). This processing concordance supports robustness of direction and threshold decisions, not a
+causal cooperative mechanism.
 
 Exploratory pair decomposition identified GATA3–FLI1 and TGIF2–GCM1 as leading pair-specific profiles.
 Because this ranking used the Codebook ChIP outcome, it is candidate generation rather than discovery
@@ -209,22 +216,12 @@ python scripts/audit_hek293_partner_expression.py \
   --output-table results/capselex/hek293_partner_expression.tsv \
   --output-report reports/hek293_partner_expression_audit.json
 
-# Resolve and download only 12 Toronto GPZN ChIP bigWigs (six TFs x two replicates)
-python scripts/download_manifest.py \
-  --manifest configs/codebook_chip_geo_metadata_manifest.json \
-  --output-directory data/codebook/chip_geo_metadata
-
-python scripts/build_codebook_chip_manifest.py \
-  --soft data/codebook/chip_geo_metadata/GSE280248_family.soft.gz \
-  --filelist data/codebook/chip_geo_metadata/GSE280248_filelist.txt \
-  --panel-config configs/codebook_geo_v1_magix_panel.json \
-  --output configs/codebook_chip_gpzn_panel_manifest.json
-
-python scripts/download_manifest.py \
-  --manifest configs/codebook_chip_gpzn_panel_manifest.json \
-  --output-directory data/codebook/chip_gpzn \
-  --resolved-manifest reports/codebook_chip_gpzn_panel_resolved.json \
-  --jobs 4
+# Primary ChIP outcome: place the 12 author-supplied McGill GPHN bigWigs here, then verify all hashes,
+# bigWig structure and sentinel hg38 chromosome lengths. The 175.39-GB merged archive is not required.
+python scripts/audit_gphn_bigwig_panel.py \
+  --manifest configs/codebook_chip_gphn_panel_manifest.json \
+  --bigwig-directory data/codebook/chip_gphn \
+  --output reports/gphn_bigwig_audit.json
 
 # Build per-locus CAP/GHT/ChIP features after the official v2 GHT loci have been frozen
 for tf in FLI1 GABPA GCM1 RFX5 PAX7 MAX; do
@@ -232,21 +229,22 @@ for tf in FLI1 GABPA GCM1 RFX5 PAX7 MAX; do
     --focal-tf "$tf" \
     --loci "results/capselex/primary_codebook_v2/${tf}.ght_only.loci.tsv.gz" \
     --magix "data/codebook/ght_v2/Peaks_MAGIX_McGill/${tf}.bed" \
-    --chip-resolved-manifest reports/codebook_chip_gpzn_panel_resolved.json \
-    --chip-directory data/codebook/chip_gpzn \
+    --chip-resolved-manifest configs/codebook_chip_gphn_panel_manifest.json \
+    --chip-directory data/codebook/chip_gphn \
     --reference-resolved-manifest reports/ucsc_hg38_reference_resolved.json \
     --reference-directory data/reference/ucsc_hg38 \
     --cap-pwm-table data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx \
     --mex-top1 data/codebook/zenodo_pwm/MEX_top1.zip \
     --jaspar data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt \
     --monomer-audit reports/monomer_pwm_panel_audit.json \
-    --output "results/capselex/primary_features/${tf}.features.tsv.gz" \
-    --report "reports/capselex_primary_features_${tf}.json"
+    --output "results/capselex/primary_features_gphn/${tf}.features.tsv.gz" \
+    --report "reports/gphn_primary_features/${tf}.json"
 done
 
 # Screening model: four expression-evaluable primary TFs, MAX sensitivity, PAX7 availability control
 python scripts/run_capselex_primary_models.py \
-  --feature-directory results/capselex/primary_features \
+  --feature-directory results/capselex/primary_features_gphn \
+  --chip-processing-pipeline McGill_GPHN_only \
   --focal-tfs FLI1 GABPA GCM1 RFX5 \
   --sensitivity-tfs MAX \
   --availability-negative-controls PAX7 \
@@ -254,16 +252,27 @@ python scripts/run_capselex_primary_models.py \
   --dnase-directory data/reference/hek293_dnase \
   --dnase-resolved-manifest reports/hek293_dnase_resolved.json \
   --permutations 100 \
-  --output reports/capselex_primary_genomic_model_screening.json
+  --partial-r2-threshold 0.005 \
+  --minimum-positive-focal-tfs 4 \
+  --seed 20260809 \
+  --output reports/gphn_capselex_primary_genomic_model_screening.json
 
 # Exploratory pair decomposition after the frozen panel gate failed
 python scripts/decompose_capselex_pair_contributions.py \
-  --feature-directory results/capselex/primary_features \
+  --feature-directory results/capselex/primary_features_gphn \
   --focal-tfs FLI1 GABPA GCM1 RFX5 \
   --partner-expression results/capselex/hek293_partner_expression.tsv \
   --dnase-directory data/reference/hek293_dnase \
   --dnase-resolved-manifest reports/hek293_dnase_resolved.json \
-  --output reports/capselex_pair_decomposition.json
+  --primary-screening reports/gphn_capselex_primary_genomic_model_screening.json \
+  --output reports/gphn_capselex_pair_decomposition.json
+
+# Public Toronto-GPZN acquisition and the no-retuning rerun are retained separately; see
+# provenance/legacy_gpzn_fallback/README.md. After that rerun:
+python scripts/compare_capselex_chip_pipelines.py \
+  --gphn-screening reports/gphn_capselex_primary_genomic_model_screening.json \
+  --gpzn-screening reports/capselex_primary_genomic_model_screening.json \
+  --output reports/gphn_gpzn_pipeline_comparison.json
 
 # Freeze, acquire and test the outcome-independent TGIF2 expression gate
 python scripts/download_manifest.py \
@@ -279,11 +288,11 @@ python scripts/audit_trophoblast_tgif2_expression.py \
 
 # Frozen external-context screening; 1,000 permutations run only if both states pass
 python scripts/run_trophoblast_tgif2_replication.py \
-  --features results/capselex/primary_features/GCM1.features.tsv.gz \
+  --features results/capselex/primary_features_gphn/GCM1.features.tsv.gz \
   --asset-directory data/trophoblast/gcm1_replication \
   --resolved-manifest reports/trophoblast_gcm1_replication_resolved.json \
   --expression-gate reports/trophoblast_tgif2_expression_gate.json \
-  --pair-decomposition reports/capselex_pair_decomposition.json \
+  --pair-decomposition reports/gphn_capselex_pair_decomposition.json \
   --permutations 100 \
   --partial-r2-threshold 0.005 \
   --output reports/trophoblast_tgif2_gcm1_replication_screening.json
@@ -359,9 +368,10 @@ reconstruction; it does not choose the cheaper aggregate definition or replace t
 design with an easier model. That reconstruction limitation no longer blocks the primary analysis because
 the official processed v2 focal BED members are now available and checksummed.
 
-The ChIP outcome retains both biological replicates. Its primary value is the mean of the two replicate
-`log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity outcomes, and
-a claimed CAP increment must have the same direction in both.
+The primary McGill-GPHN ChIP outcome retains both biological replicates. Its value is the mean of the two
+replicate `log1p` exact 200-bp mean signals; both replicates are additionally fit as separate sensitivity
+outcomes, and a claimed CAP increment must have the same direction in both. Toronto-GPZN tracks are kept in
+a separate no-retuning processing sensitivity and are never mixed with GPHN tracks.
 
 Partner availability is frozen before ChIP modelling from two wild-type HEK293 RNA-seq replicates in
 GSM3611199. Transcript TPMs are summed to GENCODE v29 genes; a partner is expression-supported only when it
@@ -377,6 +387,7 @@ configs/                 Frozen synthetic and CAP reanalysis configurations
 docs/                    Feasibility, data, modelling, validation and claim-boundary documents
 reports/                 Small versioned result summaries; no raw biological data
 scripts/                 Checksum downloader and exact DESeq2 runner
+provenance/              Retained non-default acquisition and processing workflows
 src/cisgrammar/          Synthetic benchmark and complete CAP/GHT/ChIP/hTSC pipeline
 tests/                   Unit, leakage-control and synthetic-recovery tests
 legacy/original/         Preserved student-stage scripts and figures
@@ -407,6 +418,7 @@ Not supported:
 - [Independent trophoblast and functional validation](docs/trophoblast_validation.md)
 - [Research audit and publication decision](docs/research_audit_2026-08-10.md)
 - [Public data access and anti-circularity rules](docs/data_access.md)
+- [Retained Toronto-GPZN fallback and sensitivity](provenance/legacy_gpzn_fallback/README.md)
 - [Machine-readable result summary](reports/result_summary.json)
 
 ## Name

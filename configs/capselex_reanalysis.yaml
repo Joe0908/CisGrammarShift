@@ -11,7 +11,8 @@ contract:
   primary_ght_magix_source_commit: bc800e825d19686aa5b73f3090d1eb31dddabbd3
   primary_ght_fdr_max: 0.05
   primary_ght_require_positive_refined_coefficient: true
-  primary_chip_pipeline: Toronto_GPZN
+  primary_chip_pipeline: McGill_GPHN_only
+  chip_pipeline_sensitivity: Toronto_GPZN_no_retuning
   chip_replicates_per_tf: 2
   primary_chip_outcome: mean_of_replicate_log1p_200bp_exact_mean_signal
   replicate_confirmation: same_incremental_effect_direction_in_both_replicates
