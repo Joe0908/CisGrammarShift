@@ -98,21 +98,6 @@ The study integrates impressive public resources but does not yet deliver a new 
 broad predeclared claim failed, the named-pair candidate was chosen using an outcome and missed its external
 effect threshold, and no partner occupancy or perturbation is available.
 
-## Publication readiness
-
-| Dimension | Score / 10 |
-|---|---:|
-| Scientific question | 8 |
-| Novelty | 6 |
-| Dataset | 8 |
-| Methods | 8 |
-| Statistics | 8 |
-| Results | 6 |
-| Biological interpretation | 7 |
-| Figures | 2 |
-| Writing | 6 |
-| Reproducibility | 9 |
-| Overall publishability | 5 |
 
 **Current status: B — potentially publishable after major additional analyses.**
 
