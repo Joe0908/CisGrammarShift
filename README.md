@@ -421,11 +421,6 @@ Not supported:
 - [Retained Toronto-GPZN fallback and sensitivity](provenance/legacy_gpzn_fallback/README.md)
 - [Machine-readable result summary](reports/result_summary.json)
 
-## Name
-
-`CisGrammarShift` is retained deliberately: “shift” now refers to transfer across assay and biological
-contexts—CAP-SELEX → GHT/ChIP → trophoblast → transcription—not merely neural-network distribution shift.
-The correct spelling is **Grammar**, not “Grammer”.
 
 ## Citation
 
