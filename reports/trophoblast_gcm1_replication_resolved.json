@@ -1,0 +1,76 @@
+{
+  "assets": [
+    {
+      "accession": "GSE244254",
+      "filename": "GSE244254_RAW.tar",
+      "role": "outcome-independent TGIF2 availability audit",
+      "sha256": "5f2b1c3935fb65e1b71ee2ba09f423fb1f24b6cc65c12bd2533e58cd406ec719",
+      "sha256_source": "manifest",
+      "size_bytes": 23592960,
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE244nnn/GSE244254/suppl/GSE244254_RAW.tar"
+    },
+    {
+      "assembly": "hg38",
+      "clone": "B31",
+      "filename": "GSM7809968_B31_GCM1-EVT_dedup.bw",
+      "gsm": "GSM7809968",
+      "sha256": "9d7af1b19a1d484a3b6af0fa00b74aa8bab6cc7e4e64828318c4aca4bc6431d1",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 301023303,
+      "state": "EVT",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7809nnn/GSM7809968/suppl/GSM7809968_B31_GCM1-EVT_dedup.bw"
+    },
+    {
+      "assembly": "hg38",
+      "clone": "CT27",
+      "filename": "GSM7809973_CT27_GCM1_EVT_dedup.bw",
+      "gsm": "GSM7809973",
+      "sha256": "915bd0f608ba401a4e69e605ac070b1b9b22f5b2066d8635ddc1ae0ecaa096f4",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 284293895,
+      "state": "EVT",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7809nnn/GSM7809973/suppl/GSM7809973_CT27_GCM1_EVT_dedup.bw"
+    },
+    {
+      "assembly": "hg38",
+      "clone": "B31",
+      "filename": "GSM7809969_B31_GCM1-ST_dedup.bw",
+      "gsm": "GSM7809969",
+      "sha256": "e982db30ef716334d82bcb227caae5d52c4f0f52bb74b4686c10bae5fd86c5bf",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 301775780,
+      "state": "ST",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7809nnn/GSM7809969/suppl/GSM7809969_B31_GCM1-ST_dedup.bw"
+    },
+    {
+      "assembly": "hg38",
+      "clone": "CT27",
+      "filename": "GSM7809974_CT27_GCM1_ST_dedup.bw",
+      "gsm": "GSM7809974",
+      "sha256": "682060caa5c3d744ee728bb5047a5751b8ca146f5d600249cf6e2012a589b8ea",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 294561697,
+      "state": "ST",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7809nnn/GSM7809974/suppl/GSM7809974_CT27_GCM1_ST_dedup.bw"
+    }
+  ],
+  "frozen_hypothesis": {
+    "analysis_role": "external-context replication; not an untouched dataset because earlier aggregate CAP analyses used this GEO series",
+    "discovery_pair": "TGIF2_GCM1",
+    "discovery_source": "Codebook v2 GHT-only pair decomposition",
+    "effect_threshold_partial_r2": 0.005,
+    "expression_gate": "TGIF2 detected in both B31 and CT27 state-matched RNA profiles before ChIP outcomes are read",
+    "final_permutations_if_screening_passes": 1000,
+    "mechanism": "composite",
+    "permutation_pvalue_max": 0.05,
+    "primary_outcome": "mean of clone-specific log1p exact 200-bp GCM1 ChIP signal",
+    "replication_loci": "the same official Codebook v2 GCM1 GHT-only 200-bp tiles",
+    "replication_states": [
+      "EVT",
+      "ST"
+    ],
+    "required_direction": "positive in both states and both clones within each state",
+    "screening_permutations": 100
+  },
+  "schema_version": "trophoblast_gcm1_replication_manifest_v1"
+}

@@ -1,0 +1,83 @@
+experiment:
+  seeds: [17, 23, 42, 71, 101]
+  deterministic: true
+
+dataset:
+  sequence_length: 256
+  motif_a: POU5F1_M05705_3.00
+  motif_b: NANOG_M05219_3.00
+  train_pairs: 4000
+  validation_pairs: 800
+  test_pairs: 1200
+  anchor_min: 24
+  anchor_max: 64
+  rule:
+    period: 10
+    allowed_phases: [0, 1, 9]
+  train:
+    gap_min: 0
+    gap_max: 60
+    background_gc: 0.50
+    background_persistence: 0.15
+    allow_reverse: false
+    motif_temperature: 1.0
+  evaluations:
+    iid:
+      gap_min: 0
+      gap_max: 60
+      background_gc: 0.50
+      background_persistence: 0.15
+      allow_reverse: false
+      motif_temperature: 1.0
+    gap_ood:
+      gap_min: 61
+      gap_max: 120
+      background_gc: 0.50
+      background_persistence: 0.15
+      allow_reverse: false
+      motif_temperature: 1.0
+    orientation_ood:
+      gap_min: 0
+      gap_max: 60
+      background_gc: 0.50
+      background_persistence: 0.15
+      allow_reverse: true
+      motif_temperature: 1.0
+    gc_ood:
+      gap_min: 0
+      gap_max: 60
+      background_gc: 0.70
+      background_persistence: 0.15
+      allow_reverse: false
+      motif_temperature: 1.0
+    strength_ood:
+      gap_min: 0
+      gap_max: 60
+      background_gc: 0.50
+      background_persistence: 0.15
+      allow_reverse: false
+      motif_temperature: 1.8
+
+models:
+  names: [pwm_presence, local_cnn, dilated_cnn, transformer]
+  local_cnn:
+    channels: 64
+    kernel_size: 19
+  dilated_cnn:
+    channels: 64
+    kernel_size: 19
+    dilations: [1, 2, 4, 8, 16, 32]
+  transformer:
+    embedding_dim: 64
+    attention_heads: 4
+    layers: 3
+    feedforward_dim: 128
+    dropout: 0.10
+
+training:
+  epochs: 40
+  patience: 7
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  attribution_examples: 256

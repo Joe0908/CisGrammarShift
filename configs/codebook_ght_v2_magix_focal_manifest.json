@@ -1,0 +1,76 @@
+{
+  "schema_version": "codebook_ght_v2_magix_focal_manifest_v1",
+  "source": {
+    "release_label": "codebook-v2-web-2026-08-10",
+    "codebook_version": "v2",
+    "archive_filename": "Peaks_MAGIX_McGill.tar.gz",
+    "archive_url": "https://codebook.ccbr.utoronto.ca/Temp/Peaks_MAGIX_McGill.tar.gz",
+    "archive_sha256": "e1f225936529f8f0b2b338fcdfd8913e653012da1380e9622f200cce1c269a9b",
+    "archive_size_reported": "1.6 GiB by macOS ls -lh",
+    "archive_locally_retained": false,
+    "acquisition_note": "Downloaded manually from the Codebook v2 data page on 2026-08-10. Six members were extracted directly from the tar archive and uploaded individually.",
+    "primary_analysis_eligible": true
+  },
+  "call_rule": {
+    "fdr_max": 0.05,
+    "score_column": "coefficient.ar",
+    "require_positive_score": true,
+    "uses_chip_outcome": false
+  },
+  "panel": [
+    {
+      "tf": "FLI1",
+      "role": "primary_focal",
+      "archive_member": "Peaks_MAGIX_McGill/FLI1.bed",
+      "local_filename": "FLI1.bed",
+      "size_bytes": 21666613,
+      "sha256": "4921390938e35e0df7a9857f2f61cb9911e1cdebda4b34c92e397c11a2df7145",
+      "geo_member_sha256": "4921390938e35e0df7a9857f2f61cb9911e1cdebda4b34c92e397c11a2df7145"
+    },
+    {
+      "tf": "GABPA",
+      "role": "primary_focal",
+      "archive_member": "Peaks_MAGIX_McGill/GABPA.bed",
+      "local_filename": "GABPA.bed",
+      "size_bytes": 18675694,
+      "sha256": "f36838de60f477cb52dceb170368e502bf0c0ce9813c5e7d0bce9eaf1464e89c",
+      "geo_member_sha256": "f36838de60f477cb52dceb170368e502bf0c0ce9813c5e7d0bce9eaf1464e89c"
+    },
+    {
+      "tf": "GCM1",
+      "role": "primary_focal",
+      "archive_member": "Peaks_MAGIX_McGill/GCM1.bed",
+      "local_filename": "GCM1.bed",
+      "size_bytes": 20182606,
+      "sha256": "348b2f56d5d75bd2ec79d101df756ae3e84f17a4dc4eb08df7774d60f93272fd",
+      "geo_member_sha256": "348b2f56d5d75bd2ec79d101df756ae3e84f17a4dc4eb08df7774d60f93272fd"
+    },
+    {
+      "tf": "PAX7",
+      "role": "primary_focal",
+      "archive_member": "Peaks_MAGIX_McGill/PAX7.bed",
+      "local_filename": "PAX7.bed",
+      "size_bytes": 20276671,
+      "sha256": "17f054446cb3362a78985d7544b99f93a2ebb82cbaa4a3c86a3b952f92b1c572",
+      "geo_member_sha256": "17f054446cb3362a78985d7544b99f93a2ebb82cbaa4a3c86a3b952f92b1c572"
+    },
+    {
+      "tf": "RFX5",
+      "role": "primary_focal",
+      "archive_member": "Peaks_MAGIX_McGill/RFX5.bed",
+      "local_filename": "RFX5.bed",
+      "size_bytes": 24964082,
+      "sha256": "98aeece92f50d9c6ca5e2c313a153befe2d7cf145174668b7fcdc8a72e068d11",
+      "geo_member_sha256": "98aeece92f50d9c6ca5e2c313a153befe2d7cf145174668b7fcdc8a72e068d11"
+    },
+    {
+      "tf": "MAX",
+      "role": "low_cap_coverage_sensitivity",
+      "archive_member": "Peaks_MAGIX_McGill/MAX.bed",
+      "local_filename": "MAX.bed",
+      "size_bytes": 22079819,
+      "sha256": "736c3a9ac09c8b999b7380f4ee0219e592ab181854940f4ca23043b747e3e939",
+      "geo_member_sha256": "736c3a9ac09c8b999b7380f4ee0219e592ab181854940f4ca23043b747e3e939"
+    }
+  ]
+}

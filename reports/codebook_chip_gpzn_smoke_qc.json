@@ -1,0 +1,217 @@
+{
+  "accession": "GSE280248",
+  "chip_assets_primary_eligible": true,
+  "outcome_definition": "mean_of_replicate_log1p_200bp_exact_mean_signal",
+  "processing_pipeline": "Toronto_GPZN_only",
+  "qc_locus_universe": "GSE278858 pre-v2 GHT-only smoke loci",
+  "qc_locus_universe_primary_eligible": false,
+  "reason_not_primary": "Codebook v2 revised GHT MAGIX candidate peak generation.",
+  "replicate_confirmation": "same_incremental_effect_direction_in_both_replicates",
+  "schema_version": "codebook_chip_gpzn_smoke_qc_v1",
+  "tf_qc": [
+    {
+      "both_nonzero_fraction": 0.9376915422885572,
+      "first_zero_fraction": 0.05108457711442786,
+      "loci": 50250,
+      "locus_sha256": "b5a398978e50f8857f1db4ba51b7b3626c20e110c4fde4278d5f4c80633aef34",
+      "mean_log1p_outcome": {
+        "max": 9.700183393705835,
+        "median": 4.5245161393176545,
+        "min": 0.0,
+        "p90": 6.468994573416623,
+        "p99": 8.157129816733189
+      },
+      "median_absolute_log1p_difference": 0.7826366684695079,
+      "paired_loci": 50250,
+      "replicate_1_gsm": "GSM8590519",
+      "replicate_1_signal": {
+        "max": 43291.3159765625,
+        "median": 113.5605560874939,
+        "min": 0.0,
+        "p90": 1464.0060151977539,
+        "p99": 6146.114060925301
+      },
+      "replicate_2_gsm": "GSM8590521",
+      "replicate_2_signal": {
+        "max": 8276.87257080078,
+        "median": 80.72464433670044,
+        "min": 0.0,
+        "p90": 345.4288230056761,
+        "p99": 2196.1719433898934
+      },
+      "second_zero_fraction": 0.016577114427860695,
+      "spearman_log1p": 0.6041843350647439,
+      "tf": "FLI1"
+    },
+    {
+      "both_nonzero_fraction": 0.9106189440379672,
+      "first_zero_fraction": 0.028673126359501682,
+      "loci": 5057,
+      "locus_sha256": "f3650c6dd0f6b7cd420ecac5a201423985100f9bf0168df326415a02b3af5bde",
+      "mean_log1p_outcome": {
+        "max": 9.87316816373772,
+        "median": 4.45668588215508,
+        "min": 0.0,
+        "p90": 8.48130878436652,
+        "p99": 9.330792927017091
+      },
+      "median_absolute_log1p_difference": 1.0250100152637844,
+      "paired_loci": 5057,
+      "replicate_1_gsm": "GSM8590515",
+      "replicate_1_signal": {
+        "max": 85175.9576953125,
+        "median": 96.86773254871369,
+        "min": 0.0,
+        "p90": 14621.583068847658,
+        "p99": 40026.39848945296
+      },
+      "replicate_2_gsm": "GSM8590517",
+      "replicate_2_signal": {
+        "max": 7259.056748046875,
+        "median": 88.29534845352173,
+        "min": 0.0,
+        "p90": 1606.1295700988774,
+        "p99": 3689.62817416992
+      },
+      "second_zero_fraction": 0.06960648605892822,
+      "spearman_log1p": 0.702015700184575,
+      "tf": "GABPA"
+    },
+    {
+      "both_nonzero_fraction": 0.9359901523311278,
+      "first_zero_fraction": 0.03169718418218188,
+      "loci": 19497,
+      "locus_sha256": "1ced573fe6987c3e8dc3f8e948fc25a2da60f96287fe75edce1bd524be9593e1",
+      "mean_log1p_outcome": {
+        "max": 11.784739794832673,
+        "median": 5.203441881968127,
+        "min": 0.0,
+        "p90": 7.800132309674772,
+        "p99": 9.60199575545042
+      },
+      "median_absolute_log1p_difference": 0.41473142502166116,
+      "paired_loci": 19497,
+      "replicate_1_gsm": "GSM8590216",
+      "replicate_1_signal": {
+        "max": 98068.047890625,
+        "median": 171.47251266479492,
+        "min": 0.0,
+        "p90": 2137.096263427736,
+        "p99": 11740.554262402351
+      },
+      "replicate_2_gsm": "GSM8590302",
+      "replicate_2_signal": {
+        "max": 175614.55,
+        "median": 207.62298141479494,
+        "min": 0.0,
+        "p90": 2804.50564428711,
+        "p99": 19175.070073828192
+      },
+      "second_zero_fraction": 0.04390419038826486,
+      "spearman_log1p": 0.9083418517197384,
+      "tf": "GCM1"
+    },
+    {
+      "both_nonzero_fraction": 0.9214130009501984,
+      "first_zero_fraction": 0.05653680621541557,
+      "loci": 71564,
+      "locus_sha256": "dd3f7b093e16462d08177a3ef4db624206002d921c6b0100ace74ff33b4a1462",
+      "mean_log1p_outcome": {
+        "max": 7.985941274997244,
+        "median": 4.4020468944955145,
+        "min": 0.0,
+        "p90": 5.38589288103074,
+        "p99": 6.797726374224164
+      },
+      "median_absolute_log1p_difference": 0.6441069147814538,
+      "paired_loci": 71564,
+      "replicate_1_gsm": "GSM8590390",
+      "replicate_1_signal": {
+        "max": 4151.008868408203,
+        "median": 96.39218367576599,
+        "min": 0.0,
+        "p90": 320.0499144821167,
+        "p99": 1333.250090597533
+      },
+      "replicate_2_gsm": "GSM8590477",
+      "replicate_2_signal": {
+        "max": 2079.856754760742,
+        "median": 74.33695562528837,
+        "min": 0.0,
+        "p90": 195.69281715393066,
+        "p99": 641.2636223045345
+      },
+      "second_zero_fraction": 0.030629925660946845,
+      "spearman_log1p": 0.44312837119917364,
+      "tf": "MAX"
+    },
+    {
+      "both_nonzero_fraction": 0.8385718149851231,
+      "first_zero_fraction": 0.1190154179064106,
+      "loci": 18485,
+      "locus_sha256": "269449c5910f64b39c72d090e7cd67b1af96b3caa05dc96acc8e9035d6f7de4c",
+      "mean_log1p_outcome": {
+        "max": 8.745506653455498,
+        "median": 4.155144299548658,
+        "min": 0.0,
+        "p90": 5.203314996760092,
+        "p99": 6.391658109923583
+      },
+      "median_absolute_log1p_difference": 0.6755286855784548,
+      "paired_loci": 18485,
+      "replicate_1_gsm": "GSM8590389",
+      "replicate_1_signal": {
+        "max": 11400.787446289063,
+        "median": 63.551883697509766,
+        "min": 0.0,
+        "p90": 239.0205288848877,
+        "p99": 1057.4380937255858
+      },
+      "replicate_2_gsm": "GSM8590476",
+      "replicate_2_signal": {
+        "max": 3484.924404296875,
+        "median": 68.2052165222168,
+        "min": 0.0,
+        "p90": 183.14712310791015,
+        "p99": 424.87083444213863
+      },
+      "second_zero_fraction": 0.06805517987557479,
+      "spearman_log1p": 0.46636666552116046,
+      "tf": "PAX7"
+    },
+    {
+      "both_nonzero_fraction": 0.7772664164138428,
+      "first_zero_fraction": 0.07258188923741452,
+      "loci": 38894,
+      "locus_sha256": "199de094554bd454726713cce999fc87a0089dee6c38242f6d0cc45b3bf32cc4",
+      "mean_log1p_outcome": {
+        "max": 9.650410557066337,
+        "median": 3.3926714973916656,
+        "min": 0.0,
+        "p90": 4.207536142136516,
+        "p99": 6.978228509735457
+      },
+      "median_absolute_log1p_difference": 0.49939658367282025,
+      "paired_loci": 38894,
+      "replicate_1_gsm": "GSM8589658",
+      "replicate_1_signal": {
+        "max": 15058.918308105469,
+        "median": 24.96332913284586,
+        "min": 0.0,
+        "p90": 64.6904181816055,
+        "p99": 1080.7638067138662
+      },
+      "replicate_2_gsm": "GSM8589685",
+      "replicate_2_signal": {
+        "max": 16009.964331054687,
+        "median": 30.806243609356624,
+        "min": 0.0,
+        "p90": 80.2194996011402,
+        "p99": 1069.0138080307004
+      },
+      "second_zero_fraction": 0.17992492415282563,
+      "spearman_log1p": 0.4496025513992849,
+      "tf": "RFX5"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cisgrammar"
+version = "0.2.0"
+description = "Leakage-controlled analysis of intrinsic TF specificity, cooperative DNA grammar, and genomic targeting"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Yuqi Tao"}]
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "openpyxl>=3.1",
+  "pandas>=2.1",
+  "pyBigWig>=0.3.22",
+  "PyYAML>=6.0",
+  "scipy>=1.10",
+  "scikit-learn>=1.4",
+]
+
+[project.optional-dependencies]
+ml = [
+  "torch>=2.2,<3",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+cisgrammar = "cisgrammar.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Joe0908/CisGrammarShift"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

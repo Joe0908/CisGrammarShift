@@ -1,0 +1,534 @@
+{
+  "cap_individual_pwm_models": 12,
+  "claim_boundary": "Profiles lacking a frozen partner monomer are excluded before outcome analysis. Coverage does not guarantee that a partner is expressed or present in the ChIP cell state.",
+  "jaspar_monomer_profiles": 803,
+  "mex_top1_profiles": 236,
+  "panel": [
+    {
+      "excluded_representative_pairs_without_partner_monomer": [
+        "ZBTB20_FLI1"
+      ],
+      "focal_mex_profile": "FLI1.NA@HTS.Lys@homey-wisteria-frigatebird+muggy-lime-beaver+sickly-mauve-corgi+ugly-tangerine-llama@HughesLab.MEME@topk_cycle=C1+C2+C3+C4_k=5_top=10000_Motif2.ppm",
+      "focal_pwm_consensus": "ACCGGAAG",
+      "focal_pwm_information_bits": 11.178973919878008,
+      "focal_pwm_length": 8,
+      "partner_sources": [
+        {
+          "partner": "ATF2",
+          "profile_ids": [
+            "MA1632.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "BARHL2",
+          "profile_ids": [
+            "MA0635.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "BHLHE22",
+          "profile_ids": [
+            "MA0818.2",
+            "MA1635.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "BHLHE40",
+          "profile_ids": [
+            "MA0464.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "CREB1",
+          "profile_ids": [
+            "MA0018.5"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "CUX1",
+          "profile_ids": [
+            "MA0754.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "EGR1",
+          "profile_ids": [
+            "MA0162.5"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "FIGLA",
+          "profile_ids": [
+            "MA0820.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "GATA3",
+          "profile_ids": [
+            "MA0037.5"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "GATA5",
+          "profile_ids": [
+            "MA0766.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "GCM1",
+          "profile_ids": [
+            "GCM1.NA@PBM.HK@woolly-purple-shark@autosome-ru.ChIPMunk@s_6-16_flat.pcm"
+          ],
+          "source": "Codebook_MEX_top1"
+        },
+        {
+          "partner": "GLI2",
+          "profile_ids": [
+            "MA0734.4"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "GSC2",
+          "profile_ids": [
+            "MA0891.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXA10",
+          "profile_ids": [
+            "MA0899.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXC11",
+          "profile_ids": [
+            "MA0651.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "IRF8",
+          "profile_ids": [
+            "MA0652.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "KLF13",
+          "profile_ids": [
+            "MA0657.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "MAF",
+          "profile_ids": [
+            "MA1520.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "MAFA",
+          "profile_ids": [
+            "MA1521.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "MYOG",
+          "profile_ids": [
+            "MA0500.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "NEUROG1",
+          "profile_ids": [
+            "MA0623.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "NRL",
+          "profile_ids": [
+            "MA0842.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "POU1F1",
+          "profile_ids": [
+            "MA0784.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "POU3F4",
+          "profile_ids": [
+            "MA0789.1"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "SCRT2",
+          "profile_ids": [
+            "MA0744.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "SIX4",
+          "profile_ids": [
+            "MA2001.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "SREBF2",
+          "profile_ids": [
+            "MA0596.1",
+            "MA0828.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "TBX21",
+          "profile_ids": [
+            "MA0690.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "TFAP4",
+          "profile_ids": [
+            "MA0691.1",
+            "MA1570.1"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "ZBTB18",
+          "profile_ids": [
+            "MA0698.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "ZBTB20",
+          "profile_ids": [],
+          "source": null
+        },
+        {
+          "partner": "ZBTB7A",
+          "profile_ids": [
+            "MA0750.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        }
+      ],
+      "partners_missing_monomer_pwm": [
+        "ZBTB20"
+      ],
+      "partners_with_monomer_pwm": 31,
+      "representative_pairs_with_complete_monomers": [
+        "ATF2_FLI1",
+        "BARHL2_FLI1",
+        "BHLHE22_FLI1",
+        "BHLHE40_FLI1",
+        "CREB1_FLI1",
+        "CUX1_FLI1",
+        "EGR1_FLI1",
+        "FIGLA_FLI1",
+        "FLI1_TBX21",
+        "GATA3_FLI1",
+        "GATA5_FLI1",
+        "GCM1_FLI1",
+        "GLI2_FLI1",
+        "GSC2_FLI1",
+        "HOXA10_FLI1",
+        "HOXC11_FLI1",
+        "IRF8_FLI1",
+        "KLF13_FLI1",
+        "MAFA_FLI1",
+        "MAF_FLI1",
+        "MYOG_FLI1",
+        "NEUROG1_FLI1",
+        "NRL_FLI1",
+        "POU1F1_FLI1",
+        "POU3F4_FLI1",
+        "SCRT2_FLI1",
+        "SIX4_FLI1",
+        "SREBF2_FLI1",
+        "TFAP4_FLI1",
+        "ZBTB18_FLI1",
+        "ZBTB7A_FLI1"
+      ],
+      "representative_partners": 32,
+      "tf": "FLI1"
+    },
+    {
+      "excluded_representative_pairs_without_partner_monomer": [],
+      "focal_mex_profile": "GABPA.NA@HTS.Lys@lumpy-magenta-burmese+queasy-yellow-blue+silly-asparagus-crane+shaggy-wheat-walrus@Halle.Dimont@Motif_2_dtrue_htsversion.ppm",
+      "focal_pwm_consensus": "CCTAAACCGGAAGTG",
+      "focal_pwm_information_bits": 5.880596720350638,
+      "focal_pwm_length": 15,
+      "partner_sources": [
+        {
+          "partner": "EGR1",
+          "profile_ids": [
+            "MA0162.5"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXA10",
+          "profile_ids": [
+            "MA0899.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXD4",
+          "profile_ids": [
+            "MA1507.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "MNX1",
+          "profile_ids": [
+            "MA0707.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "TFE3",
+          "profile_ids": [
+            "TFE3.NA@SMS@woozy-lilac-emu@HughesLab.Homer@Motif1.ppm"
+          ],
+          "source": "Codebook_MEX_top1"
+        }
+      ],
+      "partners_missing_monomer_pwm": [],
+      "partners_with_monomer_pwm": 5,
+      "representative_pairs_with_complete_monomers": [
+        "EGR1_GABPA",
+        "HOXA10_GABPA",
+        "HOXD4_GABPA",
+        "MNX1_GABPA",
+        "TFE3_GABPA"
+      ],
+      "representative_partners": 5,
+      "tf": "GABPA"
+    },
+    {
+      "excluded_representative_pairs_without_partner_monomer": [],
+      "focal_mex_profile": "GCM1.NA@PBM.HK@woolly-purple-shark@autosome-ru.ChIPMunk@s_6-16_flat.pcm",
+      "focal_pwm_consensus": "TACCCGCATG",
+      "focal_pwm_information_bits": 9.164127734527131,
+      "focal_pwm_length": 10,
+      "partner_sources": [
+        {
+          "partner": "ELK3",
+          "profile_ids": [
+            "MA0759.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "FLI1",
+          "profile_ids": [
+            "FLI1.NA@HTS.Lys@homey-wisteria-frigatebird+muggy-lime-beaver+sickly-mauve-corgi+ugly-tangerine-llama@HughesLab.MEME@topk_cycle=C1+C2+C3+C4_k=5_top=10000_Motif2.ppm"
+          ],
+          "source": "Codebook_MEX_top1"
+        },
+        {
+          "partner": "FOXI1",
+          "profile_ids": [
+            "MA0042.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXA2",
+          "profile_ids": [
+            "MA0900.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "MLX",
+          "profile_ids": [
+            "MA0663.1"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "TGIF2",
+          "profile_ids": [
+            "MA0797.1"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "VAX1",
+          "profile_ids": [
+            "MA0722.2"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        }
+      ],
+      "partners_missing_monomer_pwm": [],
+      "partners_with_monomer_pwm": 7,
+      "representative_pairs_with_complete_monomers": [
+        "ELK3_GCM1",
+        "FOXI1_GCM1",
+        "GCM1_FLI1",
+        "GCM1_HOXA2",
+        "MLX_GCM1",
+        "TGIF2_GCM1",
+        "VAX1_GCM1"
+      ],
+      "representative_partners": 7,
+      "tf": "GCM1"
+    },
+    {
+      "excluded_representative_pairs_without_partner_monomer": [],
+      "focal_mex_profile": "MAX.NA@HTS.IVT@craggy-gold-angora+cranky-saffron-gibbon+woolly-goldenrod-dolphin+gloppy-maroon-gibbon@faltejsk.ProBound@motif_without_ns.ppm",
+      "focal_pwm_consensus": "GGCAACCACGTG",
+      "focal_pwm_information_bits": 4.359919410618429,
+      "focal_pwm_length": 12,
+      "partner_sources": [
+        {
+          "partner": "TEAD4",
+          "profile_ids": [
+            "MA0809.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        }
+      ],
+      "partners_missing_monomer_pwm": [],
+      "partners_with_monomer_pwm": 1,
+      "representative_pairs_with_complete_monomers": [
+        "MAX_TEAD4"
+      ],
+      "representative_partners": 1,
+      "tf": "MAX"
+    },
+    {
+      "excluded_representative_pairs_without_partner_monomer": [],
+      "focal_mex_profile": "PAX7.NA@HTS.IVT@breezy-purple-whippet+flimsy-harlequin-ocelot+sloppy-lilac-rabbit+squirrely-lavender-gecko@autosome-ru.ChIPMunk@topk_cycle=C1+C2+C3+C4_k=5_top=10000.pcm",
+      "focal_pwm_consensus": "GGCTAATCGATTAA",
+      "focal_pwm_information_bits": 15.891145842800569,
+      "focal_pwm_length": 14,
+      "partner_sources": [
+        {
+          "partner": "TBX4",
+          "profile_ids": [
+            "MA0806.1"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        }
+      ],
+      "partners_missing_monomer_pwm": [],
+      "partners_with_monomer_pwm": 1,
+      "representative_pairs_with_complete_monomers": [
+        "PAX7_TBX4"
+      ],
+      "representative_partners": 1,
+      "tf": "PAX7"
+    },
+    {
+      "excluded_representative_pairs_without_partner_monomer": [],
+      "focal_mex_profile": "RFX5.FL@HTS.GFPIVT@fuzzy-cornflower-manatee+greasy-gold-civet+hilly-bronze-dog@HughesLab.Homer@topk_cycle=C1+C2+C3_k=5_top=10000_fasta_homer_minw3_maxw_40_Motif1.ppm",
+      "focal_pwm_consensus": "CGTTGCCATGGCAAC",
+      "focal_pwm_information_bits": 11.346697740779483,
+      "focal_pwm_length": 15,
+      "partner_sources": [
+        {
+          "partner": "CREM",
+          "profile_ids": [
+            "MA0609.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "HOXA2",
+          "profile_ids": [
+            "MA0900.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "OTP",
+          "profile_ids": [
+            "OTP|TAGATG40NTAT|YPIII|NTAATTRNNNNTAATTRN|1|3"
+          ],
+          "source": "CAP_Supplementary_Table_3_individual"
+        },
+        {
+          "partner": "TBX6",
+          "profile_ids": [
+            "MA1567.3"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        },
+        {
+          "partner": "TCF3",
+          "profile_ids": [
+            "MA0522.4"
+          ],
+          "source": "JASPAR2024_CORE_vertebrates"
+        }
+      ],
+      "partners_missing_monomer_pwm": [],
+      "partners_with_monomer_pwm": 5,
+      "representative_pairs_with_complete_monomers": [
+        "RFX5_CREM",
+        "RFX5_HOXA2",
+        "RFX5_OTP",
+        "RFX5_TBX6",
+        "RFX5_TCF3"
+      ],
+      "representative_partners": 5,
+      "tf": "RFX5"
+    }
+  ],
+  "schema_version": "monomer_pwm_panel_audit_v1",
+  "source_assets": [
+    {
+      "bytes": 211605,
+      "path": "data/codebook/zenodo_pwm/MEX_top1.zip",
+      "sha256": "461857182b6683a837052d05dca5ce2737e2abc56c67bd71a8d2d2884dd5ef15"
+    },
+    {
+      "bytes": 283814,
+      "path": "data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt",
+      "sha256": "2a6c7c24afb0614ed418c9f02b68845adebf38f80f6cebabbcd5de804eaacb59"
+    },
+    {
+      "bytes": 1093881,
+      "path": "data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx",
+      "sha256": "36eaf5c21c03e7bd1618db6bc9bed990ef2a2b528e2cdb3b657c8ca814a72efb"
+    },
+    {
+      "bytes": 12116,
+      "path": "reports/capselex_nature_supplement_audit.json",
+      "sha256": "bc712baffe73a612bcf0e16e23ac1d9bce1beeacf422785c50ff17d846c90c32"
+    }
+  ],
+  "source_policy": "Codebook MEX top-1 is preferred because motifs were ranked on held-out data; individual HT-SELEX PWMs in CAP Supplementary Table 3 are second; JASPAR 2024 CORE vertebrate monomer profiles are the frozen fallback."
+}

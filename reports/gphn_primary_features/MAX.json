@@ -1,0 +1,149 @@
+{
+  "chip_outcome": "mean of replicate-specific log1p exact 200-bp mean McGill_GPHN_only signal",
+  "chip_replicates": [
+    {
+      "filename": "THC0720GPHN_MAX_ChIP1_hg38_PE.bw",
+      "gsm": "GSM8590390",
+      "replicate": 1,
+      "sha256": "5490bb305d5d7f7f6f479d5e067ffdb590467fd457c090b278a8ff9cab6ba86c"
+    },
+    {
+      "filename": "THC0816GPHN_MAX_ChIP2_hg38_PE.bw",
+      "gsm": "GSM8590477",
+      "replicate": 2,
+      "sha256": "e61ce99cb9fb11fce8db83155785d73b7a9f519e07769bfbc49b10f218f9124f"
+    }
+  ],
+  "context_width_bp": 400,
+  "excluded_non_scannable_contexts": 0,
+  "excluded_non_scannable_locus_ids": [],
+  "feature_columns": [
+    "locus_id",
+    "focal_tf",
+    "chrom",
+    "start",
+    "end",
+    "midpoint",
+    "tile",
+    "chip_source",
+    "ght_source",
+    "chip_count",
+    "ght_count",
+    "locus_universe",
+    "selection_rule",
+    "center_rule",
+    "outcome_used_for_selection",
+    "outcome_used_for_centering",
+    "chromosome_fold",
+    "ght_score",
+    "ght_score_before_refinement",
+    "ght_fdr",
+    "ght_pvalue",
+    "gc_fraction",
+    "cpg_per_100bp",
+    "n_fraction",
+    "focal_monomer_score",
+    "partner_raw::MAX_TEAD4",
+    "cap_raw::spacing::MAX_TEAD4",
+    "cap_excess::spacing::MAX_TEAD4",
+    "partner_monomer_max",
+    "cap_spacing_excess_mean",
+    "cap_all_excess_mean",
+    "chip_rep1",
+    "chip_rep2",
+    "chip_rep1_log1p",
+    "chip_rep2_log1p",
+    "chip_mean_log1p"
+  ],
+  "focal_tf": "MAX",
+  "ght_score_aggregation": "maximum positive coefficient.ar per fixed 200-bp tile; ties resolved by FDR then p-value",
+  "outcome_quantiles": {
+    "max": 4.945737469569689,
+    "median": 1.5321625325098014,
+    "min": 0.0,
+    "p90": 2.4280305953345374,
+    "p99": 3.773521567555725
+  },
+  "output": {
+    "bytes": 7122964,
+    "path": "results/capselex/primary_features_gphn/MAX.features.tsv.gz",
+    "sha256": "a365e9e8d6208609ffc42887f2058b316388126dc359fe94f83818f9210fe1c7"
+  },
+  "pwm_panel": {
+    "all_mechanism_aggregation": "mean_across_mechanisms_within_pair_then_equal_weight_mean_across_pairs",
+    "excluded_pairs_without_partner_monomer": [],
+    "focal_monomer_profile_id": "MAX.NA@HTS.IVT@craggy-gold-angora+cranky-saffron-gibbon+woolly-goldenrod-dolphin+gloppy-maroon-gibbon@faltejsk.ProBound@motif_without_ns.ppm",
+    "focal_monomer_source": "Codebook_MEX_top1",
+    "focal_tf": "MAX",
+    "mechanism_branch_aggregation": "equal_weight_mean_across_pairs",
+    "pair_mechanism_units": 1,
+    "profile_units": [
+      {
+        "cap_model_ids": [
+          "MAX_TEAD4|TCTGCA40NAGAC|YJII|NCACGTGNNMATACCN|1|3"
+        ],
+        "mechanism": "spacing",
+        "pair": "MAX_TEAD4",
+        "partner": "TEAD4",
+        "partner_profile_ids": [
+          "MA0809.3"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      }
+    ],
+    "residualization": {
+      "bins_per_monomer": 20,
+      "fold_column": "chromosome_fold",
+      "method": "training_chromosome_fold_derived_2d_monomer_quantile_bins"
+    }
+  },
+  "reference_assembly": "UCSC hg38",
+  "rows": 71564,
+  "rows_before_reference_qc": 71564,
+  "schema_version": "capselex_primary_feature_table_v1",
+  "sequence_context_sha256_before_qc": "7c4c2671865c7aa74970d598cb4914620464f439c68a90d8333a3d2bbf7f92c9",
+  "sequence_exclusion_uses_chip_outcome": false,
+  "source_assets": [
+    {
+      "bytes": 1282304,
+      "path": "results/capselex/primary_codebook_v2/MAX.ght_only.loci.tsv.gz",
+      "sha256": "2179682660e0e9a177c48987c75309af32520ba44a6ccf1eabf152af141cd54b"
+    },
+    {
+      "bytes": 22079819,
+      "path": "data/codebook/ght_v2/Peaks_MAGIX_McGill/MAX.bed",
+      "sha256": "736c3a9ac09c8b999b7380f4ee0219e592ab181854940f4ca23043b747e3e939"
+    },
+    {
+      "bytes": 6893,
+      "path": "configs/codebook_chip_gphn_panel_manifest.json",
+      "sha256": "45f1ce633ac241bc0636dad947b50550a37b47c533ae430b56ff3b3aecde77c2"
+    },
+    {
+      "bytes": 1372,
+      "path": "reports/ucsc_hg38_reference_resolved.json",
+      "sha256": "a430b6b0ef9468b4f875015a1da10e4ab3aaa1867106f799dc6cf71a9ad20c11"
+    },
+    {
+      "bytes": 1093881,
+      "path": "data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx",
+      "sha256": "36eaf5c21c03e7bd1618db6bc9bed990ef2a2b528e2cdb3b657c8ca814a72efb"
+    },
+    {
+      "bytes": 211605,
+      "path": "data/codebook/zenodo_pwm/MEX_top1.zip",
+      "sha256": "461857182b6683a837052d05dca5ce2737e2abc56c67bd71a8d2d2884dd5ef15"
+    },
+    {
+      "bytes": 283814,
+      "path": "data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt",
+      "sha256": "2a6c7c24afb0614ed418c9f02b68845adebf38f80f6cebabbcd5de804eaacb59"
+    },
+    {
+      "bytes": 14885,
+      "path": "reports/monomer_pwm_panel_audit.json",
+      "sha256": "f354dc28a25a0b363d59c2a80a8b611b69eda1c943762e50db9af077a19141a8"
+    }
+  ]
+}

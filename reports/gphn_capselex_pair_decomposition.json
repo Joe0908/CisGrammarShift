@@ -1,0 +1,4408 @@
+{
+  "analysis_role": "exploratory diagnosis after failure of the frozen primary panel gate",
+  "baseline_features": [
+    "ght_score",
+    "focal_monomer_score",
+    "partner_monomer_expressed_max",
+    "gc_fraction",
+    "cpg_per_100bp",
+    "hek293_dnase_log1p"
+  ],
+  "claim_boundary": "A high pair-level predictive increment does not establish that the named partner occupies the locus or physically cooperates with the focal TF.",
+  "multiple_testing_claim": "none; ranks and chromosome-bootstrap intervals are descriptive and do not define partner discoveries",
+  "outcomes": [
+    "chip_mean_log1p",
+    "chip_rep1_log1p",
+    "chip_rep2_log1p"
+  ],
+  "primary_screening_gate_passed": false,
+  "schema_version": "capselex_pair_decomposition_v1",
+  "source_assets": [
+    {
+      "bytes": 32594021,
+      "path": "results/capselex/primary_features_gphn/FLI1.features.tsv.gz",
+      "sha256": "85f03ae676f3941c9aae0596bb0e369667e5984efa8adb435d448b9babd7907e"
+    },
+    {
+      "bytes": 894791,
+      "path": "results/capselex/primary_features_gphn/GABPA.features.tsv.gz",
+      "sha256": "f7edc287c0d36df9fbbd1e5045e702d0cb93e979a681934d5860d0fa6f167f5c"
+    },
+    {
+      "bytes": 4327913,
+      "path": "results/capselex/primary_features_gphn/GCM1.features.tsv.gz",
+      "sha256": "28a44b19a1a912590d06cda0e004847bc724f7dcf5aa1895c16c18645b581274"
+    },
+    {
+      "bytes": 6422141,
+      "path": "results/capselex/primary_features_gphn/RFX5.features.tsv.gz",
+      "sha256": "2f2684d4671b0eb618f9dcac7583eb455ec57c31cca8cebfa066e3c009f1b091"
+    },
+    {
+      "bytes": 3042,
+      "path": "results/capselex/hek293_partner_expression.tsv",
+      "sha256": "537b3fee185dcfe3f395997787b512eff8616bc834840ba108a89589c25e26d7"
+    },
+    {
+      "bytes": 2607,
+      "path": "reports/hek293_dnase_resolved.json",
+      "sha256": "bb16a34e825caf93a8662d806c86f875d629e7f67714e06b43bf36bc79094696"
+    },
+    {
+      "bytes": 533265,
+      "path": "reports/gphn_capselex_primary_genomic_model_screening.json",
+      "sha256": "6856aea132b8561e742b08e654bf2db59d77c8d75b2b6ffc48f409a94ab42ceb"
+    }
+  ],
+  "tf_results": [
+    {
+      "expression_supported_pairs": 16,
+      "focal_tf": "FLI1",
+      "pair_results_ranked_by_mean_outcome_partial_r2": [
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7132493674076177,
+              "mse": 0.8133184036380847,
+              "pearson": 0.5884333710578206,
+              "r2": 0.3462400759351919,
+              "rmse": 0.9018416732653713,
+              "spearman": 0.29564712926694364
+            },
+            "median_standardized_addition_coefficient": 0.08272097769319887,
+            "partial_r2": 0.007830776656383542,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.007817454256089429,
+              "ci95_percentile": [
+                0.006360779972075775,
+                0.009319736173907136
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.007830776656383875,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.08016351779547005,
+              0.08515453218347065,
+              0.08394179080152518,
+              0.08272097769319887,
+              0.08203451479334326
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "GATA3_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7114434919835634,
+                "mse": 0.8095259281900805,
+                "pearson": 0.5910192384745838,
+                "r2": 0.3492885357386518,
+                "rmse": 0.8997365882246207,
+                "spearman": 0.3153799402584091
+              },
+              "median_standardized_addition_coefficient": 0.10415974754195045,
+              "partial_r2": 0.01245722726043319,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.012495447647893398,
+                "ci95_percentile": [
+                  0.01035413446585857,
+                  0.014692035690889567
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.012457227260433634,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.10364329119436563,
+                0.09458252995665602,
+                0.10415974754195045,
+                0.10499790023924196,
+                0.10859140029979243
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9602661151666803,
+                "mse": 1.4417769581931947,
+                "pearson": 0.520401398821126,
+                "r2": 0.2708145960627327,
+                "rmse": 1.200740170975051,
+                "spearman": 0.3673257815278763
+              },
+              "median_standardized_addition_coefficient": 0.16474399543061008,
+              "partial_r2": 0.017554852428111944,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.017574526275002,
+                "ci95_percentile": [
+                  0.015262516224761848,
+                  0.019961739273994923
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.017554852428111833,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.16607027852570427,
+                0.15358443322216409,
+                0.16316036746708454,
+                0.16474399543061008,
+                0.16802414596510976
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6077271604855404,
+                "mse": 0.6107752136873125,
+                "pearson": 0.6156012886916796,
+                "r2": 0.37892511641382887,
+                "rmse": 0.7815210897265105,
+                "spearman": 0.2797542034455367
+              },
+              "median_standardized_addition_coefficient": 0.04515912761627838,
+              "partial_r2": 0.0027623478995111306,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0027760098217358697,
+                "ci95_percentile": [
+                  0.0017201568635583364,
+                  0.0037718376580333
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0027623478995111306,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.04121630386021202,
+                0.03558062669174013,
+                0.04515912761627838,
+                0.04516319511825835,
+                0.04915865462999642
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7127704649259785,
+              "mse": 0.812259361868442,
+              "pearson": 0.5891560231709622,
+              "r2": 0.34709135270921543,
+              "rmse": 0.9012543269623964,
+              "spearman": 0.29841469758395484
+            },
+            "median_standardized_addition_coefficient": 0.08933251984396681,
+            "partial_r2": 0.009122704449207042,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.009125010558974689,
+              "ci95_percentile": [
+                0.007633792759903907,
+                0.010666580534309973
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.009122704449207153,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.0868517750639321,
+              0.08920510575109757,
+              0.08960012504598126,
+              0.08933251984396681,
+              0.08949725276212823
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "ZBTB7A_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7134231203456768,
+                "mse": 0.8143057195722219,
+                "pearson": 0.5877600627984663,
+                "r2": 0.3454464536745345,
+                "rmse": 0.9023888959712558,
+                "spearman": 0.2999069025697847
+              },
+              "median_standardized_addition_coefficient": 0.07509358006034511,
+              "partial_r2": 0.006626347395732646,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.006624787358736839,
+                "ci95_percentile": [
+                  0.005166239534889633,
+                  0.008002826154232097
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.006626347395732979,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0748223843808357,
+                0.07875480716870596,
+                0.08012295662112359,
+                0.07509358006034511,
+                0.07455871952344255
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9648065376633856,
+                "mse": 1.4571653572140784,
+                "pearson": 0.5128693726367062,
+                "r2": 0.26303184166911775,
+                "rmse": 1.2071310439277412,
+                "spearman": 0.3498387495156511
+              },
+              "median_standardized_addition_coefficient": 0.1042825622355394,
+              "partial_r2": 0.007069001713787104,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.007071979917086579,
+                "ci95_percentile": [
+                  0.005392912485243331,
+                  0.008666017602637185
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.007069001713787104,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.10358919129911268,
+                0.10842913872803638,
+                0.108516804353001,
+                0.1042825622355394,
+                0.10320135476424791
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6074713874436121,
+                "mse": 0.6103966536241876,
+                "pearson": 0.6159137213792836,
+                "r2": 0.37931006023909675,
+                "rmse": 0.7812788577865061,
+                "spearman": 0.2819440112539342
+              },
+              "median_standardized_addition_coefficient": 0.046055577463968114,
+              "partial_r2": 0.0033804383852898967,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0033753379627632363,
+                "ci95_percentile": [
+                  0.0024024407986102227,
+                  0.004388823493555901
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.003380438385290341,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.046055577463968114,
+                0.049080475607703254,
+                0.05172910889119857,
+                0.04582603719546219,
+                0.04591608428518951
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7125541843038097,
+              "mse": 0.8117950493834931,
+              "pearson": 0.5894726303802003,
+              "r2": 0.347464575414548,
+              "rmse": 0.9009966977650324,
+              "spearman": 0.30001017380489886
+            },
+            "median_standardized_addition_coefficient": 0.09157158148209134,
+            "partial_r2": 0.009689120450025235,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0097054108011283,
+              "ci95_percentile": [
+                0.008045543994331744,
+                0.011339665855818597
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.009689120450025235,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.08963045025621467,
+              0.09249785849036066,
+              0.09266100986373424,
+              0.09131740139569648,
+              0.09157158148209134
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "GLI2_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7138359842311925,
+                "mse": 0.8153474242197658,
+                "pearson": 0.5870474917244395,
+                "r2": 0.34460911279028805,
+                "rmse": 0.902965904239892,
+                "spearman": 0.29405691207648066
+              },
+              "median_standardized_addition_coefficient": 0.06952132560442206,
+              "partial_r2": 0.005355569202980748,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.005312860223755267,
+                "ci95_percentile": [
+                  0.00371075929260638,
+                  0.006716777576177714
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.005355569202980637,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.06505191386584419,
+                0.06640861369043974,
+                0.06952132560442206,
+                0.0707918180411542,
+                0.0697746515497957
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9646997646517657,
+                "mse": 1.4568784465135194,
+                "pearson": 0.513010862684104,
+                "r2": 0.2631769480906707,
+                "rmse": 1.207012198162686,
+                "spearman": 0.3480710465652146
+              },
+              "median_standardized_addition_coefficient": 0.10811598043796038,
+              "partial_r2": 0.007264506312434471,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.007240616486996032,
+                "ci95_percentile": [
+                  0.005368834400675868,
+                  0.008927480750104773
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.007264506312434471,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.10078819568381975,
+                0.10416102552994652,
+                0.10824700927067238,
+                0.10888342811620941,
+                0.10811598043796038
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6082136002567173,
+                "mse": 0.6116123739759636,
+                "pearson": 0.6149093955883098,
+                "r2": 0.37807383886168644,
+                "rmse": 0.7820565030584194,
+                "spearman": 0.2729661142819098
+              },
+              "median_standardized_addition_coefficient": 0.030795641939078883,
+              "partial_r2": 0.0013954820837781545,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0013855888271439576,
+                "ci95_percentile": [
+                  0.0006471913623620235,
+                  0.002090011823809762
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0013954820837783766,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.02931563204989611,
+                0.028656201849718496,
+                0.030795641939078883,
+                0.032671911264765575,
+                0.03143332266509659
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7122132037323551,
+              "mse": 0.8115619170848969,
+              "pearson": 0.5896313510128117,
+              "r2": 0.3476519713386358,
+              "rmse": 0.9008673138064767,
+              "spearman": 0.3011694766667835
+            },
+            "median_standardized_addition_coefficient": 0.0942807794750899,
+            "partial_r2": 0.00997351914382072,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.009973817651844352,
+              "ci95_percentile": [
+                0.00844811493317738,
+                0.011517484271619536
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.00997351914382083,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09061848338705503,
+              0.09339704508564028,
+              0.09480654963136553,
+              0.0942807794750899,
+              0.09439768221341134
+            ]
+          },
+          "mechanisms": [
+            "spacing"
+          ],
+          "pair": "HOXA10_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7153924992847756,
+                "mse": 0.8165285373820371,
+                "pearson": 0.5862389019741687,
+                "r2": 0.3436597128408655,
+                "rmse": 0.9036196862519303,
+                "spearman": 0.28774907960317836
+              },
+              "median_standardized_addition_coefficient": 0.05829514354504473,
+              "partial_r2": 0.003914726202687402,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.003926262824032467,
+                "ci95_percentile": [
+                  0.0028429234705931753,
+                  0.005025722764489221
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.003914726202687513,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.06015542644529244,
+                0.06218805113202253,
+                0.05829514354504473,
+                0.05532798433379586,
+                0.05508969990680436
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9678695851097354,
+                "mse": 1.4631800718686194,
+                "pearson": 0.509895675469874,
+                "r2": 0.2599898717513608,
+                "rmse": 1.2096198046777422,
+                "spearman": 0.33918717841611684
+              },
+              "median_standardized_addition_coefficient": 0.06574893019396127,
+              "partial_r2": 0.002970498687501655,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.002998156554535669,
+                "ci95_percentile": [
+                  0.0020298574064965018,
+                  0.003972527903278005
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.002970498687502099,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.07341821950890721,
+                0.07198711489324766,
+                0.06574893019396127,
+                0.06405949544212253,
+                0.06491986687794714
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6076566463034141,
+                "mse": 0.6102538869392284,
+                "pearson": 0.6160322172276811,
+                "r2": 0.37945523443781004,
+                "rmse": 0.7811874851399172,
+                "spearman": 0.27964473349352714
+              },
+              "median_standardized_addition_coefficient": 0.0468926333842861,
+              "partial_r2": 0.003613539386306819,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0036116891093906367,
+                "ci95_percentile": [
+                  0.002645027807802766,
+                  0.004667182138468139
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.00361353938630693,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0468926333842861,
+                0.052388987373481535,
+                0.05084135689633217,
+                0.04651112279119554,
+                0.045259532932123064
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7124956831459827,
+              "mse": 0.8116390230658481,
+              "pearson": 0.5895791090206631,
+              "r2": 0.3475899921678385,
+              "rmse": 0.9009101082049463,
+              "spearman": 0.3002340394935698
+            },
+            "median_standardized_addition_coefficient": 0.09279346768399585,
+            "partial_r2": 0.009879457358309307,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.009847263345798163,
+              "ci95_percentile": [
+                0.008504843902190282,
+                0.011238812605685582
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.009879457358309418,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09083641076983279,
+              0.09201314141217523,
+              0.09279346768399585,
+              0.09293018384729985,
+              0.09309424341172601
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "KLF13_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7145909226925093,
+                "mse": 0.8165414754253991,
+                "pearson": 0.5862289375628918,
+                "r2": 0.34364931300949797,
+                "rmse": 0.9036268452328091,
+                "spearman": 0.2894596098815771
+              },
+              "median_standardized_addition_coefficient": 0.05669225486127059,
+              "partial_r2": 0.003898943050140158,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0038861416372229507,
+                "ci95_percentile": [
+                  0.0024129671557033107,
+                  0.005280604545348164
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.003898943050140269,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.055391864759591215,
+                0.064576334150836,
+                0.0634125453613467,
+                0.05669225486127059,
+                0.05668837779938951
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9665768738944838,
+                "mse": 1.4623069092197338,
+                "pearson": 0.5103278962191753,
+                "r2": 0.26043147782309917,
+                "rmse": 1.2092588263972828,
+                "spearman": 0.34347807312996503
+              },
+              "median_standardized_addition_coefficient": 0.07313929802612615,
+              "partial_r2": 0.0035654828163323993,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0035842365668978804,
+                "ci95_percentile": [
+                  0.0020173070987750813,
+                  0.004965381245686403
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0035654828163323993,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.07188446493419787,
+                0.08267368287392997,
+                0.08094418767792835,
+                0.07126578101720368,
+                0.07313929802612615
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6078160040441203,
+                "mse": 0.6108110496317385,
+                "pearson": 0.6155708886210037,
+                "r2": 0.3788886761580459,
+                "rmse": 0.7815440164390861,
+                "spearman": 0.2765879598748557
+              },
+              "median_standardized_addition_coefficient": 0.04209950668422546,
+              "partial_r2": 0.002703837088529615,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0027094030670785085,
+                "ci95_percentile": [
+                  0.0017738137261053804,
+                  0.003608927096124287
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.002703837088529837,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0388992645876015,
+                0.04647898543048711,
+                0.045880903047830913,
+                0.04209950668422546,
+                0.04023745757318594
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7124072170112161,
+              "mse": 0.811860603939282,
+              "pearson": 0.5894281930054188,
+              "r2": 0.3474118814865329,
+              "rmse": 0.9010330759407681,
+              "spearman": 0.3000716120585116
+            },
+            "median_standardized_addition_coefficient": 0.09152847295740958,
+            "partial_r2": 0.009609150277934186,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.009604010031327326,
+              "ci95_percentile": [
+                0.00780983276910244,
+                0.011371138022085782
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.009609150277934297,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.08992637722372114,
+              0.09371927482034167,
+              0.09268994728001853,
+              0.09094967979580505,
+              0.09152847295740958
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "ZBTB18_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7158307507500532,
+                "mse": 0.8178362597545725,
+                "pearson": 0.5853403207988193,
+                "r2": 0.34260854213681846,
+                "rmse": 0.9043429989525946,
+                "spearman": 0.28324725606163104
+              },
+              "median_standardized_addition_coefficient": 0.04550916897968127,
+              "partial_r2": 0.0023194322994587457,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.002335635006752046,
+                "ci95_percentile": [
+                  0.0016771515058477792,
+                  0.002921427173065801
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0023194322994587457,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.041698851583855105,
+                0.039882356398763474,
+                0.04550916897968127,
+                0.04713521156501999,
+                0.045668043929754654
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.968520189457364,
+                "mse": 1.4650036908481168,
+                "pearson": 0.508989717843116,
+                "r2": 0.25906756796877095,
+                "rmse": 1.210373368365364,
+                "spearman": 0.3381879300641067
+              },
+              "median_standardized_addition_coefficient": 0.05230409223256103,
+              "partial_r2": 0.001727861532534014,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0017230094462153955,
+                "ci95_percentile": [
+                  0.0010827304493750383,
+                  0.0022913645386825857
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.001727861532534014,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.04948094402866915,
+                0.04489355482421598,
+                0.05316209039212848,
+                0.05524362714191037,
+                0.05230409223256103
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6079929553621318,
+                "mse": 0.6111145673997355,
+                "pearson": 0.6153197844450933,
+                "r2": 0.37858004008670476,
+                "rmse": 0.7817381706170778,
+                "spearman": 0.2769799248050617
+              },
+              "median_standardized_addition_coefficient": 0.037856247571275856,
+              "partial_r2": 0.0022082712247796232,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0021854721358453566,
+                "ci95_percentile": [
+                  0.0015530558333581358,
+                  0.0029121805948546598
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0022082712247797343,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.033916759141480304,
+                0.03487115797805876,
+                0.037856247571275856,
+                0.03892842856296461,
+                0.039031995626246735
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7118288863831528,
+              "mse": 0.8107800409542347,
+              "pearson": 0.5901643806123231,
+              "r2": 0.348280457399597,
+              "rmse": 0.9004332518039495,
+              "spearman": 0.30345032286911544
+            },
+            "median_standardized_addition_coefficient": 0.09835933089143906,
+            "partial_r2": 0.01092733185707051,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.010919472371730632,
+              "ci95_percentile": [
+                0.009307158195757965,
+                0.012610003243441704
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.010927331857070843,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09578546884849203,
+              0.09913489237936501,
+              0.09995450803289985,
+              0.09835933089143906,
+              0.09784121732155777
+            ]
+          },
+          "mechanisms": [
+            "composite",
+            "spacing"
+          ],
+          "pair": "HOXC11_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7161138615825763,
+                "mse": 0.8182731681206737,
+                "pearson": 0.5850404789259624,
+                "r2": 0.34225734735385527,
+                "rmse": 0.904584527902547,
+                "spearman": 0.27988468284400314
+              },
+              "median_standardized_addition_coefficient": 0.038840009045404904,
+              "partial_r2": 0.001786446654073126,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0017796787730426367,
+                "ci95_percentile": [
+                  0.0011667571661631237,
+                  0.0024813664422668824
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0017864466540733481,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.039495619385508246,
+                0.03882365207880884,
+                0.03560789607599132,
+                0.038840009045404904,
+                0.04328875158826178
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.968878782763676,
+                "mse": 1.4661254180272787,
+                "pearson": 0.5084323273234733,
+                "r2": 0.2585002492294912,
+                "rmse": 1.2108366603416327,
+                "spearman": 0.33561071658165276
+              },
+              "median_standardized_addition_coefficient": 0.03980451485155243,
+              "partial_r2": 0.0009635023729535064,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0009655631991695723,
+                "ci95_percentile": [
+                  0.000420186476415671,
+                  0.0016081368572944926
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0009635023729536174,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.04194473321804678,
+                0.03980451485155243,
+                0.03401635523011146,
+                0.03661511498008309,
+                0.04277924623244751
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6080612649617526,
+                "mse": 0.6109746191927382,
+                "pearson": 0.6154352895853398,
+                "r2": 0.37872234827868945,
+                "rmse": 0.7816486545710536,
+                "spearman": 0.2764742175773125
+              },
+              "median_standardized_addition_coefficient": 0.03784278930770968,
+              "partial_r2": 0.002436770381644582,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0024428124849188992,
+                "ci95_percentile": [
+                  0.001766691418882174,
+                  0.0030949099677541943
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.002436770381644915,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03704650554565748,
+                0.03784278930770968,
+                0.03719943692265996,
+                0.04089209820376062,
+                0.04379825693723235
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7118363231665539,
+              "mse": 0.810697334758376,
+              "pearson": 0.5902205740813349,
+              "r2": 0.34834693812360673,
+              "rmse": 0.9003873248543518,
+              "spearman": 0.30324444265112815
+            },
+            "median_standardized_addition_coefficient": 0.09869318712654684,
+            "partial_r2": 0.011028225359226318,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.011015558403187187,
+              "ci95_percentile": [
+                0.009432234942813348,
+                0.012610109786816497
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.011028225359226096,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09662996044112415,
+              0.09869318712654684,
+              0.09914193648062036,
+              0.09803804405635694,
+              0.09876395962506625
+            ]
+          },
+          "mechanisms": [
+            "spacing"
+          ],
+          "pair": "CUX1_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7160199687857053,
+                "mse": 0.8182908375903637,
+                "pearson": 0.5850285047784829,
+                "r2": 0.342243144317122,
+                "rmse": 0.904594294471485,
+                "spearman": 0.28113026765006327
+              },
+              "median_standardized_addition_coefficient": 0.040286661097291336,
+              "partial_r2": 0.0017648916223159672,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0017786226442753073,
+                "ci95_percentile": [
+                  0.0008664663562350627,
+                  0.0025756452560946304
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0017648916223160782,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.034743714526979885,
+                0.04112933924684271,
+                0.04084896511393156,
+                0.040286661097291336,
+                0.03707008393222133
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9687642662968847,
+                "mse": 1.4660822261331106,
+                "pearson": 0.508453971278511,
+                "r2": 0.25852209373090107,
+                "rmse": 1.2108188246526028,
+                "spearman": 0.3362941815695872
+              },
+              "median_standardized_addition_coefficient": 0.03907916698798581,
+              "partial_r2": 0.0009929338787066921,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0010214361845358177,
+                "ci95_percentile": [
+                  0.00030872108606409544,
+                  0.0016682837394792953
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0009929338787066921,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.035886598908275516,
+                0.04622187301711693,
+                0.04399942802702179,
+                0.03907916698798581,
+                0.03367903460701134
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6081289191547489,
+                "mse": 0.6111007690686878,
+                "pearson": 0.6153315642322896,
+                "r2": 0.3785940711027923,
+                "rmse": 0.7817293451500256,
+                "spearman": 0.2759475285012903
+              },
+              "median_standardized_addition_coefficient": 0.03769850219514843,
+              "partial_r2": 0.0022308003237810903,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0022458948877052687,
+                "ci95_percentile": [
+                  0.0013087741652899859,
+                  0.003078896976204948
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0022308003237813123,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03360083013952829,
+                0.036036805471445874,
+                0.03769850219514843,
+                0.041386461703253226,
+                0.04046113325016572
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7118812332272808,
+              "mse": 0.8104965139573206,
+              "pearson": 0.5903572342852085,
+              "r2": 0.3485083614862914,
+              "rmse": 0.9002757988290703,
+              "spearman": 0.3039016995913718
+            },
+            "median_standardized_addition_coefficient": 0.099182613865773,
+            "partial_r2": 0.011273207173634003,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.011277541948905956,
+              "ci95_percentile": [
+                0.009734987691975356,
+                0.012792795582019003
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.011273207173633892,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09612635013501666,
+              0.09879861570689981,
+              0.10029609211588877,
+              0.10007569850965525,
+              0.099182613865773
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "BHLHE40_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7160319122930205,
+                "mse": 0.8187219894489052,
+                "pearson": 0.5847324401184615,
+                "r2": 0.34189657671820917,
+                "rmse": 0.9048325753690045,
+                "spearman": 0.27931474588311117
+              },
+              "median_standardized_addition_coefficient": 0.031930464412099284,
+              "partial_r2": 0.0012389283553853048,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0012439677957757356,
+                "ci95_percentile": [
+                  0.0006181351142277303,
+                  0.0018649370800959875
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0012389283553854158,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03332234888706691,
+                0.03587025022551318,
+                0.03176761764796759,
+                0.027927372606871424,
+                0.031930464412099284
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9689947186635736,
+                "mse": 1.4668760769357068,
+                "pearson": 0.5080588978716465,
+                "r2": 0.2581205999943924,
+                "rmse": 1.211146595972472,
+                "spearman": 0.3350919612512507
+              },
+              "median_standardized_addition_coefficient": 0.026447718322083744,
+              "partial_r2": 0.0004519938501713616,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0004519423198923178,
+                "ci95_percentile": [
+                  6.101214776896569e-05,
+                  0.0008593226764069757
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0004519938501711396,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.026447718322083744,
+                0.030914774764143282,
+                0.026521135081190726,
+                0.022009714337480172,
+                0.025049201365796813
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6080454756260829,
+                "mse": 0.6110354782189529,
+                "pearson": 0.6153858054244279,
+                "r2": 0.37866046297002864,
+                "rmse": 0.7816875835133579,
+                "spearman": 0.2754817981595578
+              },
+              "median_standardized_addition_coefficient": 0.03881172745573545,
+              "partial_r2": 0.0023374033624019575,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.002360695255323564,
+                "ci95_percentile": [
+                  0.0015331531810378717,
+                  0.0031741245588900457
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0023374033624021795,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.04019697944958876,
+                0.040825725684291804,
+                0.03701410021061825,
+                0.0338406493385513,
+                0.03881172745573545
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.711573590534474,
+              "mse": 0.810170546656725,
+              "pearson": 0.5905789834206853,
+              "r2": 0.3487703798504791,
+              "rmse": 0.9000947431558108,
+              "spearman": 0.30519742646271425
+            },
+            "median_standardized_addition_coefficient": 0.10124717799931847,
+            "partial_r2": 0.01167085552638314,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.011660147591227965,
+              "ci95_percentile": [
+                0.00997243915224783,
+                0.013301791337999407
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.011670855526383361,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09811713003262926,
+              0.10124717799931847,
+              0.10217567743143399,
+              0.10161002241403423,
+              0.10049522573962799
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "TFAP4_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.716633421452233,
+                "mse": 0.8196100421745082,
+                "pearson": 0.5841219366595138,
+                "r2": 0.3411827440053886,
+                "rmse": 0.9053231700196942,
+                "spearman": 0.2753417507209286
+              },
+              "median_standardized_addition_coefficient": 0.014214207595802128,
+              "partial_r2": 0.0001555905394593493,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.00016496853705905146,
+                "ci95_percentile": [
+                  -0.0001852148869973591,
+                  0.0005104410244720636
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.00015559053945923829,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.014661827111613901,
+                0.014214207595802128,
+                0.011481558870694344,
+                0.007927894080806153,
+                0.016087604315587634
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9694357400779321,
+                "mse": 1.467507609442071,
+                "pearson": 0.5077443764502763,
+                "r2": 0.2578011994913286,
+                "rmse": 1.211407284707365,
+                "spearman": 0.3337132634368595
+              },
+              "median_standardized_addition_coefficient": -0.007301626035186374,
+              "partial_r2": 2.165957212252323e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 2.4039220442195752e-05,
+                "ci95_percentile": [
+                  -9.923913597141843e-05,
+                  0.00014003857579227008
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 2.1659572122301185e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.00794607130070358,
+                -0.0054985678522931234,
+                -0.007301626035186374,
+                -0.012625708038736477,
+                -0.004859988272299625
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6083513426040013,
+                "mse": 0.6114362269990259,
+                "pearson": 0.6150560025650899,
+                "r2": 0.3782529562533946,
+                "rmse": 0.7819438771414646,
+                "spearman": 0.27410004312265884
+              },
+              "median_standardized_addition_coefficient": 0.03392698303830064,
+              "partial_r2": 0.0016830844516696475,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0017110832310774926,
+                "ci95_percentile": [
+                  0.0006986885525526121,
+                  0.0028493302705541773
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0016830844516698695,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.037269725524020254,
+                0.03392698303830064,
+                0.030264743769939876,
+                0.028447559464671906,
+                0.037035196905657444
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7113719984071109,
+              "mse": 0.8097818041954132,
+              "pearson": 0.5908439444889128,
+              "r2": 0.349082858015059,
+              "rmse": 0.8998787719439842,
+              "spearman": 0.3062183797554334
+            },
+            "median_standardized_addition_coefficient": 0.1026003138012435,
+            "partial_r2": 0.012145083459988437,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.012166489111641421,
+              "ci95_percentile": [
+                0.010523317269690838,
+                0.013754090789365372
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.012145083459988548,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09984353468824357,
+              0.10341067563237605,
+              0.10469536685317628,
+              0.10259197115918223,
+              0.1026003138012435
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "MAF_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7166520727110444,
+                "mse": 0.8196763008683636,
+                "pearson": 0.5840757395810457,
+                "r2": 0.34112948407856325,
+                "rmse": 0.905359763225848,
+                "spearman": 0.2753894131098283
+              },
+              "median_standardized_addition_coefficient": 0.009504085905768673,
+              "partial_r2": 7.476138752049444e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 7.560343156132188e-05,
+                "ci95_percentile": [
+                  -0.00015912752118699692,
+                  0.00030843226798963323
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 7.47613875208275e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.01037857857939726,
+                0.009504085905768673,
+                0.0051697547509454884,
+                0.009198969773333062,
+                0.009516396424779243
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9694218885785193,
+                "mse": 1.467357909540964,
+                "pearson": 0.5078188904163663,
+                "r2": 0.2578769109127367,
+                "rmse": 1.2113454955300589,
+                "spearman": 0.33348685734543415
+              },
+              "median_standardized_addition_coefficient": -0.013598370641484366,
+              "partial_r2": 0.0001236669877625607,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.00012117392576854735,
+                "ci95_percentile": [
+                  -0.00012516223641229618,
+                  0.0003459079729071806
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0001236669877625607,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.013149374689911722,
+                -0.012176724605857994,
+                -0.016044048816411933,
+                -0.013598370641484366,
+                -0.016097704114999053
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.608318877145701,
+                "mse": 0.6115211469742895,
+                "pearson": 0.6149834921948256,
+                "r2": 0.3781666042493036,
+                "rmse": 0.7819981758126354,
+                "spearman": 0.2732258075524735
+              },
+              "median_standardized_addition_coefficient": 0.03188295178199369,
+              "partial_r2": 0.0015444321376095749,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0015499341570093805,
+                "ci95_percentile": [
+                  0.0006499436368901073,
+                  0.002549377661606527
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.001544432137609686,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.033906531851592044,
+                0.03118489641587771,
+                0.02638355831000404,
+                0.03188295178199369,
+                0.03513049696222579
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7110397879954755,
+              "mse": 0.8091422762929623,
+              "pearson": 0.5912789484857197,
+              "r2": 0.34959692201640646,
+              "rmse": 0.8995233606154774,
+              "spearman": 0.3082321243588259
+            },
+            "median_standardized_addition_coefficient": 0.10691620191868821,
+            "partial_r2": 0.01292524520161753,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.012936752128529627,
+              "ci95_percentile": [
+                0.011098844006998992,
+                0.01490730815170422
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.012925245201617752,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.10455340739546735,
+              0.10713141727718116,
+              0.10703160716374212,
+              0.10553045440409783,
+              0.10691620191868821
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "SREBF2_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.716646099865422,
+                "mse": 0.8196985295057845,
+                "pearson": 0.5840613597675856,
+                "r2": 0.3411116163010147,
+                "rmse": 0.9053720392776576,
+                "spearman": 0.2760464124867739
+              },
+              "median_standardized_addition_coefficient": -0.011156567362406007,
+              "partial_r2": 4.764461526107766e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 5.394024276855758e-05,
+                "ci95_percentile": [
+                  -0.00015292547048983973,
+                  0.0002602877726562562
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 4.764461526107766e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.015291306836540666,
+                -0.011156567362406007,
+                -0.008384821179346238,
+                -0.006734200581626598,
+                -0.014175732429762479
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9689554664741319,
+                "mse": 1.465560300276352,
+                "pearson": 0.5087139373082068,
+                "r2": 0.25878606016102257,
+                "rmse": 1.2106032794753003,
+                "spearman": 0.33607447941522006
+              },
+              "median_standardized_addition_coefficient": -0.047175109789529816,
+              "partial_r2": 0.001348580792364773,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0013565663884838042,
+                "ci95_percentile": [
+                  0.0008358285982326185,
+                  0.0018926845210433915
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.001348580792364995,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.051179994724741516,
+                -0.047175109789529816,
+                -0.04381345146021247,
+                -0.04274960429393349,
+                -0.0517103205033348
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6083139208291589,
+                "mse": 0.611796482505566,
+                "pearson": 0.6147556013071833,
+                "r2": 0.37788662565946807,
+                "rmse": 0.7821742021478117,
+                "spearman": 0.27192104060020533
+              },
+              "median_standardized_addition_coefficient": 0.02486197506577147,
+              "partial_r2": 0.0010948805634840575,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.001092461618452667,
+                "ci95_percentile": [
+                  0.0005721010319282738,
+                  0.0015661364270966786
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0010948805634841685,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.020597381047179033,
+                0.02486197506577147,
+                0.027043809102730285,
+                0.029235266662018693,
+                0.023358855640765716
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.711624540831079,
+              "mse": 0.8100927707387551,
+              "pearson": 0.5906323650139355,
+              "r2": 0.34883289752867086,
+              "rmse": 0.900051537823671,
+              "spearman": 0.3051205256788508
+            },
+            "median_standardized_addition_coefficient": 0.10156529388507265,
+            "partial_r2": 0.011765734569795905,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.01176042002769312,
+              "ci95_percentile": [
+                0.010060947118053127,
+                0.013438649283768948
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.011765734569795794,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.09938347380872496,
+              0.10228561304419553,
+              0.10156529388507265,
+              0.10069962911439198,
+              0.10214676356151599
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "IRF8_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7166730176980246,
+                "mse": 0.8197611441463054,
+                "pearson": 0.5840181396852323,
+                "r2": 0.3410612855296352,
+                "rmse": 0.9054066181259697,
+                "spearman": 0.2751027618620585
+              },
+              "median_standardized_addition_coefficient": 0.006143727668899352,
+              "partial_r2": -2.8739146593625975e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -2.534404445475591e-05,
+                "ci95_percentile": [
+                  -0.00027148075355052926,
+                  0.00016100711305433435
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -2.873914659340393e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0032153716660841434,
+                0.006143727668899352,
+                0.015447004302813977,
+                0.012906285187782134,
+                0.0023512397745310606
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9696819133857459,
+                "mse": 1.467740113229185,
+                "pearson": 0.507629323474212,
+                "r2": 0.2576836096193583,
+                "rmse": 1.2115032452408805,
+                "spearman": 0.3331429179455763
+              },
+              "median_standardized_addition_coefficient": -0.014038007995126955,
+              "partial_r2": -0.00013677146406809726,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -0.00013938537456026356,
+                "ci95_percentile": [
+                  -0.00028090425548208395,
+                  1.787750172525802e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -0.00013677146406787521,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.017502095432141134,
+                -0.014038007995126955,
+                0.001557441749766018,
+                -0.000348618501731122,
+                -0.01572600154767175
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6083583275419774,
+                "mse": 0.6118257957720576,
+                "pearson": 0.6147319565552072,
+                "r2": 0.3778568180753261,
+                "rmse": 0.782192940246879,
+                "spearman": 0.2716582027467795
+              },
+              "median_standardized_addition_coefficient": 0.02617579002462542,
+              "partial_r2": 0.0010470195953299344,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0010624100853167118,
+                "ci95_percentile": [
+                  0.0005209794724555572,
+                  0.001568531989535978
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0010470195953302674,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.023932838760752563,
+                0.02632546333335829,
+                0.029336566856903376,
+                0.02617579002462542,
+                0.020428481096632832
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7112890135883538,
+              "mse": 0.8094963701589264,
+              "pearson": 0.5910380279049384,
+              "r2": 0.349312295014375,
+              "rmse": 0.899720162138721,
+              "spearman": 0.30743859458576867
+            },
+            "median_standardized_addition_coefficient": 0.10517284001719167,
+            "partial_r2": 0.012493285179057123,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.012479427799628573,
+              "ci95_percentile": [
+                0.010755016213920918,
+                0.01412227165846584
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.012493285179057345,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.10218770712052323,
+              0.105657241350363,
+              0.10528179622318454,
+              0.10443612358382912,
+              0.10517284001719167
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "ATF2_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7166939024081969,
+                "mse": 0.8197617104285136,
+                "pearson": 0.5840173974190619,
+                "r2": 0.3410608303418369,
+                "rmse": 0.9054069308485073,
+                "spearman": 0.27526929316827614
+              },
+              "median_standardized_addition_coefficient": -0.0023334527286652733,
+              "partial_r2": -2.942995572352558e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -2.7632747061634433e-05,
+                "ci95_percentile": [
+                  -0.0001267057810612926,
+                  3.561601126665089e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -2.9429955723303536e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.0023334527286652733,
+                -0.0036878343247563152,
+                0.0013686139247371715,
+                -0.0009960857613086512,
+                -0.005637062937982968
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9693488602745373,
+                "mse": 1.4666300754137247,
+                "pearson": 0.5081816563850274,
+                "r2": 0.25824501640856534,
+                "rmse": 1.2110450344284165,
+                "spearman": 0.33520018737566754
+              },
+              "median_standardized_addition_coefficient": -0.031929841057782155,
+              "partial_r2": 0.0006196224144878748,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0006373713016611937,
+                "ci95_percentile": [
+                  0.00013978714029577732,
+                  0.001053896485312472
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0006196224144877638,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.031929841057782155,
+                -0.035736516591269904,
+                -0.026339987555266647,
+                -0.03053647612737953,
+                -0.036462438725729476
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.608298946933839,
+                "mse": 0.6116717052301028,
+                "pearson": 0.6148586380349664,
+                "r2": 0.37801350708834036,
+                "rmse": 0.7820944349821848,
+                "spearman": 0.27143336051273353
+              },
+              "median_standardized_addition_coefficient": 0.028360847947534816,
+              "partial_r2": 0.0012986095204388093,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.001292232862196263,
+                "ci95_percentile": [
+                  0.0006941074566465504,
+                  0.0019182217068365365
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0012986095204389203,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.02726293559935943,
+                0.028360847947534816,
+                0.029077215407069215,
+                0.02853399886166222,
+                0.025188312846093044
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7113320481114171,
+              "mse": 0.8096283614799977,
+              "pearson": 0.5909482544549581,
+              "r2": 0.3492061980225267,
+              "rmse": 0.8997935104678171,
+              "spearman": 0.30658215350715196
+            },
+            "median_standardized_addition_coefficient": 0.10365747454987494,
+            "partial_r2": 0.012332268625233178,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.012312536068545543,
+              "ci95_percentile": [
+                0.010562051521241799,
+                0.014148010883465532
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0123322686252334,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.10149871674268314,
+              0.10484883631917448,
+              0.10586542816003253,
+              0.10365747454987494,
+              0.10279307901853388
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "CREB1_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.716684049583785,
+                "mse": 0.8197944377975906,
+                "pearson": 0.5839949537571465,
+                "r2": 0.3410345234954322,
+                "rmse": 0.9054250039608972,
+                "spearman": 0.2751201305924015
+              },
+              "median_standardized_addition_coefficient": -0.003596417278967508,
+              "partial_r2": -6.935415787356902e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -6.839498993083115e-05,
+                "ci95_percentile": [
+                  -0.00012316767201233647,
+                  -1.6233623297673445e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -6.935415787356902e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.003596417278967508,
+                -0.004364165149655631,
+                -0.00855919141211202,
+                -0.00240151268382184,
+                0.0036756692914423324
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9692319355865816,
+                "mse": 1.4666434634934122,
+                "pearson": 0.5081748933203818,
+                "r2": 0.2582382453249803,
+                "rmse": 1.2110505619062368,
+                "spearman": 0.3345999388219635
+              },
+              "median_standardized_addition_coefficient": -0.034203901130133316,
+              "partial_r2": 0.0006104996067958224,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0006023130203864913,
+                "ci95_percentile": [
+                  0.00025144942138246586,
+                  0.0009821830082092635
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0006104996067956003,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.034203901130133316,
+                -0.034857218586998084,
+                -0.039777964363717506,
+                -0.03157379699660117,
+                -0.024571139031190507
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6083425904350239,
+                "mse": 0.6117224968927842,
+                "pearson": 0.6148174183514523,
+                "r2": 0.3779618589119246,
+                "rmse": 0.7821269058744778,
+                "spearman": 0.27331224537489457
+              },
+              "median_standardized_addition_coefficient": 0.026699831948293368,
+              "partial_r2": 0.001215679897062505,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0012255680153176463,
+                "ci95_percentile": [
+                  0.00069842954363388,
+                  0.001754853309672549
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.001215679897062505,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.027011066572315754,
+                0.026128888293448577,
+                0.022659581540771582,
+                0.026699831948293368,
+                0.031922477610965144
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7166704554204852,
+              "mse": 0.8197375855876649,
+              "pearson": 0.5840336664769739,
+              "r2": 0.3410802223217193,
+              "rmse": 0.9053936080996291,
+              "spearman": 0.2751433010036594
+            },
+            "m1": {
+              "mae": 0.7114457179718012,
+              "mse": 0.8097854105045494,
+              "pearson": 0.5908412530030837,
+              "r2": 0.34907995919907686,
+              "rmse": 0.8998807757167332,
+              "spearman": 0.3060389354463881
+            },
+            "median_standardized_addition_coefficient": 0.10254137822669954,
+            "partial_r2": 0.01214068411414948,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.012133723391129059,
+              "ci95_percentile": [
+                0.01049579411709901,
+                0.013857565524816994
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.012140684114149702,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.10000474991115459,
+              0.10320751957221556,
+              0.10474339614427927,
+              0.10254137822669954,
+              0.10230746778886127
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "SIX4_FLI1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7166704554204852,
+                "mse": 0.8197375855876649,
+                "pearson": 0.5840336664769739,
+                "r2": 0.3410802223217193,
+                "rmse": 0.9053936080996291,
+                "spearman": 0.2751433010036594
+              },
+              "m1": {
+                "mae": 0.7166882215546555,
+                "mse": 0.8197955486806049,
+                "pearson": 0.583993815763396,
+                "r2": 0.3410336305477357,
+                "rmse": 0.9054256174201196,
+                "spearman": 0.2750037770226429
+              },
+              "median_standardized_addition_coefficient": 0.0027383756108877123,
+              "partial_r2": -7.070932693475918e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -7.199601901131114e-05,
+                "ci95_percentile": [
+                  -0.0001624387174332498,
+                  1.607598307900859e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -7.070932693431509e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                0.003296177548740518,
+                0.0027383756108877123,
+                -0.006296691757207172,
+                0.00190551982902151,
+                0.004712996828997954
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9694303676770494,
+                "mse": 1.4675393957174552,
+                "pearson": 0.5077284605315365,
+                "r2": 0.2577851234346792,
+                "rmse": 1.2114204042022139,
+                "spearman": 0.33370552074750104
+              },
+              "m1": {
+                "mae": 0.9693964898939825,
+                "mse": 1.467214866590806,
+                "pearson": 0.5078901519422108,
+                "r2": 0.25794925555023307,
+                "rmse": 1.2112864510885961,
+                "spearman": 0.3340268431105773
+              },
+              "median_standardized_addition_coefficient": -0.018854683803873264,
+              "partial_r2": 0.00022113827240088924,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0002135306388642566,
+                "ci95_percentile": [
+                  -9.335598875563344e-05,
+                  0.0005378616440792544
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0002211382724006672,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.018540669522801846,
+                -0.018854683803873264,
+                -0.030351964178185534,
+                -0.020944024057828,
+                -0.01685117422738794
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6085729466803459,
+                "mse": 0.612467060786195,
+                "pearson": 0.6142016828474466,
+                "r2": 0.3772047392334248,
+                "rmse": 0.7826027477502203,
+                "spearman": 0.26965622613934664
+              },
+              "m1": {
+                "mae": 0.6083870521755537,
+                "mse": 0.6119788825328529,
+                "pearson": 0.6146052964269687,
+                "r2": 0.37770114977050817,
+                "rmse": 0.7822907915429229,
+                "spearman": 0.270349149066653
+              },
+              "median_standardized_addition_coefficient": 0.024731763817625225,
+              "partial_r2": 0.0007970685847421555,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0008106180578625333,
+                "ci95_percentile": [
+                  5.967591049251542e-05,
+                  0.001639369703994601
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0007970685847423775,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.02513302462013444,
+                0.024331435024276347,
+                0.017758580663017293,
+                0.024731763817625225,
+                0.026277167885062423
+              ]
+            }
+          }
+        }
+      ],
+      "rows": 50060
+    },
+    {
+      "expression_supported_pairs": 4,
+      "focal_tf": "GABPA",
+      "pair_results_ranked_by_mean_outcome_partial_r2": [
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7252696152390928,
+              "mse": 0.9125117240634055,
+              "pearson": 0.8470726548487871,
+              "r2": 0.7175305073788174,
+              "rmse": 0.9552547953626852,
+              "spearman": 0.588741119671397
+            },
+            "m1": {
+              "mae": 0.7247532230039545,
+              "mse": 0.9097703731612002,
+              "pearson": 0.8475733351992026,
+              "r2": 0.7183790970221311,
+              "rmse": 0.9538188366567313,
+              "spearman": 0.5898945781554791
+            },
+            "median_standardized_addition_coefficient": 0.0542131175127309,
+            "partial_r2": 0.003004181568208364,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0030136695616232445,
+              "ci95_percentile": [
+                0.00012674061401756753,
+                0.00620546994274379
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.003004181568208475,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.04262281942180478,
+              0.04320772356555258,
+              0.0542131175127309,
+              0.05719750971789099,
+              0.05441515942469504
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "MNX1_GABPA",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7252696152390928,
+                "mse": 0.9125117240634055,
+                "pearson": 0.8470726548487871,
+                "r2": 0.7175305073788174,
+                "rmse": 0.9552547953626852,
+                "spearman": 0.588741119671397
+              },
+              "m1": {
+                "mae": 0.7240823170800169,
+                "mse": 0.9096746326644538,
+                "pearson": 0.847590876131011,
+                "r2": 0.7184087336490654,
+                "rmse": 0.9537686473482203,
+                "spearman": 0.5917596780093733
+              },
+              "median_standardized_addition_coefficient": 0.05180612034343585,
+              "partial_r2": 0.003109101312493978,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0031405899381476976,
+                "ci95_percentile": [
+                  0.0007654516692696039,
+                  0.0056205972263698575
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0031091013124942,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0531061288101225,
+                0.04592736363382212,
+                0.05180612034343585,
+                0.05973240031970412,
+                0.04746919516710914
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9531762027046127,
+                "mse": 1.5561305135346672,
+                "pearson": 0.8393347954773472,
+                "r2": 0.7044588879489255,
+                "rmse": 1.2474496036051586,
+                "spearman": 0.5949547730789454
+              },
+              "m1": {
+                "mae": 0.9508974983769153,
+                "mse": 1.5513410352287027,
+                "pearson": 0.8398763971907136,
+                "r2": 0.7053685081461891,
+                "rmse": 1.2455284160663307,
+                "spearman": 0.5979566463016588
+              },
+              "median_standardized_addition_coefficient": 0.07042171681032446,
+              "partial_r2": 0.0030778127311992254,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0031034258161115047,
+                "ci95_percentile": [
+                  0.0010566373784844818,
+                  0.0052925919362010005
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0030778127311991144,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0705731974441117,
+                0.05518631439210617,
+                0.06625674465112814,
+                0.07403665642027193,
+                0.07042171681032446
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6523095584101267,
+                "mse": 0.673887508017601,
+                "pearson": 0.8063518815904611,
+                "r2": 0.6502019219752453,
+                "rmse": 0.8209065160038632,
+                "spearman": 0.5594265859745122
+              },
+              "m1": {
+                "mae": 0.6515109533362122,
+                "mse": 0.6725954428532751,
+                "pearson": 0.8067675536770991,
+                "r2": 0.6508726005466487,
+                "rmse": 0.8201191638129639,
+                "spearman": 0.561716690998394
+              },
+              "median_standardized_addition_coefficient": 0.036668412867022535,
+              "partial_r2": 0.0019173306359793196,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0018867145728777568,
+                "ci95_percentile": [
+                  -0.00036188370363262056,
+                  0.004244899786356828
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0019173306359793196,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03386183357249691,
+                0.036668412867022535,
+                0.03735549603675314,
+                0.04542814423418704,
+                0.024516673545039988
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7252696152390928,
+              "mse": 0.9125117240634055,
+              "pearson": 0.8470726548487871,
+              "r2": 0.7175305073788174,
+              "rmse": 0.9552547953626852,
+              "spearman": 0.588741119671397
+            },
+            "m1": {
+              "mae": 0.7244301365877601,
+              "mse": 0.9098898103299964,
+              "pearson": 0.8475516192791464,
+              "r2": 0.7183421250517112,
+              "rmse": 0.9538814445883704,
+              "spearman": 0.5906260699353012
+            },
+            "median_standardized_addition_coefficient": 0.04891135881489236,
+            "partial_r2": 0.0028732932019041035,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0029021072874981235,
+              "ci95_percentile": [
+                0.0008044641983214612,
+                0.0050734932667656435
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0028732932019038815,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.05034424360153682,
+              0.04891135881489236,
+              0.04500545785805385,
+              0.05642599104967678,
+              0.045739056916502006
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "TFE3_GABPA",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7252696152390928,
+                "mse": 0.9125117240634055,
+                "pearson": 0.8470726548487871,
+                "r2": 0.7175305073788174,
+                "rmse": 0.9552547953626852,
+                "spearman": 0.588741119671397
+              },
+              "m1": {
+                "mae": 0.7250799029085653,
+                "mse": 0.9109371459838993,
+                "pearson": 0.8473602568708757,
+                "r2": 0.718017920591691,
+                "rmse": 0.9544302729816879,
+                "spearman": 0.5895048615583639
+              },
+              "median_standardized_addition_coefficient": 0.04824283906656792,
+              "partial_r2": 0.0017255428483643476,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0017406933677163172,
+                "ci95_percentile": [
+                  -0.0004984992056274895,
+                  0.003963648442646037
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0017255428483643476,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03178991585128217,
+                0.030267440983442275,
+                0.052055678111883205,
+                0.04824283906656792,
+                0.04851064013647639
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9531762027046127,
+                "mse": 1.5561305135346672,
+                "pearson": 0.8393347954773472,
+                "r2": 0.7044588879489255,
+                "rmse": 1.2474496036051586,
+                "spearman": 0.5949547730789454
+              },
+              "m1": {
+                "mae": 0.9529752550874979,
+                "mse": 1.553164792665842,
+                "pearson": 0.8396699678935897,
+                "r2": 0.7050221391903749,
+                "rmse": 1.2462603229926892,
+                "spearman": 0.595860815876146
+              },
+              "median_standardized_addition_coefficient": 0.06727749848703106,
+              "partial_r2": 0.0019058304191263975,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0019083534847498806,
+                "ci95_percentile": [
+                  -0.00048045321927921435,
+                  0.004211029323082398
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0019058304191265085,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.044717209066069984,
+                0.04025285274365299,
+                0.07229489319846766,
+                0.07070857238384226,
+                0.06727749848703106
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6523095584101267,
+                "mse": 0.673887508017601,
+                "pearson": 0.8063518815904611,
+                "r2": 0.6502019219752453,
+                "rmse": 0.8209065160038632,
+                "spearman": 0.5594265859745122
+              },
+              "m1": {
+                "mae": 0.6523289603055489,
+                "mse": 0.6733207854190457,
+                "pearson": 0.8065342995509281,
+                "r2": 0.6504960934406445,
+                "rmse": 0.8205612624411694,
+                "spearman": 0.5594306290712143
+              },
+              "median_standardized_addition_coefficient": 0.02577710577030063,
+              "partial_r2": 0.0008409750764225565,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.000824958629350947,
+                "ci95_percentile": [
+                  -0.00047648832735640024,
+                  0.002193897711444545
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0008409750764225565,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.018561375409966472,
+                0.02028202923239985,
+                0.03181646304380909,
+                0.02577710577030063,
+                0.029743781783109567
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7252696152390928,
+              "mse": 0.9125117240634055,
+              "pearson": 0.8470726548487871,
+              "r2": 0.7175305073788174,
+              "rmse": 0.9552547953626852,
+              "spearman": 0.588741119671397
+            },
+            "m1": {
+              "mae": 0.724268697152694,
+              "mse": 0.9091568263164577,
+              "pearson": 0.847685286033804,
+              "r2": 0.718569021448704,
+              "rmse": 0.9534971559037068,
+              "spearman": 0.5908673829529929
+            },
+            "median_standardized_addition_coefficient": 0.06499973280834578,
+            "partial_r2": 0.0036765530332131258,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0037457390799831014,
+              "ci95_percentile": [
+                -6.846278403461747e-05,
+                0.007241224158348858
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0036765530332131258,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.04788160865928999,
+              0.042548947493841395,
+              0.06499973280834578,
+              0.07299066128370324,
+              0.06637273667992714
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "HOXA10_GABPA",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7252696152390928,
+                "mse": 0.9125117240634055,
+                "pearson": 0.8470726548487871,
+                "r2": 0.7175305073788174,
+                "rmse": 0.9552547953626852,
+                "spearman": 0.588741119671397
+              },
+              "m1": {
+                "mae": 0.7256495433368382,
+                "mse": 0.9116367624336092,
+                "pearson": 0.8472328821089896,
+                "r2": 0.7178013531785087,
+                "rmse": 0.9547967126219116,
+                "spearman": 0.5893518427177467
+              },
+              "median_standardized_addition_coefficient": 0.02936825076940259,
+              "partial_r2": 0.000958849740472445,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0009878391070074488,
+                "ci95_percentile": [
+                  -0.0007232360493368172,
+                  0.0025859542309137145
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.000958849740472334,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.043860598638911084,
+                0.04823500204783643,
+                0.02936825076940259,
+                0.02668498267770257,
+                0.022581559384931733
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9531762027046127,
+                "mse": 1.5561305135346672,
+                "pearson": 0.8393347954773472,
+                "r2": 0.7044588879489255,
+                "rmse": 1.2474496036051586,
+                "spearman": 0.5949547730789454
+              },
+              "m1": {
+                "mae": 0.9529338674655199,
+                "mse": 1.553886350921021,
+                "pearson": 0.8395889635718784,
+                "r2": 0.7048851004733198,
+                "rmse": 1.2465497787577602,
+                "spearman": 0.5963733087542887
+              },
+              "median_standardized_addition_coefficient": 0.04490675211290278,
+              "partial_r2": 0.0014421429270407016,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.001462535341270721,
+                "ci95_percentile": [
+                  -0.00011375644055919842,
+                  0.003189842181756177
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0014421429270407016,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.06976679855579478,
+                0.06683970921015021,
+                0.04490675211290278,
+                0.03831702680982205,
+                0.04366217831096839
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6523095584101267,
+                "mse": 0.673887508017601,
+                "pearson": 0.8063518815904611,
+                "r2": 0.6502019219752453,
+                "rmse": 0.8209065160038632,
+                "spearman": 0.5594265859745122
+              },
+              "m1": {
+                "mae": 0.652423399306563,
+                "mse": 0.673931692035524,
+                "pearson": 0.8063375984432934,
+                "r2": 0.6501789871614003,
+                "rmse": 0.8209334272859914,
+                "spearman": 0.5589058687551388
+              },
+              "median_standardized_addition_coefficient": 0.015052938556988091,
+              "partial_r2": -6.556586581196733e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -4.5831128793527576e-05,
+                "ci95_percentile": [
+                  -0.0014745900496975772,
+                  0.001346924744664518
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -6.556586581196733e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.01640678904428417,
+                0.029630294884880642,
+                0.013829749421228369,
+                0.015052938556988091,
+                0.0015009404849625383
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.7252696152390928,
+              "mse": 0.9125117240634055,
+              "pearson": 0.8470726548487871,
+              "r2": 0.7175305073788174,
+              "rmse": 0.9552547953626852,
+              "spearman": 0.588741119671397
+            },
+            "m1": {
+              "mae": 0.7241456065374324,
+              "mse": 0.908048218781346,
+              "pearson": 0.8478878548811127,
+              "r2": 0.7189121927194956,
+              "rmse": 0.9529156409574491,
+              "spearman": 0.5920794061114653
+            },
+            "median_standardized_addition_coefficient": 0.0619400074248885,
+            "partial_r2": 0.004891449791114555,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0049002229029802,
+              "ci95_percentile": [
+                0.0014665310273229899,
+                0.008247347431487013
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.004891449791114555,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.061882424248539215,
+              0.05911484167288674,
+              0.0693094172203931,
+              0.0686923721662902,
+              0.0619400074248885
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "HOXD4_GABPA",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.7252696152390928,
+                "mse": 0.9125117240634055,
+                "pearson": 0.8470726548487871,
+                "r2": 0.7175305073788174,
+                "rmse": 0.9552547953626852,
+                "spearman": 0.588741119671397
+              },
+              "m1": {
+                "mae": 0.7255441861254044,
+                "mse": 0.9130394960931734,
+                "pearson": 0.8469764090877535,
+                "r2": 0.717367134686131,
+                "rmse": 0.9555310021622393,
+                "spearman": 0.5881218401529953
+              },
+              "median_standardized_addition_coefficient": -0.002008671439882099,
+              "partial_r2": -0.0005783728754933382,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -0.000562546356871696,
+                "ci95_percentile": [
+                  -0.001244265592171162,
+                  5.679356505494916e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -0.0005783728754931161,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.008784899499332014,
+                -0.008492334282874653,
+                -0.002008671439882099,
+                0.01873599577485219,
+                0.01713216564124785
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.9531762027046127,
+                "mse": 1.5561305135346672,
+                "pearson": 0.8393347954773472,
+                "r2": 0.7044588879489255,
+                "rmse": 1.2474496036051586,
+                "spearman": 0.5949547730789454
+              },
+              "m1": {
+                "mae": 0.9534930670452948,
+                "mse": 1.5572864677602778,
+                "pearson": 0.8392018015561291,
+                "r2": 0.7042393485244713,
+                "rmse": 1.2479128446170742,
+                "spearman": 0.594367935435613
+              },
+              "median_standardized_addition_coefficient": 4.683531579991226e-05,
+              "partial_r2": -0.0007428388657355622,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -0.00073912972822332,
+                "ci95_percentile": [
+                  -0.0014598616490859918,
+                  -9.033588199985925e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -0.0007428388657357843,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.012629279998302496,
+                -0.016678002252409955,
+                4.683531579991226e-05,
+                0.026165120419336965,
+                0.024031860523332442
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.6523095584101267,
+                "mse": 0.673887508017601,
+                "pearson": 0.8063518815904611,
+                "r2": 0.6502019219752453,
+                "rmse": 0.8209065160038632,
+                "spearman": 0.5594265859745122
+              },
+              "m1": {
+                "mae": 0.6524846854112477,
+                "mse": 0.6740602667649715,
+                "pearson": 0.8062965062628162,
+                "r2": 0.650112247249014,
+                "rmse": 0.8210117336341616,
+                "spearman": 0.5589602019222341
+              },
+              "median_standardized_addition_coefficient": -0.000306666326823359,
+              "partial_r2": -0.0002563614035209216,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -0.0002581194572022216,
+                "ci95_percentile": [
+                  -0.000675706177229679,
+                  0.000207938319995615
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -0.00025636140352114367,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.0039386012223036225,
+                -0.000306666326823359,
+                -0.0040641782128170755,
+                0.011306871119918403,
+                0.010232470746645628
+              ]
+            }
+          }
+        }
+      ],
+      "rows": 5041
+    },
+    {
+      "expression_supported_pairs": 4,
+      "focal_tf": "GCM1",
+      "pair_results_ranked_by_mean_outcome_partial_r2": [
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 1.1081878035014354,
+              "mse": 1.9141900622388786,
+              "pearson": 0.4369258500920236,
+              "r2": 0.19086859532997202,
+              "rmse": 1.3835425769519631,
+              "spearman": 0.3992537424037127
+            },
+            "m1": {
+              "mae": 1.107520362915607,
+              "mse": 1.9115955871345298,
+              "pearson": 0.4381794812732015,
+              "r2": 0.19196528438242066,
+              "rmse": 1.3826046387650122,
+              "spearman": 0.4005798754189237
+            },
+            "median_standardized_addition_coefficient": 0.05670827852929351,
+            "partial_r2": 0.0013553905411640699,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0013405030177635058,
+              "ci95_percentile": [
+                0.0002483205141782491,
+                0.0022778828427214757
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0013553905411638478,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.05399852993998679,
+              0.050473687749950515,
+              0.06281790720390071,
+              0.05670827852929351,
+              0.06117175702864988
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "TGIF2_GCM1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 1.1081878035014354,
+                "mse": 1.9141900622388786,
+                "pearson": 0.4369258500920236,
+                "r2": 0.19086859532997202,
+                "rmse": 1.3835425769519631,
+                "spearman": 0.3992537424037127
+              },
+              "m1": {
+                "mae": 1.1005853899010487,
+                "mse": 1.8890174318983812,
+                "pearson": 0.4489321993462585,
+                "r2": 0.20150910911616482,
+                "rmse": 1.374415305465703,
+                "spearman": 0.41691219157343506
+              },
+              "median_standardized_addition_coefficient": 0.1619023003555127,
+              "partial_r2": 0.013150538620524843,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.013140876862524575,
+                "ci95_percentile": [
+                  0.010370221410141257,
+                  0.015844042163181173
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.013150538620524732,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.1632390266372619,
+                0.1619023003555127,
+                0.1651839767906878,
+                0.15811302266023858,
+                0.15454667212790604
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 1.0827816671115973,
+                "mse": 1.848334735566597,
+                "pearson": 0.4296401439900073,
+                "r2": 0.18454838063604773,
+                "rmse": 1.3595347496723271,
+                "spearman": 0.3790191260266014
+              },
+              "m1": {
+                "mae": 1.0770382041053577,
+                "mse": 1.8285551310665664,
+                "pearson": 0.43967265240866,
+                "r2": 0.1932747818714733,
+                "rmse": 1.35224078146851,
+                "spearman": 0.3950371827102065
+              },
+              "median_standardized_addition_coefficient": 0.14175128004688586,
+              "partial_r2": 0.010701310817473386,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.010724376961662785,
+                "ci95_percentile": [
+                  0.008206237163067365,
+                  0.013252801870507983
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.010701310817473164,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.14347451617529902,
+                0.14157949367286043,
+                0.1468225866152911,
+                0.14175128004688586,
+                0.13736627599366405
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 1.1674304751747437,
+                "mse": 2.144007952550434,
+                "pearson": 0.43042095213264675,
+                "r2": 0.18523281005508285,
+                "rmse": 1.4642431330043635,
+                "spearman": 0.39700658149279716
+              },
+              "m1": {
+                "mae": 1.1598302138035455,
+                "mse": 2.1128063697634425,
+                "pearson": 0.44397697230887223,
+                "r2": 0.19709005428729276,
+                "rmse": 1.4535495759565418,
+                "spearman": 0.41575515702964067
+              },
+              "median_standardized_addition_coefficient": 0.1822251070410877,
+              "partial_r2": 0.014552923066295076,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.014520188264676326,
+                "ci95_percentile": [
+                  0.011963059602333233,
+                  0.017252660953008453
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.014552923066295187,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.18300353710213324,
+                0.1822251070410877,
+                0.18354536697691748,
+                0.17447476528014458,
+                0.1717270682657254
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 1.1081878035014354,
+              "mse": 1.9141900622388786,
+              "pearson": 0.4369258500920236,
+              "r2": 0.19086859532997202,
+              "rmse": 1.3835425769519631,
+              "spearman": 0.3992537424037127
+            },
+            "m1": {
+              "mae": 1.1074687690237204,
+              "mse": 1.9113221996895882,
+              "pearson": 0.43830978510629326,
+              "r2": 0.1920808457217612,
+              "rmse": 1.3825057684109634,
+              "spearman": 0.4004305912096693
+            },
+            "median_standardized_addition_coefficient": 0.06606745123254971,
+            "partial_r2": 0.0014982120145039524,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0014878559398579516,
+              "ci95_percentile": [
+                0.00023000422294046642,
+                0.002559190530171221
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0014982120145039524,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.054362898795754684,
+              0.056253805062952696,
+              0.07178460291349706,
+              0.06606745123254971,
+              0.06724711590844705
+            ]
+          },
+          "mechanisms": [
+            "spacing"
+          ],
+          "pair": "GCM1_HOXA2",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 1.1081878035014354,
+                "mse": 1.9141900622388786,
+                "pearson": 0.4369258500920236,
+                "r2": 0.19086859532997202,
+                "rmse": 1.3835425769519631,
+                "spearman": 0.3992537424037127
+              },
+              "m1": {
+                "mae": 1.1041964073457295,
+                "mse": 1.901677692548233,
+                "pearson": 0.44293932567491073,
+                "r2": 0.19615759534269872,
+                "rmse": 1.3790133039779686,
+                "spearman": 0.40918181593174374
+              },
+              "median_standardized_addition_coefficient": 0.11235470534031029,
+              "partial_r2": 0.0065366391443965055,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.006552404809208656,
+                "ci95_percentile": [
+                  0.004982164058002003,
+                  0.008296930617534191
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0065366391443966165,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.1272961675812698,
+                0.11475186683969617,
+                0.11235470534031029,
+                0.10581756526065915,
+                0.11038229096750629
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 1.0827816671115973,
+                "mse": 1.848334735566597,
+                "pearson": 0.4296401439900073,
+                "r2": 0.18454838063604773,
+                "rmse": 1.3595347496723271,
+                "spearman": 0.3790191260266014
+              },
+              "m1": {
+                "mae": 1.0798649689695,
+                "mse": 1.8381562659492605,
+                "pearson": 0.43483678831651296,
+                "r2": 0.18903893603837285,
+                "rmse": 1.3557862169048853,
+                "spearman": 0.3888562816343434
+              },
+              "median_standardized_addition_coefficient": 0.10055039131395359,
+              "partial_r2": 0.005506832405125173,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.005478642622852692,
+                "ci95_percentile": [
+                  0.003935348144748265,
+                  0.007198205377153574
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.005506832405124951,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.11727580519737192,
+                0.10055039131395359,
+                0.1000099140254091,
+                0.09647045894646071,
+                0.10191415774874943
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 1.1674304751747437,
+                "mse": 2.144007952550434,
+                "pearson": 0.43042095213264675,
+                "r2": 0.18523281005508285,
+                "rmse": 1.4642431330043635,
+                "spearman": 0.39700658149279716
+              },
+              "m1": {
+                "mae": 1.1632403867140706,
+                "mse": 2.128939407248895,
+                "pearson": 0.43702337386123113,
+                "r2": 0.19095916769162435,
+                "rmse": 1.459088553600807,
+                "spearman": 0.4070123827690583
+              },
+              "median_standardized_addition_coefficient": 0.12469949666192559,
+              "partial_r2": 0.007028213343898249,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.006999106131300503,
+                "ci95_percentile": [
+                  0.005298760939156544,
+                  0.008710597633748285
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.007028213343898471,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.13713729049463866,
+                0.12895334237617687,
+                0.12469949666192559,
+                0.11516467157986254,
+                0.11885042419589321
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 1.1081878035014354,
+              "mse": 1.9141900622388786,
+              "pearson": 0.4369258500920236,
+              "r2": 0.19086859532997202,
+              "rmse": 1.3835425769519631,
+              "spearman": 0.3992537424037127
+            },
+            "m1": {
+              "mae": 1.1065524682820178,
+              "mse": 1.909300443131768,
+              "pearson": 0.4392858465003992,
+              "r2": 0.192935445667608,
+              "rmse": 1.3817743821376078,
+              "spearman": 0.40290457252076856
+            },
+            "median_standardized_addition_coefficient": 0.07474221153929778,
+            "partial_r2": 0.002554406275305565,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0025240138236315435,
+              "ci95_percentile": [
+                0.0008061158059615575,
+                0.003984666138450946
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.002554406275305565,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.07436263910021758,
+              0.0724259867699389,
+              0.08492800425066695,
+              0.07474221153929778,
+              0.07573343936999599
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "ELK3_GCM1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 1.1081878035014354,
+                "mse": 1.9141900622388786,
+                "pearson": 0.4369258500920236,
+                "r2": 0.19086859532997202,
+                "rmse": 1.3835425769519631,
+                "spearman": 0.3992537424037127
+              },
+              "m1": {
+                "mae": 1.1071130709214771,
+                "mse": 1.908306594398428,
+                "pearson": 0.4397588915622581,
+                "r2": 0.19335554722256876,
+                "rmse": 1.3814147076089889,
+                "spearman": 0.40135903806193773
+              },
+              "median_standardized_addition_coefficient": 0.08035217393174823,
+              "partial_r2": 0.0030736069299038826,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.003058701685965892,
+                "ci95_percentile": [
+                  0.0016854061982106232,
+                  0.004256108959801275
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0030736069299038826,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.08056217930279878,
+                0.0757579146761654,
+                0.07861110967692816,
+                0.08035217393174823,
+                0.08539254803595968
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 1.0827816671115973,
+                "mse": 1.848334735566597,
+                "pearson": 0.4296401439900073,
+                "r2": 0.18454838063604773,
+                "rmse": 1.3595347496723271,
+                "spearman": 0.3790191260266014
+              },
+              "m1": {
+                "mae": 1.0818301799229455,
+                "mse": 1.8445010532516994,
+                "pearson": 0.4316015605011951,
+                "r2": 0.18623973144586292,
+                "rmse": 1.3581240934655785,
+                "spearman": 0.3804368345277867
+              },
+              "median_standardized_addition_coefficient": 0.06353447281890913,
+              "partial_r2": 0.0020741277221749677,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0020544505370147514,
+                "ci95_percentile": [
+                  0.0010185283009852524,
+                  0.0030332907136570164
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0020741277221749677,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.06302190425389109,
+                0.06031158052733314,
+                0.06353447281890913,
+                0.06488418210401577,
+                0.07053243761996415
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 1.1674304751747437,
+                "mse": 2.144007952550434,
+                "pearson": 0.43042095213264675,
+                "r2": 0.18523281005508285,
+                "rmse": 1.4642431330043635,
+                "spearman": 0.39700658149279716
+              },
+              "m1": {
+                "mae": 1.1665305974698885,
+                "mse": 2.1356420944644507,
+                "pearson": 0.4340945772107128,
+                "r2": 0.18841200846994233,
+                "rmse": 1.4613836233051372,
+                "spearman": 0.3999669388273751
+              },
+              "median_standardized_addition_coefficient": 0.09582016575445165,
+              "partial_r2": 0.0039019715743271455,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.003938781508513234,
+                "ci95_percentile": [
+                  0.0020961504135095983,
+                  0.00529651100560918
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0039019715743273675,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.09810245436514227,
+                0.09111950754998424,
+                0.09368774653268648,
+                0.09582016575445165,
+                0.1002526584536055
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 1.1081878035014354,
+              "mse": 1.9141900622388786,
+              "pearson": 0.4369258500920236,
+              "r2": 0.19086859532997202,
+              "rmse": 1.3835425769519631,
+              "spearman": 0.3992537424037127
+            },
+            "m1": {
+              "mae": 1.0999962136195034,
+              "mse": 1.8853361923191558,
+              "pearson": 0.45066249887007054,
+              "r2": 0.20306517536602386,
+              "rmse": 1.3730754503373643,
+              "spearman": 0.41797887970687997
+            },
+            "median_standardized_addition_coefficient": 0.17290106699461727,
+            "partial_r2": 0.015073670315671084,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.015046712329699896,
+              "ci95_percentile": [
+                0.011796939122767141,
+                0.018319932875930235
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.015073670315671084,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.18363842079673878,
+              0.1718633069619958,
+              0.17327751114411713,
+              0.16820206987783773,
+              0.17290106699461727
+            ]
+          },
+          "mechanisms": [
+            "spacing"
+          ],
+          "pair": "MLX_GCM1",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 1.1081878035014354,
+                "mse": 1.9141900622388786,
+                "pearson": 0.4369258500920236,
+                "r2": 0.19086859532997202,
+                "rmse": 1.3835425769519631,
+                "spearman": 0.3992537424037127
+              },
+              "m1": {
+                "mae": 1.1076873361623636,
+                "mse": 1.9117677178600159,
+                "pearson": 0.4380941876572786,
+                "r2": 0.1918925244311248,
+                "rmse": 1.3826668860792233,
+                "spearman": 0.4009557512526404
+              },
+              "median_standardized_addition_coefficient": -0.05171624747892158,
+              "partial_r2": 0.0012654670122095313,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0013589981475385926,
+                "ci95_percentile": [
+                  -0.00021555390030716937,
+                  0.0027825502486553823
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0012654670122094203,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.07098270422172927,
+                -0.06393960379774123,
+                -0.04546408687741562,
+                -0.05043223061390305,
+                -0.05171624747892158
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 1.0827816671115973,
+                "mse": 1.848334735566597,
+                "pearson": 0.4296401439900073,
+                "r2": 0.18454838063604773,
+                "rmse": 1.3595347496723271,
+                "spearman": 0.3790191260266014
+              },
+              "m1": {
+                "mae": 1.0823314539525262,
+                "mse": 1.8461565671281535,
+                "pearson": 0.43075499346136725,
+                "r2": 0.18550934887745874,
+                "rmse": 1.3587334422645796,
+                "spearman": 0.38103109014365344
+              },
+              "median_standardized_addition_coefficient": -0.04851211275962638,
+              "partial_r2": 0.0011784491177545542,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.001247415110639416,
+                "ci95_percentile": [
+                  -0.00011492677341712886,
+                  0.0025533072493997746
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0011784491177548873,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.06719225169345895,
+                -0.06115437756245461,
+                -0.04259090099575392,
+                -0.04851211275962638,
+                -0.047832206674981274
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 1.1674304751747437,
+                "mse": 2.144007952550434,
+                "pearson": 0.43042095213264675,
+                "r2": 0.18523281005508285,
+                "rmse": 1.4642431330043635,
+                "spearman": 0.39700658149279716
+              },
+              "m1": {
+                "mae": 1.1669518857252195,
+                "mse": 2.141332694241096,
+                "pearson": 0.4315987458573851,
+                "r2": 0.18624946332471426,
+                "rmse": 1.4633293184519662,
+                "spearman": 0.3983614605914577
+              },
+              "median_standardized_addition_coefficient": -0.05560028827340699,
+              "partial_r2": 0.0012477837622549837,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0012752392587618844,
+                "ci95_percentile": [
+                  -0.000314218467213323,
+                  0.0027876354931784305
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0012477837622552057,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.07477315674501703,
+                -0.0667248300321639,
+                -0.0483372727557632,
+                -0.05235234846494775,
+                -0.05560028827340699
+              ]
+            }
+          }
+        }
+      ],
+      "rows": 19369
+    },
+    {
+      "expression_supported_pairs": 3,
+      "focal_tf": "RFX5",
+      "pair_results_ranked_by_mean_outcome_partial_r2": [
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.3805534419440909,
+              "mse": 0.308989566733617,
+              "pearson": 0.6571458451511827,
+              "r2": 0.43183997163908916,
+              "rmse": 0.5558682998099612,
+              "spearman": 0.3374550442982381
+            },
+            "m1": {
+              "mae": 0.38063223990513256,
+              "mse": 0.3089255485765203,
+              "pearson": 0.6572353747895533,
+              "r2": 0.43195768615720753,
+              "rmse": 0.5558107129019019,
+              "spearman": 0.336948173870394
+            },
+            "median_standardized_addition_coefficient": -0.01072015998969176,
+            "partial_r2": 0.0002071854974697862,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.00021291715789573118,
+              "ci95_percentile": [
+                -0.00021090869384515765,
+                0.0006217275967667578
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0002071854974697862,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": false,
+            "standardized_addition_coefficients": [
+              -0.009356592603177522,
+              -0.013132276000648,
+              -0.011331787356204121,
+              -0.01072015998969176,
+              -0.004664137489192645
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "RFX5_CREM",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.3805534419440909,
+                "mse": 0.308989566733617,
+                "pearson": 0.6571458451511827,
+                "r2": 0.43183997163908916,
+                "rmse": 0.5558682998099612,
+                "spearman": 0.3374550442982381
+              },
+              "m1": {
+                "mae": 0.38041877847764166,
+                "mse": 0.3083678519220202,
+                "pearson": 0.6580150885117483,
+                "r2": 0.43298316074001353,
+                "rmse": 0.5553087897035488,
+                "spearman": 0.33856035206294993
+              },
+              "median_standardized_addition_coefficient": 0.029595394700553935,
+              "partial_r2": 0.0020120899814484172,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0020190011934557717,
+                "ci95_percentile": [
+                  0.001235615657393624,
+                  0.002865535132013089
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.002012089981448084,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.0361574736113437,
+                0.029595394700553935,
+                0.025242879050641133,
+                0.0268493342925641,
+                0.03274874536758443
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.4519026964902208,
+                "mse": 0.3949239366157534,
+                "pearson": 0.6322450012472661,
+                "r2": 0.39973235944904584,
+                "rmse": 0.628429738805981,
+                "spearman": 0.32480386434133957
+              },
+              "m1": {
+                "mae": 0.4516926804449271,
+                "mse": 0.39417540768060616,
+                "pearson": 0.6331442216260094,
+                "r2": 0.40087009169600785,
+                "rmse": 0.6278339013470092,
+                "spearman": 0.32600420143098013
+              },
+              "median_standardized_addition_coefficient": 0.03199131365696273,
+              "partial_r2": 0.0018953749462786718,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.001900162563109986,
+                "ci95_percentile": [
+                  0.0012230617272634748,
+                  0.002639097069056581
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0018953749462786718,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.03945480808457221,
+                0.03199131365696273,
+                0.027334534188422206,
+                0.030367024477264425,
+                0.03610930996834644
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.40496064857212744,
+                "mse": 0.3211115422896153,
+                "pearson": 0.627292399700554,
+                "r2": 0.39349440183159434,
+                "rmse": 0.5666670471181603,
+                "spearman": 0.31669334990216047
+              },
+              "m1": {
+                "mae": 0.40490675018278743,
+                "mse": 0.3206064151206811,
+                "pearson": 0.6280522220310298,
+                "r2": 0.3944484704818867,
+                "rmse": 0.5662211715581476,
+                "spearman": 0.31719893942689004
+              },
+              "median_standardized_addition_coefficient": 0.027199475743954482,
+              "partial_r2": 0.0015730582754281963,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0015680197283605701,
+                "ci95_percentile": [
+                  0.0007967872768117834,
+                  0.0024369228592324007
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.0015730582754284184,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": true,
+              "standardized_addition_coefficients": [
+                0.032860139142125405,
+                0.027199475743954482,
+                0.023151223910942063,
+                0.023331644107696226,
+                0.029085930820471288
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.3805534419440909,
+              "mse": 0.308989566733617,
+              "pearson": 0.6571458451511827,
+              "r2": 0.43183997163908916,
+              "rmse": 0.5558682998099612,
+              "spearman": 0.3374550442982381
+            },
+            "m1": {
+              "mae": 0.3804035760068262,
+              "mse": 0.3083753057614845,
+              "pearson": 0.658004675741571,
+              "r2": 0.43296945486092453,
+              "rmse": 0.5553155010995862,
+              "spearman": 0.3387100712531343
+            },
+            "median_standardized_addition_coefficient": 0.029734990349297295,
+            "partial_r2": 0.0019879667091221576,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0020026937695801217,
+              "ci95_percentile": [
+                0.0012194080581829163,
+                0.002849211116216485
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0019879667091219355,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.034868627076807865,
+              0.029734990349297295,
+              0.02533727280118704,
+              0.026672744687611855,
+              0.03247565478851091
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "RFX5_TCF3",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.3805534419440909,
+                "mse": 0.308989566733617,
+                "pearson": 0.6571458451511827,
+                "r2": 0.43183997163908916,
+                "rmse": 0.5558682998099612,
+                "spearman": 0.3374550442982381
+              },
+              "m1": {
+                "mae": 0.38067825620448836,
+                "mse": 0.30890746278975967,
+                "pearson": 0.6572606935047948,
+                "r2": 0.43199094171734664,
+                "rmse": 0.5557944429281024,
+                "spearman": 0.3369342520762227
+              },
+              "median_standardized_addition_coefficient": -0.014504560519908555,
+              "partial_r2": 0.00026571752802295734,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.00027185881900299025,
+                "ci95_percentile": [
+                  -0.000316185007140235,
+                  0.0008035598457859559
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.00026571752802262427,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.008885731829901239,
+                -0.019206237271503574,
+                -0.01628719007542812,
+                -0.014504560519908555,
+                -0.006886555616669008
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.4519026964902208,
+                "mse": 0.3949239366157534,
+                "pearson": 0.6322450012472661,
+                "r2": 0.39973235944904584,
+                "rmse": 0.628429738805981,
+                "spearman": 0.32480386434133957
+              },
+              "m1": {
+                "mae": 0.45204260729452767,
+                "mse": 0.39486295695596263,
+                "pearson": 0.6323184742268115,
+                "r2": 0.39982504594664803,
+                "rmse": 0.6283812194488013,
+                "spearman": 0.32435252454655905
+              },
+              "median_standardized_addition_coefficient": -0.015678561983368876,
+              "partial_r2": 0.00015440861932392025,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.00014806485387697244,
+                "ci95_percentile": [
+                  -0.00040861356512564837,
+                  0.0006681982997406049
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.00015440861932380923,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.008880917441544874,
+                -0.020228113434783316,
+                -0.016495713047014013,
+                -0.015678561983368876,
+                -0.005909490895205489
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.40496064857212744,
+                "mse": 0.3211115422896153,
+                "pearson": 0.627292399700554,
+                "r2": 0.39349440183159434,
+                "rmse": 0.5666670471181603,
+                "spearman": 0.31669334990216047
+              },
+              "m1": {
+                "mae": 0.4049639167104867,
+                "mse": 0.32101327412475256,
+                "pearson": 0.6274400579508908,
+                "r2": 0.39368000771696987,
+                "rmse": 0.5665803333374293,
+                "spearman": 0.3163542510293977
+              },
+              "median_standardized_addition_coefficient": -0.013330559060273452,
+              "partial_r2": 0.00030602501598686604,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": 0.0003066798996300135,
+                "ci95_percentile": [
+                  -0.0002109734849258027,
+                  0.0007325058977995423
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": 0.000306025015986755,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.00889054621942332,
+                -0.018184361109987276,
+                -0.016078667106505008,
+                -0.013330559060273452,
+                -0.007842959910305418
+              ]
+            }
+          }
+        },
+        {
+          "aggregate_without_pair": {
+            "m0": {
+              "mae": 0.3805534419440909,
+              "mse": 0.308989566733617,
+              "pearson": 0.6571458451511827,
+              "r2": 0.43183997163908916,
+              "rmse": 0.5558682998099612,
+              "spearman": 0.3374550442982381
+            },
+            "m1": {
+              "mae": 0.3804405023135292,
+              "mse": 0.3085489511754939,
+              "pearson": 0.6577620236613912,
+              "r2": 0.4326501612860919,
+              "rmse": 0.5554718275263777,
+              "spearman": 0.338551688285424
+            },
+            "median_standardized_addition_coefficient": 0.02393327892663725,
+            "partial_r2": 0.0014259884655035693,
+            "partial_r2_chromosome_bootstrap": {
+              "bootstrap_median": 0.0014528039322695974,
+              "ci95_percentile": [
+                0.0006402598652566011,
+                0.002305241514699968
+              ],
+              "independent_unit": "autosomal_chromosome",
+              "observed": 0.0014259884655033472,
+              "replicates": 2000
+            },
+            "positive_coefficient_in_all_folds": true,
+            "standardized_addition_coefficients": [
+              0.03268475732558577,
+              0.02393327892663725,
+              0.02043824511951814,
+              0.02237494432536772,
+              0.029851937331249197
+            ]
+          },
+          "mechanisms": [
+            "composite"
+          ],
+          "pair": "RFX5_HOXA2",
+          "pair_alone": {
+            "chip_mean_log1p": {
+              "m0": {
+                "mae": 0.3805534419440909,
+                "mse": 0.308989566733617,
+                "pearson": 0.6571458451511827,
+                "r2": 0.43183997163908916,
+                "rmse": 0.5558682998099612,
+                "spearman": 0.3374550442982381
+              },
+              "m1": {
+                "mae": 0.38055885274996426,
+                "mse": 0.30901097787067605,
+                "pearson": 0.6571158717713124,
+                "r2": 0.43180060153230104,
+                "rmse": 0.5558875586579323,
+                "spearman": 0.3374463591702895
+              },
+              "median_standardized_addition_coefficient": 0.0012276863242658958,
+              "partial_r2": -6.929404537947548e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -6.466065291577117e-05,
+                "ci95_percentile": [
+                  -0.0001643175557149268,
+                  2.2803859930503597e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -6.929404537991957e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.004033315790627808,
+                0.0030096866328450673,
+                0.0021829314673076465,
+                0.0010043368473215714,
+                0.0012276863242658958
+              ]
+            },
+            "chip_rep1_log1p": {
+              "m0": {
+                "mae": 0.4519026964902208,
+                "mse": 0.3949239366157534,
+                "pearson": 0.6322450012472661,
+                "r2": 0.39973235944904584,
+                "rmse": 0.628429738805981,
+                "spearman": 0.32480386434133957
+              },
+              "m1": {
+                "mae": 0.4518980549314673,
+                "mse": 0.3949423199838726,
+                "pearson": 0.6322229680712689,
+                "r2": 0.39970441750888175,
+                "rmse": 0.6284443650665289,
+                "spearman": 0.3249300792315806
+              },
+              "median_standardized_addition_coefficient": 0.0040244098194568935,
+              "partial_r2": -4.6549136212714615e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -4.365827731744876e-05,
+                "ci95_percentile": [
+                  -0.00018751243747452406,
+                  8.06718394858435e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -4.654913621249257e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.002443240078562204,
+                0.003422366916698045,
+                0.005710112171813031,
+                0.0040244098194568935,
+                0.004533430024840413
+              ]
+            },
+            "chip_rep2_log1p": {
+              "m0": {
+                "mae": 0.40496064857212744,
+                "mse": 0.3211115422896153,
+                "pearson": 0.627292399700554,
+                "r2": 0.39349440183159434,
+                "rmse": 0.5666670471181603,
+                "spearman": 0.31669334990216047
+              },
+              "m1": {
+                "mae": 0.4049916021531377,
+                "mse": 0.3211352781866356,
+                "pearson": 0.6272565634681052,
+                "r2": 0.3934495701998264,
+                "rmse": 0.5666879901556372,
+                "spearman": 0.31657949631990445
+              },
+              "median_standardized_addition_coefficient": -0.0020157361249062544,
+              "partial_r2": -7.391791914757029e-05,
+              "partial_r2_chromosome_bootstrap": {
+                "bootstrap_median": -6.830546290403916e-05,
+                "ci95_percentile": [
+                  -0.00021545860979518827,
+                  5.846845393275562e-05
+                ],
+                "independent_unit": "autosomal_chromosome",
+                "observed": -7.391791914779233e-05,
+                "replicates": 2000
+              },
+              "positive_coefficient_in_all_folds": false,
+              "standardized_addition_coefficients": [
+                -0.005623391502680505,
+                0.0025970063512253502,
+                -0.0013442492367959755,
+                -0.0020157361249062544,
+                -0.002099543555348138
+              ]
+            }
+          }
+        }
+      ],
+      "rows": 38701
+    }
+  ]
+}

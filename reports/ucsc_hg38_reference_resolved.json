@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "filename": "hg38.2bit",
+      "md5": "dcc3ea27079aa6dc3f9deccd7275e0f8",
+      "md5_source": "manifest",
+      "sha256": "1f67aaa17a77b327738fe750ab37430a85dddf73c7d9189385ad1839259acec0",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 835393456,
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.2bit"
+    },
+    {
+      "filename": "hg38.chrom.sizes",
+      "md5": "c42e9f75fff906c6a7143cb2fac86602",
+      "md5_source": "manifest",
+      "sha256": "e1d9152418038457a959e949d99c9caf7ae3e4f87cfbb4ffe7d8b9a54ba1202b",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 11672,
+      "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes"
+    },
+    {
+      "filename": "twoBitToFa",
+      "sha256": "a591aa8920b316a810b991fc1e23736b20e73f98b3c3ad16dba3418c27524b26",
+      "sha256_source": "computed_after_download",
+      "size_bytes": 8720632,
+      "url": "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/twoBitToFa"
+    }
+  ],
+  "schema_version": "ucsc_hg38_reference_manifest_v1",
+  "source": {
+    "assembly": "hg38",
+    "checksum_source": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/md5sum.txt",
+    "download_root": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/",
+    "provider": "UCSC Genome Browser"
+  }
+}

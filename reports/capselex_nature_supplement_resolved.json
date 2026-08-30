@@ -1,0 +1,45 @@
+{
+  "assets": [
+    {
+      "description": "Sequence information for DNA and proteins",
+      "filename": "41586_2025_8844_MOESM3_ESM.xlsx",
+      "sha256": "35f6189e32eda47af38f6948fbca37a086eb8c7135e5260e52067f4ba06f16c7",
+      "sha256_source": "manifest",
+      "size_bytes": 130888,
+      "supplement": "Supplementary Table 1",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-08844-z/MediaObjects/41586_2025_8844_MOESM3_ESM.xlsx"
+    },
+    {
+      "description": "TF interaction matrix and in vivo motif enrichment analysis",
+      "filename": "41586_2025_8844_MOESM4_ESM.xlsx",
+      "sha256": "4651b1b2affc420770b997c50fa0971cdade7955b3451888e134b4796125ae58",
+      "sha256_source": "manifest",
+      "size_bytes": 223336,
+      "supplement": "Supplementary Table 2",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-08844-z/MediaObjects/41586_2025_8844_MOESM4_ESM.xlsx"
+    },
+    {
+      "description": "PWM models",
+      "filename": "41586_2025_8844_MOESM5_ESM.xlsx",
+      "sha256": "36eaf5c21c03e7bd1618db6bc9bed990ef2a2b528e2cdb3b657c8ca814a72efb",
+      "sha256_source": "manifest",
+      "size_bytes": 1093881,
+      "supplement": "Supplementary Table 3",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-08844-z/MediaObjects/41586_2025_8844_MOESM5_ESM.xlsx"
+    },
+    {
+      "description": "Numeric data, including spacing and orientation count tables",
+      "filename": "41586_2025_8844_MOESM9_ESM.xlsx",
+      "sha256": "98bb5aadaa55d3189f8154cac4e39c306febd0e8e36ba969fd3f93a96abf9d7f",
+      "sha256_source": "manifest",
+      "size_bytes": 651150,
+      "supplement": "Supplementary Table 7",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-08844-z/MediaObjects/41586_2025_8844_MOESM9_ESM.xlsx"
+    }
+  ],
+  "schema_version": "public_asset_manifest_v1",
+  "source": {
+    "article_doi": "10.1038/s41586-025-08844-z",
+    "article_url": "https://www.nature.com/articles/s41586-025-08844-z"
+  }
+}

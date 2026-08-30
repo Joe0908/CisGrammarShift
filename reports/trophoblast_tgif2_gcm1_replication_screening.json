@@ -1,0 +1,1098 @@
+{
+  "addition_feature": "cap_excess::composite::TGIF2_GCM1",
+  "analysis_status": "screening",
+  "baseline_features": [
+    "ght_score",
+    "focal_monomer_score",
+    "partner_raw::TGIF2_GCM1",
+    "gc_fraction",
+    "cpg_per_100bp"
+  ],
+  "candidate": "TGIF2_GCM1",
+  "claim_boundary": "Cross-context predictive replication supports a transferable sequence association; it does not establish TGIF2 co-occupancy or causal cooperation with GCM1.",
+  "discovery_context": "Codebook GCM1 ChIP in HEK293",
+  "locus_universe": "official Codebook v2 GCM1 GHT-only fixed 200-bp tiles",
+  "mechanism": "composite",
+  "partial_r2_threshold": 0.005,
+  "replication_context": "GCM1 ChIP in differentiated human trophoblast stem cells",
+  "replication_passed_in_both_states": false,
+  "schema_version": "trophoblast_tgif2_gcm1_replication_v1",
+  "source_assets": [
+    {
+      "bytes": 4488409,
+      "path": "results/capselex/primary_features/GCM1.features.tsv.gz",
+      "sha256": "7be150c24454ba327256b3bd2697acbd9487e62443f37d1d07bd4bcc465f8eec"
+    },
+    {
+      "bytes": 3163,
+      "path": "reports/trophoblast_gcm1_replication_resolved.json",
+      "sha256": "28e1b4898fafe4657dfcdd5632ecf1d8ed511f754128e2a1e1a5f093e0f6f8b1"
+    },
+    {
+      "bytes": 1476,
+      "path": "reports/trophoblast_tgif2_expression_gate.json",
+      "sha256": "6e492fdc156b2c88ac7b5469f5e20d1984781ea773047298df612c5b27d6e034"
+    },
+    {
+      "bytes": 168252,
+      "path": "reports/capselex_pair_decomposition.json",
+      "sha256": "c532d4d62527dc684d59d00e88a71a83894dca45616bb8d0631dd5c77dade2a4"
+    }
+  ],
+  "source_manifest_contract": {
+    "analysis_role": "external-context replication; not an untouched dataset because earlier aggregate CAP analyses used this GEO series",
+    "discovery_pair": "TGIF2_GCM1",
+    "discovery_source": "Codebook v2 GHT-only pair decomposition",
+    "effect_threshold_partial_r2": 0.005,
+    "expression_gate": "TGIF2 detected in both B31 and CT27 state-matched RNA profiles before ChIP outcomes are read",
+    "final_permutations_if_screening_passes": 1000,
+    "mechanism": "composite",
+    "permutation_pvalue_max": 0.05,
+    "primary_outcome": "mean of clone-specific log1p exact 200-bp GCM1 ChIP signal",
+    "replication_loci": "the same official Codebook v2 GCM1 GHT-only 200-bp tiles",
+    "replication_states": [
+      "EVT",
+      "ST"
+    ],
+    "required_direction": "positive in both states and both clones within each state",
+    "screening_permutations": 100
+  },
+  "state_results": [
+    {
+      "clone_log1p_spearman": 0.6804764151722513,
+      "outcome_models": {
+        "EVT_B31_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.8336436811661291,
+                "mse": 1.272728982360276,
+                "pearson": 0.3559270951087662,
+                "r2": 0.12384241053242961,
+                "rmse": 1.1281529073491217,
+                "spearman": 0.3256192149421599
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8310940008869838,
+                "mse": 1.2666109109257409,
+                "pearson": 0.361865599486509,
+                "r2": 0.12805414358366574,
+                "rmse": 1.125438097331764,
+                "spearman": 0.3323357899450724
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.05860738232599099
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.8305936004494685,
+                "mse": 1.2226143317687932,
+                "pearson": 0.3534556685668508,
+                "r2": 0.12471497278664112,
+                "rmse": 1.1057189207790528,
+                "spearman": 0.3279697273091293
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8290113415451663,
+                "mse": 1.2174693568906692,
+                "pearson": 0.35871653024193145,
+                "r2": 0.1283983252218247,
+                "rmse": 1.1033899387300345,
+                "spearman": 0.3369946813428824
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.0623168682796409
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.8274604952957665,
+                "mse": 1.2483893156777488,
+                "pearson": 0.34877311790954024,
+                "r2": 0.12075977305158181,
+                "rmse": 1.117313436631704,
+                "spearman": 0.3475340917626114
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8257118523550765,
+                "mse": 1.2419910037956192,
+                "pearson": 0.3550015000475285,
+                "r2": 0.12526610222364487,
+                "rmse": 1.1144465010917388,
+                "spearman": 0.3528126229517598
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.07313578648757549
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.821955095202553,
+                "mse": 1.2301983962302168,
+                "pearson": 0.36222492308413934,
+                "r2": 0.13097461142331301,
+                "rmse": 1.109143090962666,
+                "spearman": 0.3422173551049337
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8231713113418493,
+                "mse": 1.2307557651760557,
+                "pearson": 0.3618588947334743,
+                "r2": 0.1305808800006234,
+                "rmse": 1.1093943235730277,
+                "spearman": 0.3417499557464634
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.07673908516189586
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.8047092828626542,
+                "mse": 1.1789414733604957,
+                "pearson": 0.35964248144177713,
+                "r2": 0.1292450109138611,
+                "rmse": 1.0857907134252418,
+                "spearman": 0.3385845094588075
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8038265512808713,
+                "mse": 1.1747636627753082,
+                "pearson": 0.36388284437947777,
+                "r2": 0.1323307021824357,
+                "rmse": 1.0838651497189622,
+                "spearman": 0.3435777480858163
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.06411955714771812
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.8251768171230346,
+            "mse": 1.2330872814858393,
+            "pearson": 0.355232926604914,
+            "r2": 0.12618754104445173,
+            "rmse": 1.1104446323369028,
+            "spearman": 0.33333706300839283
+          },
+          "m1": {
+            "mae": 0.8239047399299168,
+            "mse": 1.2286254979474611,
+            "pearson": 0.35965670322879323,
+            "r2": 0.1293493302409956,
+            "rmse": 1.1084338040440038,
+            "spearman": 0.33901666576964756
+          },
+          "median_standardized_addition_coefficient": 0.06411955714771812,
+          "partial_r2": 0.0036183842014831935,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.0036443426846973215,
+            "ci95_percentile": [
+              0.0018988148829212515,
+              0.005196464444533537
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.0036183842014831935,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.05860738232599099,
+            0.0623168682796409,
+            0.07313578648757549,
+            0.07673908516189586,
+            0.06411955714771812
+          ]
+        },
+        "EVT_CT27_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.8659660353533584,
+                "mse": 1.351250928409227,
+                "pearson": 0.3503707622182662,
+                "r2": 0.11769614635184156,
+                "rmse": 1.1624331930950815,
+                "spearman": 0.3541409189089182
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8650005574723233,
+                "mse": 1.3489540284250598,
+                "pearson": 0.3524915085732517,
+                "r2": 0.11919591494764259,
+                "rmse": 1.161444802143029,
+                "spearman": 0.3566298801324854
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.03872351951122349
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.8689728836231019,
+                "mse": 1.3229228815963179,
+                "pearson": 0.3318064935768631,
+                "r2": 0.10992160375544602,
+                "rmse": 1.1501838468681074,
+                "spearman": 0.3420431589031145
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8688647346839463,
+                "mse": 1.3221419621202963,
+                "pearson": 0.3326397143759003,
+                "r2": 0.11044701575374372,
+                "rmse": 1.1498443208192561,
+                "spearman": 0.34405730402280893
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.040456463525667584
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.87990237807068,
+                "mse": 1.3819460948057625,
+                "pearson": 0.32530466695475624,
+                "r2": 0.10497121212538829,
+                "rmse": 1.175562033584686,
+                "spearman": 0.3513655520245982
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8791711668210062,
+                "mse": 1.379460515905828,
+                "pearson": 0.3275698796211148,
+                "r2": 0.10658101780329199,
+                "rmse": 1.1745043703221492,
+                "spearman": 0.35147004151488054
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.04134479820630466
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.8925251464636871,
+                "mse": 1.3844100643726394,
+                "pearson": 0.3302702055491835,
+                "r2": 0.10833232929507397,
+                "rmse": 1.1766095632675435,
+                "spearman": 0.3296980615355666
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8925814926058712,
+                "mse": 1.384465535020077,
+                "pearson": 0.3302705455693466,
+                "r2": 0.10829660188723,
+                "rmse": 1.1766331352720256,
+                "spearman": 0.3293717927586547
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.041466088810276594
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.8736884962952199,
+                "mse": 1.3442800353471533,
+                "pearson": 0.3465821858515063,
+                "r2": 0.11862804261335791,
+                "rmse": 1.1594309101223554,
+                "spearman": 0.3537304805450019
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8723674913013489,
+                "mse": 1.3418829692312644,
+                "pearson": 0.34884511291716086,
+                "r2": 0.12019966965459461,
+                "rmse": 1.1583967235931154,
+                "spearman": 0.3558531770280132
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.03234389138411429
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.8744435488413147,
+            "mse": 1.3523044925689058,
+            "pearson": 0.336271459698955,
+            "r2": 0.11307115054182004,
+            "rmse": 1.1628862767136372,
+            "spearman": 0.3452718852786483
+          },
+          "m1": {
+            "mae": 0.8738521944841458,
+            "mse": 1.3507631926331973,
+            "pearson": 0.3377707976789837,
+            "r2": 0.11408203484055601,
+            "rmse": 1.1622233832758646,
+            "spearman": 0.3468957894620012
+          },
+          "median_standardized_addition_coefficient": 0.040456463525667584,
+          "partial_r2": 0.0011397580531442575,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.0011323116828493296,
+            "ci95_percentile": [
+              0.0002825293127994982,
+              0.0019620801225872396
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.0011397580531441465,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.03872351951122349,
+            0.040456463525667584,
+            0.04134479820630466,
+            0.041466088810276594,
+            0.03234389138411429
+          ]
+        },
+        "EVT_mean_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.7977313940805211,
+                "mse": 1.1673455826017645,
+                "pearson": 0.36532914312642306,
+                "r2": 0.12920840959354263,
+                "rmse": 1.080437681035683,
+                "spearman": 0.3568088159441747
+              },
+              "m0_alpha": 0.1,
+              "m1": {
+                "mae": 0.7963062834767137,
+                "mse": 1.163333279593246,
+                "pearson": 0.3694277746462174,
+                "r2": 0.13220142192001516,
+                "rmse": 1.0785792875784543,
+                "spearman": 0.3612933562129308
+              },
+              "m1_alpha": 1.0,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.04958168016412761
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.8005964735688125,
+                "mse": 1.1277372024920957,
+                "pearson": 0.35570587241020596,
+                "r2": 0.1264152507226982,
+                "rmse": 1.061949717497065,
+                "spearman": 0.35831165402615056
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.7994951203081263,
+                "mse": 1.125119971057322,
+                "pearson": 0.3585815835336186,
+                "r2": 0.12844264989131204,
+                "rmse": 1.0607167251709204,
+                "spearman": 0.36383412972569784
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.051386665902654484
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.8111479879375474,
+                "mse": 1.1769321578394758,
+                "pearson": 0.3465986813801129,
+                "r2": 0.11919542741344968,
+                "rmse": 1.0848650413021317,
+                "spearman": 0.37145699117366926
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8091242606355491,
+                "mse": 1.1727077190734296,
+                "pearson": 0.3509061183054618,
+                "r2": 0.12235695627215293,
+                "rmse": 1.0829163028939168,
+                "spearman": 0.37346734873256254
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.05724029234694026
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.8114079493844488,
+                "mse": 1.1668620538708887,
+                "pearson": 0.3563283921471355,
+                "r2": 0.1264001001877172,
+                "rmse": 1.0802138926485294,
+                "spearman": 0.3550719289121544
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8118476004078752,
+                "mse": 1.1671657684361232,
+                "pearson": 0.3561732820347335,
+                "r2": 0.12617271682832165,
+                "rmse": 1.080354464255192,
+                "spearman": 0.35513317460568133
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.05974514420953463
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.7875315986371999,
+                "mse": 1.1165961283374857,
+                "pearson": 0.3642070576840283,
+                "r2": 0.1320509741952125,
+                "rmse": 1.0566911224844684,
+                "spearman": 0.3657716799154232
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.7856550710963196,
+                "mse": 1.1132375498920184,
+                "pearson": 0.3677284034755063,
+                "r2": 0.1346616539350507,
+                "rmse": 1.055100729737222,
+                "spearman": 0.36926662550621103
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.04823172426591608
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.8009624194639069,
+            "mse": 1.1494869667674135,
+            "pearson": 0.3572192010797481,
+            "r2": 0.12760093258197736,
+            "rmse": 1.0721412998142612,
+            "spearman": 0.359529470205587
+          },
+          "m1": {
+            "mae": 0.7997747672230517,
+            "mse": 1.1466468587988474,
+            "pearson": 0.3602232726762267,
+            "r2": 0.12975642247858,
+            "rmse": 1.070815978027433,
+            "spearman": 0.3631112557669336
+          },
+          "median_standardized_addition_coefficient": 0.051386665902654484,
+          "partial_r2": 0.00247076134891111,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.002474310217399023,
+            "ci95_percentile": [
+              0.001009399093559926,
+              0.003740961798628442
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.0024707613489112212,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.04958168016412761,
+            0.051386665902654484,
+            0.05724029234694026,
+            0.05974514420953463,
+            0.04823172426591608
+          ]
+        }
+      },
+      "rows": 19497,
+      "screening_permutation": {
+        "exceedances": 0,
+        "null": "candidate grammar circularly shifted within chromosome",
+        "null_quantiles": {
+          "maximum": 0.0004642653000813679,
+          "median": -5.8974521713106576e-05,
+          "minimum": -0.0010699141513683674,
+          "p95": 9.527683988749813e-05
+        },
+        "one_sided_pvalue": 0.009900990099009901,
+        "permutations": 100
+      },
+      "state": "EVT",
+      "state_replication_passed": false
+    },
+    {
+      "clone_log1p_spearman": 0.6922788640503263,
+      "outcome_models": {
+        "ST_B31_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.8105134989308252,
+                "mse": 1.2299673764650634,
+                "pearson": 0.307583984139535,
+                "r2": 0.0890595221165762,
+                "rmse": 1.1090389427180019,
+                "spearman": 0.27043203446011793
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8088310407433663,
+                "mse": 1.2240896535261134,
+                "pearson": 0.3147105667621885,
+                "r2": 0.09341269102603267,
+                "rmse": 1.1063858520091956,
+                "spearman": 0.27956718345470716
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.05431503889553069
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.8106050096352286,
+                "mse": 1.203436846043703,
+                "pearson": 0.28901941903069883,
+                "r2": 0.0831929052106618,
+                "rmse": 1.0970126918334642,
+                "spearman": 0.25089701729159436
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8093202181551374,
+                "mse": 1.200023771775281,
+                "pearson": 0.293539107356578,
+                "r2": 0.08579306716732715,
+                "rmse": 1.0954559652378917,
+                "spearman": 0.26071131678023224
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.06121925721755524
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.8016019746041709,
+                "mse": 1.1917411642107458,
+                "pearson": 0.3071330321934368,
+                "r2": 0.09136255868045118,
+                "rmse": 1.0916689810609925,
+                "spearman": 0.27743346724404505
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8004723481980879,
+                "mse": 1.1860273540391515,
+                "pearson": 0.3139876760398882,
+                "r2": 0.09571902635180296,
+                "rmse": 1.0890488299608754,
+                "spearman": 0.28124186268993634
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.0685398763270579
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.7941662925655208,
+                "mse": 1.1974489142397513,
+                "pearson": 0.30702133479026766,
+                "r2": 0.09409314999977991,
+                "rmse": 1.0942800894833786,
+                "spearman": 0.268317961638289
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.7948297690449692,
+                "mse": 1.1987036540848823,
+                "pearson": 0.30594498066068815,
+                "r2": 0.09314390080246104,
+                "rmse": 1.0948532568727567,
+                "spearman": 0.26761985050997955
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.07115175257159705
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.7760789384093856,
+                "mse": 1.1167469845570026,
+                "pearson": 0.3136800465047835,
+                "r2": 0.09690532857820777,
+                "rmse": 1.0567625014907571,
+                "spearman": 0.27765166124984125
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.7747322884495915,
+                "mse": 1.112294122150167,
+                "pearson": 0.319265764068364,
+                "r2": 0.10050628418211549,
+                "rmse": 1.054653555510134,
+                "spearman": 0.28430646131922743
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.053927990354421675
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.800814174123869,
+            "mse": 1.193132697746949,
+            "pearson": 0.3022309926653579,
+            "r2": 0.09133772504446724,
+            "rmse": 1.0923061373749343,
+            "spearman": 0.2659348002710785
+          },
+          "m1": {
+            "mae": 0.7997627028607823,
+            "mse": 1.1893649154309647,
+            "pearson": 0.3069396076331459,
+            "r2": 0.09420718093754987,
+            "rmse": 1.0905800820806166,
+            "spearman": 0.2724312544421924
+          },
+          "median_standardized_addition_coefficient": 0.06121925721755524,
+          "partial_r2": 0.0031578904199836,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.0031706912525154562,
+            "ci95_percentile": [
+              0.0015498069764814187,
+              0.004680851748746289
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.003157890419983489,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.05431503889553069,
+            0.06121925721755524,
+            0.0685398763270579,
+            0.07115175257159705,
+            0.053927990354421675
+          ]
+        },
+        "ST_CT27_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.8487635981420016,
+                "mse": 1.3269950273321558,
+                "pearson": 0.32580356980874536,
+                "r2": 0.09922730961418813,
+                "rmse": 1.1519527018641675,
+                "spearman": 0.30343864487549804
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8460323958209053,
+                "mse": 1.3206518095928574,
+                "pearson": 0.33246466583007045,
+                "r2": 0.10353312628346234,
+                "rmse": 1.1491961580134427,
+                "spearman": 0.3120573931968983
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.06392804233619222
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.8482533622777929,
+                "mse": 1.2813608543674737,
+                "pearson": 0.3090055450648899,
+                "r2": 0.09539935910680553,
+                "rmse": 1.1319721084759438,
+                "spearman": 0.27949619161654715
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8482025004632592,
+                "mse": 1.2798457745243559,
+                "pearson": 0.3108182013976486,
+                "r2": 0.09646895803548916,
+                "rmse": 1.1313026891704783,
+                "spearman": 0.2869059365580524
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.0653689076792473
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.8503688770863171,
+                "mse": 1.3040639364078188,
+                "pearson": 0.30767629055311424,
+                "r2": 0.09134108569871158,
+                "rmse": 1.1419561884800218,
+                "spearman": 0.2967545227038443
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.8491240323942607,
+                "mse": 1.2964558838876505,
+                "pearson": 0.31580668115366406,
+                "r2": 0.09664230180469968,
+                "rmse": 1.1386201666436664,
+                "spearman": 0.3011857491169421
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.06510121449558397
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.867515556305735,
+                "mse": 1.367112639710303,
+                "pearson": 0.30003425580043774,
+                "r2": 0.08910243859589084,
+                "rmse": 1.1692359213222552,
+                "spearman": 0.2757288665153953
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.867149515661123,
+                "mse": 1.3673598716713278,
+                "pearson": 0.300294708961054,
+                "r2": 0.08893770967461745,
+                "rmse": 1.1693416402708525,
+                "spearman": 0.27712050778667724
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.06861766621909607
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.8183791145434715,
+                "mse": 1.2273780237355898,
+                "pearson": 0.3147747994012774,
+                "r2": 0.09840306045898528,
+                "rmse": 1.1078709418229138,
+                "spearman": 0.2984030859189668
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.8166113879052512,
+                "mse": 1.2220688669184057,
+                "pearson": 0.32083407345955023,
+                "r2": 0.10230301584791102,
+                "rmse": 1.1054722370636025,
+                "spearman": 0.30443195181714
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.05271426767749375
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.8468963564575984,
+            "mse": 1.3015261837620944,
+            "pearson": 0.31026753575425214,
+            "r2": 0.09625721661884967,
+            "rmse": 1.1408445046377242,
+            "spearman": 0.2882176128020664
+          },
+          "m1": {
+            "mae": 0.8456495965965914,
+            "mse": 1.297571982748967,
+            "pearson": 0.31465927322641524,
+            "r2": 0.09900290139587264,
+            "rmse": 1.1391101714711211,
+            "spearman": 0.2942783966453124
+          },
+          "median_standardized_addition_coefficient": 0.06510121449558397,
+          "partial_r2": 0.0030381263646174217,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.003048434965427338,
+            "ci95_percentile": [
+              0.001099633469612621,
+              0.005032448985944517
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.0030381263646171996,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.06392804233619222,
+            0.0653689076792473,
+            0.06510121449558397,
+            0.06861766621909607,
+            0.05271426767749375
+          ]
+        },
+        "ST_mean_log1p": {
+          "fold_results": [
+            {
+              "genes_or_loci": 5009,
+              "m0": {
+                "mae": 0.7840701534973854,
+                "mse": 1.1570144922114804,
+                "pearson": 0.3312089054657933,
+                "r2": 0.10291513635167993,
+                "rmse": 1.0756460812978776,
+                "spearman": 0.299238345340717
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.7816165200858722,
+                "mse": 1.150882414128992,
+                "pearson": 0.33846732438836974,
+                "r2": 0.10766960958217142,
+                "rmse": 1.072791878291867,
+                "spearman": 0.3084918115651255
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 0,
+              "standardized_addition_coefficients": [
+                0.05912154061586132
+              ]
+            },
+            {
+              "genes_or_loci": 5244,
+              "m0": {
+                "mae": 0.783263797991468,
+                "mse": 1.110145294125462,
+                "pearson": 0.31463143808166555,
+                "r2": 0.0987951570342337,
+                "rmse": 1.0536343265694517,
+                "spearman": 0.2797597774870081
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.7823275843005291,
+                "mse": 1.1076474241139993,
+                "pearson": 0.3179311200719706,
+                "r2": 0.10082290291879581,
+                "rmse": 1.052448299972022,
+                "spearman": 0.28941743333919606
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 1,
+              "standardized_addition_coefficients": [
+                0.06329408244840141
+              ]
+            },
+            {
+              "genes_or_loci": 2746,
+              "m0": {
+                "mae": 0.7796468563896896,
+                "mse": 1.1212330179616874,
+                "pearson": 0.3221800597836908,
+                "r2": 0.10038531315297894,
+                "rmse": 1.058882910411575,
+                "spearman": 0.3082409942266892
+              },
+              "m0_alpha": 100.0,
+              "m1": {
+                "mae": 0.7781830646776188,
+                "mse": 1.1145432876265713,
+                "pearson": 0.3301517690233897,
+                "r2": 0.1057527787592425,
+                "rmse": 1.055719322370568,
+                "spearman": 0.3129420628899036
+              },
+              "m1_alpha": 100.0,
+              "outer_fold": 2,
+              "standardized_addition_coefficients": [
+                0.06682054541132097
+              ]
+            },
+            {
+              "genes_or_loci": 3242,
+              "m0": {
+                "mae": 0.7836237560036005,
+                "mse": 1.1487137471471818,
+                "pearson": 0.31804764656939416,
+                "r2": 0.10068784593667468,
+                "rmse": 1.0717806432041874,
+                "spearman": 0.28845406499874815
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.7833911762714905,
+                "mse": 1.149455843688259,
+                "pearson": 0.3176928002586897,
+                "r2": 0.10010686878676556,
+                "rmse": 1.0721267852676095,
+                "spearman": 0.2898347725989862
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 3,
+              "standardized_addition_coefficients": [
+                0.06988470939534643
+              ]
+            },
+            {
+              "genes_or_loci": 3256,
+              "m0": {
+                "mae": 0.7533370532086702,
+                "mse": 1.0403586950476635,
+                "pearson": 0.3307255316006438,
+                "r2": 0.1082363785161965,
+                "rmse": 1.019979752273379,
+                "spearman": 0.3025732221434829
+              },
+              "m0_alpha": 0.01,
+              "m1": {
+                "mae": 0.7516311931931358,
+                "mse": 1.035472179618581,
+                "pearson": 0.3369104396402909,
+                "r2": 0.112424949935091,
+                "rmse": 1.0175815346293293,
+                "spearman": 0.30944883834603776
+              },
+              "m1_alpha": 0.01,
+              "outer_fold": 4,
+              "standardized_addition_coefficients": [
+                0.0533211290159575
+              ]
+            }
+          ],
+          "m0": {
+            "mae": 0.778023628527099,
+            "mse": 1.118507014439677,
+            "pearson": 0.3213339789371584,
+            "r2": 0.10324811374410936,
+            "rmse": 1.0575949198250136,
+            "spearman": 0.29219072685084896
+          },
+          "m1": {
+            "mae": 0.7766117379748614,
+            "mse": 1.1146249286723053,
+            "pearson": 0.3261390944836639,
+            "r2": 0.10636053743886964,
+            "rmse": 1.0557579877378647,
+            "spearman": 0.2992247479303943
+          },
+          "median_standardized_addition_coefficient": 0.06329408244840141,
+          "partial_r2": 0.003470774628370421,
+          "partial_r2_chromosome_bootstrap": {
+            "bootstrap_median": 0.0034262217501186965,
+            "ci95_percentile": [
+              0.0016112376505054427,
+              0.005342329713559376
+            ],
+            "independent_unit": "autosomal_chromosome",
+            "observed": 0.003470774628370643,
+            "replicates": 2000
+          },
+          "positive_coefficient_in_all_folds": true,
+          "rows": 19497,
+          "standardized_addition_coefficients": [
+            0.05912154061586132,
+            0.06329408244840141,
+            0.06682054541132097,
+            0.06988470939534643,
+            0.0533211290159575
+          ]
+        }
+      },
+      "rows": 19497,
+      "screening_permutation": {
+        "exceedances": 0,
+        "null": "candidate grammar circularly shifted within chromosome",
+        "null_quantiles": {
+          "maximum": 0.00043140245614181616,
+          "median": -7.702051295210843e-05,
+          "minimum": -0.0005741944516364228,
+          "p95": 8.753113893248395e-05
+        },
+        "one_sided_pvalue": 0.009900990099009901,
+        "permutations": 100
+      },
+      "state": "ST",
+      "state_replication_passed": false
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "chip_outcome": "mean of replicate-specific log1p exact 200-bp mean GPZN signal",
+  "chip_replicates": [
+    {
+      "filename": "GSM8590216_THC0525GPZN_GCM1_ChIP1_hg38_PE.bw",
+      "gsm": "GSM8590216",
+      "replicate": 1,
+      "sha256": "3723cf37a080ce5f3f42fa219057b63b6c2467b907fc3d58c2886cfbfe9c4d10"
+    },
+    {
+      "filename": "GSM8590302_THC0621GPZN_GCM1_ChIP2_hg38_PE.bw",
+      "gsm": "GSM8590302",
+      "replicate": 2,
+      "sha256": "69d67a05f6217cf20de38e99062e02f975b071a36be8f0c8e18706f02eff8ccd"
+    }
+  ],
+  "context_width_bp": 400,
+  "excluded_non_scannable_contexts": 0,
+  "excluded_non_scannable_locus_ids": [],
+  "feature_columns": [
+    "locus_id",
+    "focal_tf",
+    "chrom",
+    "start",
+    "end",
+    "midpoint",
+    "tile",
+    "chip_source",
+    "ght_source",
+    "chip_count",
+    "ght_count",
+    "locus_universe",
+    "selection_rule",
+    "center_rule",
+    "outcome_used_for_selection",
+    "outcome_used_for_centering",
+    "chromosome_fold",
+    "ght_score",
+    "ght_score_before_refinement",
+    "ght_fdr",
+    "ght_pvalue",
+    "gc_fraction",
+    "cpg_per_100bp",
+    "n_fraction",
+    "focal_monomer_score",
+    "partner_raw::ELK3_GCM1",
+    "cap_raw::composite::ELK3_GCM1",
+    "cap_excess::composite::ELK3_GCM1",
+    "partner_raw::FOXI1_GCM1",
+    "cap_raw::composite::FOXI1_GCM1",
+    "cap_excess::composite::FOXI1_GCM1",
+    "partner_raw::GCM1_FLI1",
+    "cap_raw::composite::GCM1_FLI1",
+    "cap_excess::composite::GCM1_FLI1",
+    "partner_raw::GCM1_HOXA2",
+    "cap_raw::spacing::GCM1_HOXA2",
+    "cap_excess::spacing::GCM1_HOXA2",
+    "partner_raw::MLX_GCM1",
+    "cap_raw::spacing::MLX_GCM1",
+    "cap_excess::spacing::MLX_GCM1",
+    "partner_raw::TGIF2_GCM1",
+    "cap_raw::composite::TGIF2_GCM1",
+    "cap_excess::composite::TGIF2_GCM1",
+    "partner_raw::VAX1_GCM1",
+    "cap_raw::composite::VAX1_GCM1",
+    "cap_excess::composite::VAX1_GCM1",
+    "partner_monomer_max",
+    "cap_composite_excess_mean",
+    "cap_spacing_excess_mean",
+    "cap_all_excess_mean",
+    "chip_rep1",
+    "chip_rep2",
+    "chip_rep1_log1p",
+    "chip_rep2_log1p",
+    "chip_mean_log1p"
+  ],
+  "focal_tf": "GCM1",
+  "ght_score_aggregation": "maximum positive coefficient.ar per fixed 200-bp tile; ties resolved by FDR then p-value",
+  "outcome_quantiles": {
+    "max": 11.784739794832673,
+    "median": 5.203441881968127,
+    "min": 0.0,
+    "p90": 7.800132309674772,
+    "p99": 9.60199575545042
+  },
+  "output": {
+    "bytes": 4488409,
+    "path": "results/capselex/primary_features/GCM1.features.tsv.gz",
+    "sha256": "7be150c24454ba327256b3bd2697acbd9487e62443f37d1d07bd4bcc465f8eec"
+  },
+  "pwm_panel": {
+    "excluded_pairs_without_partner_monomer": [],
+    "focal_monomer_profile_id": "GCM1.NA@PBM.HK@woolly-purple-shark@autosome-ru.ChIPMunk@s_6-16_flat.pcm",
+    "focal_monomer_source": "Codebook_MEX_top1",
+    "focal_tf": "GCM1",
+    "pair_equal_weighting": true,
+    "pair_mechanism_units": 7,
+    "profile_units": [
+      {
+        "cap_model_ids": [
+          "ELK3_GCM1|TGGTAT40NTGA|YACII|NRTGNGGGCGGAAGTN|2|3"
+        ],
+        "mechanism": "composite",
+        "pair": "ELK3_GCM1",
+        "partner": "ELK3",
+        "partner_profile_ids": [
+          "MA0759.3"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "FOXI1_GCM1|TTATAA40NGTG|YACII|NRTAAATANGGGYN|1|3"
+        ],
+        "mechanism": "composite",
+        "pair": "FOXI1_GCM1",
+        "partner": "FOXI1",
+        "partner_profile_ids": [
+          "MA0042.2"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "GCM1_FLI1|TTGTGA40NTCCC|YYIII|NSCGGATGCGGGYN|1|3"
+        ],
+        "mechanism": "composite",
+        "pair": "GCM1_FLI1",
+        "partner": "FLI1",
+        "partner_profile_ids": [
+          "FLI1.NA@HTS.Lys@homey-wisteria-frigatebird+muggy-lime-beaver+sickly-mauve-corgi+ugly-tangerine-llama@HughesLab.MEME@topk_cycle=C1+C2+C3+C4_k=5_top=10000_Motif2.ppm"
+        ],
+        "partner_source": "Codebook_MEX_top1",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "GCM1_HOXA2|TGAGAG40NCGC|YJI|NWRYKGGTAGYAATTAN|2|3"
+        ],
+        "mechanism": "spacing",
+        "pair": "GCM1_HOXA2",
+        "partner": "HOXA2",
+        "partner_profile_ids": [
+          "MA0900.3"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "MLX_GCM1|TTGTCT40NGCT|YACII|NRTGCGGGNNNCACGTGN|1|3"
+        ],
+        "mechanism": "spacing",
+        "pair": "MLX_GCM1",
+        "partner": "MLX",
+        "partner_profile_ids": [
+          "MA0663.1"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "TGIF2_GCM1|TGGGTC40NAAG|YACII|NRTRCKGGYTGTCAN|1|3"
+        ],
+        "mechanism": "composite",
+        "pair": "TGIF2_GCM1",
+        "partner": "TGIF2",
+        "partner_profile_ids": [
+          "MA0797.1"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      },
+      {
+        "cap_model_ids": [
+          "VAX1_GCM1|TGGCCA40NTTC|YACII|NTAATKATRCGGGYN|1|3"
+        ],
+        "mechanism": "composite",
+        "pair": "VAX1_GCM1",
+        "partner": "VAX1",
+        "partner_profile_ids": [
+          "MA0722.2"
+        ],
+        "partner_source": "JASPAR2024_CORE_vertebrates",
+        "raw_aggregation": "maximum_across_author_representative_models_within_pair_mechanism"
+      }
+    ],
+    "residualization": {
+      "bins_per_monomer": 20,
+      "fold_column": "chromosome_fold",
+      "method": "training_chromosome_fold_derived_2d_monomer_quantile_bins"
+    }
+  },
+  "reference_assembly": "UCSC hg38",
+  "rows": 19497,
+  "rows_before_reference_qc": 19497,
+  "schema_version": "capselex_primary_feature_table_v1",
+  "sequence_context_sha256_before_qc": "4e865dd4f73d558c14273354e858592d78b9ccbaea9f8bc47a0af546b3c72614",
+  "sequence_exclusion_uses_chip_outcome": false,
+  "source_assets": [
+    {
+      "bytes": 358301,
+      "path": "results/capselex/primary_codebook_v2/GCM1.ght_only.loci.tsv.gz",
+      "sha256": "6b0f5a077d7fe57a7d60bc6045e2eaf2bda9d2aa1701cbb6d855b73d82c254d7"
+    },
+    {
+      "bytes": 20182606,
+      "path": "data/codebook/ght_v2/Peaks_MAGIX_McGill/GCM1.bed",
+      "sha256": "348b2f56d5d75bd2ec79d101df756ae3e84f17a4dc4eb08df7774d60f93272fd"
+    },
+    {
+      "bytes": 7813,
+      "path": "reports/codebook_chip_gpzn_panel_resolved.json",
+      "sha256": "44b4866d7b928f2e5027c4555a45ec43bf0b8258652f92a8455544dfad5b4c18"
+    },
+    {
+      "bytes": 1372,
+      "path": "reports/ucsc_hg38_reference_resolved.json",
+      "sha256": "753e97daf1d0aee550a19cc53dc7f4ab37ce789c39637af2dcc1f651cb542eec"
+    },
+    {
+      "bytes": 1093881,
+      "path": "data/capselex/nature_supplements/41586_2025_8844_MOESM5_ESM.xlsx",
+      "sha256": "36eaf5c21c03e7bd1618db6bc9bed990ef2a2b528e2cdb3b657c8ca814a72efb"
+    },
+    {
+      "bytes": 211605,
+      "path": "data/codebook/zenodo_pwm/MEX_top1.zip",
+      "sha256": "461857182b6683a837052d05dca5ce2737e2abc56c67bd71a8d2d2884dd5ef15"
+    },
+    {
+      "bytes": 283814,
+      "path": "data/reference/jaspar2024/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt",
+      "sha256": "2a6c7c24afb0614ed418c9f02b68845adebf38f80f6cebabbcd5de804eaacb59"
+    },
+    {
+      "bytes": 14885,
+      "path": "reports/monomer_pwm_panel_audit.json",
+      "sha256": "f354dc28a25a0b363d59c2a80a8b611b69eda1c943762e50db9af077a19141a8"
+    }
+  ]
+}
