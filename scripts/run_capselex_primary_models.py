@@ -8,6 +8,11 @@ import numpy as np
 import pandas as pd
 
 from cisgrammar.capselex import asset_manifest, sha256_file, stable_seed, write_json
+from cisgrammar.capselex_analysis_contract import (
+    AnalysisContract,
+    panel_result_conclusion,
+    permutation_analysis_status,
+)
 from cisgrammar.capselex_genomic_assets import add_cross_assembly_bigwig_signal
 from cisgrammar.capselex_genomic_model import (
     chromosome_bootstrap_partial_r2,
@@ -24,6 +29,8 @@ BASELINE_WITHOUT_ACCESSIBILITY = [
     "cpg_per_100bp",
 ]
 OUTCOMES = ["chip_mean_log1p", "chip_rep1_log1p", "chip_rep2_log1p"]
+CONTRACT = AnalysisContract()
+CONTRACT.validate()
 
 
 def _coefficient_summary(model_summary: dict[str, object]) -> dict[str, object]:
@@ -121,10 +128,10 @@ def main() -> None:
     parser.add_argument("--feature-directory", type=Path, required=True)
     parser.add_argument(
         "--chip-processing-pipeline",
-        default="Toronto_GPZN_only",
+        default=CONTRACT.primary_chip_pipeline,
         help=(
-            "Provenance label written into the report outcome. The default preserves "
-            "the historical GPZN workflow; pass McGill_GPHN_only for the primary rerun."
+            "Provenance label written into the report outcome. The default is the frozen "
+            "McGill-GPHN primary pipeline; pass another label only for a sensitivity run."
         ),
     )
     parser.add_argument("--focal-tfs", nargs="+", required=True)
@@ -133,14 +140,26 @@ def main() -> None:
     parser.add_argument("--partner-expression", type=Path, required=True)
     parser.add_argument("--dnase-directory", type=Path, required=True)
     parser.add_argument("--dnase-resolved-manifest", type=Path, required=True)
-    parser.add_argument("--permutations", type=int, default=100)
-    parser.add_argument("--partial-r2-threshold", type=float, default=0.005)
-    parser.add_argument("--minimum-positive-focal-tfs", type=int, default=4)
+    parser.add_argument(
+        "--permutations",
+        type=int,
+        default=CONTRACT.grammar_permutations,
+        help="Spatial-null count; the frozen final analysis uses 1000.",
+    )
+    parser.add_argument(
+        "--partial-r2-threshold",
+        type=float,
+        default=CONTRACT.primary_partial_r2,
+    )
+    parser.add_argument(
+        "--minimum-positive-focal-tfs",
+        type=int,
+        default=CONTRACT.minimum_positive_focal_tfs,
+    )
     parser.add_argument("--seed", type=int, default=20260809)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.permutations < 1:
-        raise ValueError("at least one permutation is required")
+    analysis_status = permutation_analysis_status(args.permutations, CONTRACT)
 
     dnase_manifest, dnase_paths = _validate_dnase_assets(
         args.dnase_directory, args.dnase_resolved_manifest
@@ -283,7 +302,7 @@ def main() -> None:
                 else None
             ),
             "all_pair_sensitivity": all_pair_sensitivity,
-            "screening_permutation": permutation,
+            "grammar_permutation": permutation,
             "positive_focal_tf_criterion": criterion,
         }
         records.append(record)
@@ -301,10 +320,17 @@ def main() -> None:
         for record in records
         if record["panel_role"] == "primary_expression_supported"
     )
+    panel_gate_passed = primary_positive >= args.minimum_positive_focal_tfs
+    analysis_conclusion = panel_result_conclusion(
+        primary_positive,
+        args.minimum_positive_focal_tfs,
+    )
     write_json(
         {
-            "schema_version": "capselex_primary_genomic_model_v1",
-            "analysis_status": "screening" if args.permutations < 1000 else "final",
+            "schema_version": "capselex_primary_genomic_model_v2",
+            "analysis_status": analysis_status,
+            "analysis_conclusion": analysis_conclusion,
+            "grammar_permutations": args.permutations,
             "primary_panel": args.focal_tfs,
             "sensitivity_panel": args.sensitivity_tfs,
             "partner_availability_negative_controls": args.availability_negative_controls,
@@ -327,7 +353,7 @@ def main() -> None:
             "primary_partial_r2_threshold": args.partial_r2_threshold,
             "minimum_positive_focal_tfs": args.minimum_positive_focal_tfs,
             "positive_primary_focal_tfs": primary_positive,
-            "panel_go_gate_passed": primary_positive >= args.minimum_positive_focal_tfs,
+            "panel_go_gate_passed": panel_gate_passed,
             "tf_results": records,
             "source_assets": asset_manifest(
                 [*feature_paths, args.dnase_resolved_manifest, args.partner_expression]
