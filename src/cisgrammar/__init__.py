@@ -1,3 +1,3 @@
-"""Leakage-controlled analysis of cis-regulatory grammar and genomic targeting."""
+"""Counterfactual benchmarking of cis-regulatory grammar learning."""
 
-__version__ = "0.2.0"
+__version__ = "0.1.0"
