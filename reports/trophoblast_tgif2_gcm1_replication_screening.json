@@ -10,7 +10,7 @@
   ],
   "candidate": "TGIF2_GCM1",
   "claim_boundary": "Cross-context predictive replication supports a transferable sequence association; it does not establish TGIF2 co-occupancy or causal cooperation with GCM1.",
-  "discovery_context": "Codebook GCM1 ChIP in HEK293",
+  "discovery_context": "Codebook GCM1 ChIP in HEK293 using the author-supplied McGill-GPHN panel",
   "locus_universe": "official Codebook v2 GCM1 GHT-only fixed 200-bp tiles",
   "mechanism": "composite",
   "partial_r2_threshold": 0.005,
@@ -19,9 +19,9 @@
   "schema_version": "trophoblast_tgif2_gcm1_replication_v1",
   "source_assets": [
     {
-      "bytes": 4488409,
-      "path": "results/capselex/primary_features/GCM1.features.tsv.gz",
-      "sha256": "7be150c24454ba327256b3bd2697acbd9487e62443f37d1d07bd4bcc465f8eec"
+      "bytes": 4327913,
+      "path": "results/capselex/primary_features_gphn/GCM1.features.tsv.gz",
+      "sha256": "28a44b19a1a912590d06cda0e004847bc724f7dcf5aa1895c16c18645b581274"
     },
     {
       "bytes": 3163,
@@ -34,9 +34,9 @@
       "sha256": "6e492fdc156b2c88ac7b5469f5e20d1984781ea773047298df612c5b27d6e034"
     },
     {
-      "bytes": 168252,
-      "path": "reports/capselex_pair_decomposition.json",
-      "sha256": "c532d4d62527dc684d59d00e88a71a83894dca45616bb8d0631dd5c77dade2a4"
+      "bytes": 168289,
+      "path": "reports/gphn_capselex_pair_decomposition.json",
+      "sha256": "5b909f1c0b4dde3e13395e5b970a541de3eecd2c10523fe112863d505339ba6b"
     }
   ],
   "source_manifest_contract": {
@@ -98,7 +98,7 @@
                 "rmse": 1.1057189207790528,
                 "spearman": 0.3279697273091293
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8290113415451663,
                 "mse": 1.2174693568906692,
@@ -107,7 +107,7 @@
                 "rmse": 1.1033899387300345,
                 "spearman": 0.3369946813428824
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.0623168682796409
@@ -123,7 +123,7 @@
                 "rmse": 1.117313436631704,
                 "spearman": 0.3475340917626114
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8257118523550765,
                 "mse": 1.2419910037956192,
@@ -132,7 +132,7 @@
                 "rmse": 1.1144465010917388,
                 "spearman": 0.3528126229517598
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.07313578648757549
@@ -148,7 +148,7 @@
                 "rmse": 1.109143090962666,
                 "spearman": 0.3422173551049337
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8231713113418493,
                 "mse": 1.2307557651760557,
@@ -157,7 +157,7 @@
                 "rmse": 1.1093943235730277,
                 "spearman": 0.3417499557464634
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 3,
               "standardized_addition_coefficients": [
                 0.07673908516189586
@@ -239,7 +239,7 @@
                 "rmse": 1.1624331930950815,
                 "spearman": 0.3541409189089182
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8650005574723233,
                 "mse": 1.3489540284250598,
@@ -248,7 +248,7 @@
                 "rmse": 1.161444802143029,
                 "spearman": 0.3566298801324854
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 0,
               "standardized_addition_coefficients": [
                 0.03872351951122349
@@ -264,7 +264,7 @@
                 "rmse": 1.1501838468681074,
                 "spearman": 0.3420431589031145
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8688647346839463,
                 "mse": 1.3221419621202963,
@@ -273,7 +273,7 @@
                 "rmse": 1.1498443208192561,
                 "spearman": 0.34405730402280893
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.040456463525667584
@@ -289,7 +289,7 @@
                 "rmse": 1.175562033584686,
                 "spearman": 0.3513655520245982
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8791711668210062,
                 "mse": 1.379460515905828,
@@ -298,7 +298,7 @@
                 "rmse": 1.1745043703221492,
                 "spearman": 0.35147004151488054
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.04134479820630466
@@ -414,7 +414,7 @@
                 "rmse": 1.0785792875784543,
                 "spearman": 0.3612933562129308
               },
-              "m1_alpha": 1.0,
+              "m1_alpha": 1,
               "outer_fold": 0,
               "standardized_addition_coefficients": [
                 0.04958168016412761
@@ -430,7 +430,7 @@
                 "rmse": 1.061949717497065,
                 "spearman": 0.35831165402615056
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.7994951203081263,
                 "mse": 1.125119971057322,
@@ -439,7 +439,7 @@
                 "rmse": 1.0607167251709204,
                 "spearman": 0.36383412972569784
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.051386665902654484
@@ -455,7 +455,7 @@
                 "rmse": 1.0848650413021317,
                 "spearman": 0.37145699117366926
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8091242606355491,
                 "mse": 1.1727077190734296,
@@ -464,7 +464,7 @@
                 "rmse": 1.0829163028939168,
                 "spearman": 0.37346734873256254
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.05724029234694026
@@ -566,9 +566,9 @@
         "null": "candidate grammar circularly shifted within chromosome",
         "null_quantiles": {
           "maximum": 0.0004642653000813679,
-          "median": -5.8974521713106576e-05,
+          "median": -0.000058974521713106576,
           "minimum": -0.0010699141513683674,
-          "p95": 9.527683988749813e-05
+          "p95": 0.00009527683988749813
         },
         "one_sided_pvalue": 0.009900990099009901,
         "permutations": 100
@@ -591,7 +591,7 @@
                 "rmse": 1.1090389427180019,
                 "spearman": 0.27043203446011793
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8088310407433663,
                 "mse": 1.2240896535261134,
@@ -600,7 +600,7 @@
                 "rmse": 1.1063858520091956,
                 "spearman": 0.27956718345470716
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 0,
               "standardized_addition_coefficients": [
                 0.05431503889553069
@@ -616,7 +616,7 @@
                 "rmse": 1.0970126918334642,
                 "spearman": 0.25089701729159436
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8093202181551374,
                 "mse": 1.200023771775281,
@@ -625,7 +625,7 @@
                 "rmse": 1.0954559652378917,
                 "spearman": 0.26071131678023224
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.06121925721755524
@@ -641,7 +641,7 @@
                 "rmse": 1.0916689810609925,
                 "spearman": 0.27743346724404505
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8004723481980879,
                 "mse": 1.1860273540391515,
@@ -650,7 +650,7 @@
                 "rmse": 1.0890488299608754,
                 "spearman": 0.28124186268993634
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.0685398763270579
@@ -757,7 +757,7 @@
                 "rmse": 1.1519527018641675,
                 "spearman": 0.30343864487549804
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8460323958209053,
                 "mse": 1.3206518095928574,
@@ -766,7 +766,7 @@
                 "rmse": 1.1491961580134427,
                 "spearman": 0.3120573931968983
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 0,
               "standardized_addition_coefficients": [
                 0.06392804233619222
@@ -782,7 +782,7 @@
                 "rmse": 1.1319721084759438,
                 "spearman": 0.27949619161654715
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8482025004632592,
                 "mse": 1.2798457745243559,
@@ -791,7 +791,7 @@
                 "rmse": 1.1313026891704783,
                 "spearman": 0.2869059365580524
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.0653689076792473
@@ -807,7 +807,7 @@
                 "rmse": 1.1419561884800218,
                 "spearman": 0.2967545227038443
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.8491240323942607,
                 "mse": 1.2964558838876505,
@@ -816,7 +816,7 @@
                 "rmse": 1.1386201666436664,
                 "spearman": 0.3011857491169421
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.06510121449558397
@@ -923,7 +923,7 @@
                 "rmse": 1.0756460812978776,
                 "spearman": 0.299238345340717
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.7816165200858722,
                 "mse": 1.150882414128992,
@@ -932,7 +932,7 @@
                 "rmse": 1.072791878291867,
                 "spearman": 0.3084918115651255
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 0,
               "standardized_addition_coefficients": [
                 0.05912154061586132
@@ -948,7 +948,7 @@
                 "rmse": 1.0536343265694517,
                 "spearman": 0.2797597774870081
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.7823275843005291,
                 "mse": 1.1076474241139993,
@@ -957,7 +957,7 @@
                 "rmse": 1.052448299972022,
                 "spearman": 0.28941743333919606
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 1,
               "standardized_addition_coefficients": [
                 0.06329408244840141
@@ -973,7 +973,7 @@
                 "rmse": 1.058882910411575,
                 "spearman": 0.3082409942266892
               },
-              "m0_alpha": 100.0,
+              "m0_alpha": 100,
               "m1": {
                 "mae": 0.7781830646776188,
                 "mse": 1.1145432876265713,
@@ -982,7 +982,7 @@
                 "rmse": 1.055719322370568,
                 "spearman": 0.3129420628899036
               },
-              "m1_alpha": 100.0,
+              "m1_alpha": 100,
               "outer_fold": 2,
               "standardized_addition_coefficients": [
                 0.06682054541132097
@@ -1084,9 +1084,9 @@
         "null": "candidate grammar circularly shifted within chromosome",
         "null_quantiles": {
           "maximum": 0.00043140245614181616,
-          "median": -7.702051295210843e-05,
+          "median": -0.00007702051295210843,
           "minimum": -0.0005741944516364228,
-          "p95": 8.753113893248395e-05
+          "p95": 0.00008753113893248395
         },
         "one_sided_pvalue": 0.009900990099009901,
         "permutations": 100
@@ -1094,5 +1094,6 @@
       "state": "ST",
       "state_replication_passed": false
     }
-  ]
+  ],
+  "discovery_source_basis": "TGIF2_GCM1 remains the leading GCM1 pair in the McGill-GPHN decomposition; the external model uses only ChIP-independent sequence features."
 }
