@@ -6,6 +6,9 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+The earlier counterfactual grammar-learning study is preserved on the
+[`old-version` branch](https://github.com/Joe0908/CisGrammarShift/tree/old-version).
+
 ## Question
 
 On an outcome-independent set of genomic loci, do CAP-SELEX-derived
@@ -30,10 +33,7 @@ outcomes and evaluates incremental signal under chromosome-held-out fitting.
 - Compare nested ridge models on held-out chromosomes using out-of-fold partial
   R², chromosome-block intervals, replicate-direction checks, and
   within-chromosome spatial nulls.
-- Repeat the frozen specification with an independent ChIP processing pipeline
-  and an external trophoblast context.
-- Retain a matched-pair synthetic benchmark only as an implementation control;
-  it is not treated as endogenous binding evidence.
+- Test the frozen sequence hypothesis in an external trophoblast context.
 
 The primary comparison is:
 
@@ -61,14 +61,12 @@ paths, and access limitations are documented in
 
 | Path | Contents |
 |---|---|
-| `src/cisgrammar/` | Reusable feature, model, metric, and synthetic-control modules |
+| `src/cisgrammar/` | Reusable CAP/GHT feature, model, metric, and provenance modules |
 | `scripts/` | Public-data acquisition, QC, feature building, and model entry points |
 | `configs/` | Frozen manifests and analysis parameters |
 | `reports/` | Machine-readable QC and reference result summaries |
 | `tests/` | Unit tests for data contracts, features, models, and leakage controls |
 | `docs/data_access.md` | Data provenance and acquisition instructions |
-| `docs/data_specification.md` | Synthetic-control data contract |
-| `provenance/gpzn_sensitivity/` | Reproduction notes for the public GPZN processing sensitivity |
 
 ## Reproduction
 
@@ -84,15 +82,7 @@ python -m pip install -e '.[dev]'
 pytest -q
 ```
 
-Install the optional CPU or CUDA build of PyTorch to run the synthetic neural
-benchmark:
-
-```bash
-python -m pip install -e '.[dev,ml]'
-cisgrammar run --config configs/quick.yaml --output results/quick --device cpu
-```
-
-For the real-data workflow, first resolve and verify assets with
+For the genomic workflow, first resolve and verify assets with
 `scripts/download_manifest.py` and the audit commands listed in
 [`docs/data_access.md`](docs/data_access.md). The primary feature and model
 entry points are:
@@ -111,13 +101,11 @@ author-supplied GPHN tracks named in
 - Under the frozen GHT-only design, one of four expression-evaluable focal TFs
   exceeded the prespecified partial-R² effect threshold; the panel-level rule
   was therefore not met.
-- Repeating the same analysis with the public Toronto-GPZN ChIP processing
-  pipeline preserved all focal-TF pass/fail decisions and effect directions.
 - A frozen external-context TGIF2-GCM1 sequence score was directionally
   consistent across two trophoblast states but did not exceed the prespecified
   effect threshold in either state.
 
-Detailed per-TF estimates, QC records, and sensitivity outputs remain available
+Detailed per-TF estimates, QC records, and external-context outputs remain available
 as machine-readable files under `reports/`; this README does not reconstruct a
 results or discussion narrative.
 
@@ -126,8 +114,7 @@ results or discussion narrative.
 The completed analysis supports a heterogeneous, TF-specific feasibility
 assessment rather than a general cooperative-mechanism claim. CAP motif scores
 do not establish simultaneous protein occupancy, and genomic loci are not
-independent biological replicates. The synthetic benchmark tests recovery of a
-programmed sequence rule only.
+independent biological replicates.
 
 The public repository intentionally excludes manuscript planning, publication
 audits, speculative extensions, obsolete implementations, and future research

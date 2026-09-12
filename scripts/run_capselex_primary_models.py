@@ -121,11 +121,8 @@ def main() -> None:
     parser.add_argument("--feature-directory", type=Path, required=True)
     parser.add_argument(
         "--chip-processing-pipeline",
-        default="Toronto_GPZN_only",
-        help=(
-            "Provenance label written into the report outcome. The default preserves "
-            "the historical GPZN workflow; pass McGill_GPHN_only for the primary rerun."
-        ),
+        default="McGill_GPHN_only",
+        help="Provenance label written into the report outcome.",
     )
     parser.add_argument("--focal-tfs", nargs="+", required=True)
     parser.add_argument("--sensitivity-tfs", nargs="*", default=[])

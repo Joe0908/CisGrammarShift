@@ -99,13 +99,9 @@ def _build_capselex_parser(subparsers: argparse._SubParsersAction[argparse.Argum
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="cisgrammar",
-        description="Intrinsic specificity and cooperative DNA grammar under biological context shift",
+        description="Leakage-controlled CAP/GHT/ChIP analysis of cooperative DNA grammar",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
-    run_parser = subparsers.add_parser("run", help="run the original controlled synthetic benchmark")
-    run_parser.add_argument("--config", type=Path, required=True)
-    run_parser.add_argument("--output", type=Path, required=True)
-    run_parser.add_argument("--device", default="auto")
     _build_capselex_parser(subparsers)
     return parser
 

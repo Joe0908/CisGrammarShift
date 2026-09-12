@@ -11,20 +11,15 @@ requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [{name = "Yuqi Tao"}]
 dependencies = [
-  "matplotlib>=3.8",
   "numpy>=1.26",
   "openpyxl>=3.1",
   "pandas>=2.1",
   "pyBigWig>=0.3.22",
-  "PyYAML>=6.0",
   "scipy>=1.10",
   "scikit-learn>=1.4",
 ]
 
 [project.optional-dependencies]
-ml = [
-  "torch>=2.2,<3",
-]
 dev = [
   "pytest>=8.0",
   "ruff>=0.6",
