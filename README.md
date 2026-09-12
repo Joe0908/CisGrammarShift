@@ -1,12 +1,34 @@
 # CisGrammarShift
 
-**Leakage-controlled evaluation of cooperative DNA grammar in genomic TF targeting.**
+**Two linked studies of cis-regulatory grammar: controlled computational learnability and genomic relevance.**
 
 [![CI](https://github.com/Joe0908/CisGrammarShift/actions/workflows/ci.yml/badge.svg)](https://github.com/Joe0908/CisGrammarShift/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Question
+## Two linked studies
+
+### 1. Counterfactual grammar-learning benchmark
+
+Can sequence models learn relative motif syntax rather than exploit
+motif-presence shortcuts? This controlled PyTorch study uses matched
+POU5F1–NANOG sequence pairs, a PWM-presence baseline, LocalCNN, DilatedCNN, and
+Transformer models, five random seeds, and IID plus gap, orientation, GC, and
+motif-strength distribution shifts.
+
+### 2. Genomic cooperative-grammar study
+
+Does experimentally measured cooperative sequence grammar explain real focal-TF
+occupancy beyond intrinsic binding and conventional sequence features? This is
+the current main study and integrates CAP-SELEX, GHT-SELEX, monomer motifs,
+sequence composition, accessibility, and held-out genomic outcomes.
+
+The first study asks whether regulatory grammar is computationally learnable
+under controlled counterfactual interventions; the second asks whether
+experimentally observed grammar carries additional information in endogenous
+genomic targeting.
+
+## Current genomic study
 
 On an outcome-independent set of genomic loci, do CAP-SELEX-derived
 cooperative sequence features explain held-out focal-TF occupancy beyond
@@ -20,7 +42,7 @@ loci, centre sequence windows, tune features, or split nearby loci across train
 and test sets. This project separates in-vitro sequence evidence from genomic
 outcomes and evaluates incremental signal under chromosome-held-out fitting.
 
-## Approach
+## Genomic study approach
 
 - Freeze GHT-only 200-bp hg38 loci without using ChIP signal for inclusion or
   centring.
@@ -32,8 +54,6 @@ outcomes and evaluates incremental signal under chromosome-held-out fitting.
   within-chromosome spatial nulls.
 - Repeat the frozen specification with an independent ChIP processing pipeline
   and an external trophoblast context.
-- Retain a matched-pair synthetic benchmark only as an implementation control;
-  it is not treated as endogenous binding evidence.
 
 The primary comparison is:
 
@@ -45,6 +65,16 @@ M_0 = f(\mathrm{GHT},\ \mathrm{monomers},\ \mathrm{GC/CpG},\
 \[
 M_1 = M_0 + \mathrm{CAP\ grammar}.
 \]
+
+## Counterfactual study
+
+The earlier counterfactual grammar-learning study motivated the later real-data
+analysis and now also provides a controlled benchmark within this repository.
+It remains a distinct scientific project: matched sequence pairs hold motif
+content constant while varying relative syntax, allowing motif-presence
+baselines and neural models to be compared under both IID and targeted
+distribution shifts. Its results concern recovery of a programmed sequence
+rule, not endogenous TF binding.
 
 ## Data and provenance
 
@@ -61,7 +91,7 @@ paths, and access limitations are documented in
 
 | Path | Contents |
 |---|---|
-| `src/cisgrammar/` | Reusable feature, model, metric, and synthetic-control modules |
+| `src/cisgrammar/` | Shared infrastructure; counterfactual modules (`data.py`, `models.py`, `baselines.py`, `training.py`) and genomic `capselex_*` modules |
 | `scripts/` | Public-data acquisition, QC, feature building, and model entry points |
 | `configs/` | Frozen manifests and analysis parameters |
 | `reports/` | Machine-readable QC and reference result summaries |
@@ -84,8 +114,8 @@ python -m pip install -e '.[dev]'
 pytest -q
 ```
 
-Install the optional CPU or CUDA build of PyTorch to run the synthetic neural
-benchmark:
+Install the optional CPU or CUDA build of PyTorch to run the counterfactual
+grammar-learning study:
 
 ```bash
 python -m pip install -e '.[dev,ml]'
@@ -123,11 +153,12 @@ results or discussion narrative.
 
 ## Scope and status
 
-The completed analysis supports a heterogeneous, TF-specific feasibility
-assessment rather than a general cooperative-mechanism claim. CAP motif scores
-do not establish simultaneous protein occupancy, and genomic loci are not
-independent biological replicates. The synthetic benchmark tests recovery of a
-programmed sequence rule only.
+The genomic study supports a heterogeneous, TF-specific feasibility assessment
+rather than a general cooperative-mechanism claim. CAP motif scores do not
+establish simultaneous protein occupancy, and genomic loci are not independent
+biological replicates. The counterfactual study answers a separate question:
+whether models recover a programmed sequence rule under matched interventions
+and distribution shift; it is not treated as endogenous binding evidence.
 
 The public repository intentionally excludes manuscript planning, publication
 audits, speculative extensions, obsolete implementations, and future research
